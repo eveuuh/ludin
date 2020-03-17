@@ -3,4 +3,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'dashboard', to: 'pages#dashboard'
   get 'uikit', to: 'pages#uikit'
+
+  resources :locations, only: [ :new, :create, :edit, :update, :destroy ]
+
+  resources :boardgames, only: [ :new, :create, :edit, :update, :destroy ]
+  resources :gamenights, only: [ :index, :show ]
+  resources :participations, only: [  ]
+
 end
