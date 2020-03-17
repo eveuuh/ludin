@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'dashboard', to: 'pages#dashboard'
   get 'uikit', to: 'pages#uikit'
 
-  resources :boardgames, only: [  ]
-  resources :gamenights, only: [ ]
-  resources :locations, only: [  ]
+  resources :locations, only: [ :new, :create, :edit, :update, :destroy ]
+
+  resources :boardgames, only: [ :new, :create, :edit, :update, :destroy ]
+  resources :gamenights, only: [ :index, :show ]
   resources :participations, only: [  ]
 
 end
