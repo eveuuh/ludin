@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home,:uikit, :dashboard]
+  skip_before_action :authenticate_user!, only: [:home, :uikit, :dashboard]
 
   def home
   end
@@ -9,17 +9,22 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    # @my_boardgames = current_user.boardgames
-    # @my_gamenights = current_user.gamenights
-    # @my_locations = current_user.locations
-    # @my_participations = current_user.participations
+    @my_boardgames = current_user.boardgames
+    @my_locations = current_user.locations
+    @my_participations = current_user.participations
+    @owner = owner_gamenights
+    @participant = participant_gamenights
+  end
+
+  private
+
+  def owner_gamenights
+    gamenights = @my_boardgames.map { |boardgame| boardgame.gamenights }
+    return gamenights
+  end
+
+  def participant_gamenights
+    gamenights = @my_participations.map { |participation| participation.gamenight }
+    return gamenights
   end
 end
-
-# rails g model Boardgame name category players_min:integer players_max:integer age description:text user:references
-
-# rails g model Location name address longitude:integer latitude:integer user:references # integer pour lon & lat ???
-
-# rails g model Gamenight date:date start_time:time end_time:time description:text location:references boardgame:references
-
-# rails g model Participation rating:integer description:text user:references gamenight:references
