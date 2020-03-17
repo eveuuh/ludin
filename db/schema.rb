@@ -10,10 +10,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_151521) do
+ActiveRecord::Schema.define(version: 2020_03_17_132745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boardgames", force: :cascade do |t|
+    t.string "name"
+    t.string "category"
+    t.string "age"
+    t.integer "players_min"
+    t.integer "players_max"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_boardgames_on_user_id"
+  end
+
+  create_table "gamenights", force: :cascade do |t|
+    t.date "date"
+    t.time "start_time"
+    t.time "end_time"
+    t.text "description"
+    t.bigint "location_id"
+    t.bigint "boardgame_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["boardgame_id"], name: "index_gamenights_on_boardgame_id"
+    t.index ["location_id"], name: "index_gamenights_on_location_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.float "longitude"
+    t.float "latitude"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "participations", force: :cascade do |t|
+    t.integer "rating"
+    t.text "description"
+    t.bigint "user_id"
+    t.bigint "gamenight_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gamenight_id"], name: "index_participations_on_gamenight_id"
+    t.index ["user_id"], name: "index_participations_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +71,17 @@ ActiveRecord::Schema.define(version: 2020_03_16_151521) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
+    t.text "presentation"
+    t.float "global_rating"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "boardgames", "users"
+  add_foreign_key "gamenights", "boardgames"
+  add_foreign_key "gamenights", "locations"
+  add_foreign_key "locations", "users"
+  add_foreign_key "participations", "gamenights"
+  add_foreign_key "participations", "users"
 end
