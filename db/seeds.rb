@@ -3,7 +3,7 @@
 puts 'Destroy all database...'
 Gamenight.destroy_all
 Boardgame.destroy_all
-Gamenight.destroy_all
+Location.destroy_all
 User.destroy_all
 
 puts 'Creating some users...'

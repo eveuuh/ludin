@@ -6,11 +6,9 @@ Rails.application.routes.draw do
 
   resources :locations, only: [ :new, :create, :edit, :update, :destroy ]
 
-  resources :boardgames, only: [ :new, :create, :edit, :update, :destroy ] do
-    resources :gamenights, only: [ :new, :create, :edit, :update ]
-  end
+  resources :boardgames, only: [ :new, :create, :edit, :update, :destroy ]
 
-  resources :gamenights, only: [ :index, :show, :destroy ]
+  resources :gamenights
   resources :participations, only: [  ]
 
 end
