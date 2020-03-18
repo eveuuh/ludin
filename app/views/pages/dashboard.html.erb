@@ -1,2 +1,40 @@
 <h1>Pages#dashboard</h1>
 <p>Find me in app/views/pages/dashboard.html.erb</p>
+<br>
+<%= link_to 'Edit account', edit_user_registration_path(@user) %>
+<br>
+<%= link_to 'Create new location +', new_location_path %>
+<br>
+<%= link_to 'Create new boardgame +', new_boardgame_path %>
+<br>
+<%= link_to 'Create new gamenight +', new_gamenight_path %>
+<br>
+<br>
+<% @my_boardgames.each do |boardgame| %>
+  <%= boardgame.name %>
+  <%= link_to 'Edit boardgame', edit_boardgame_path(boardgame) %> <i class="fas fa-pencil-alt"></i>
+  <%= link_to 'Delete boardgame', boardgame_path(boardgame), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+<% end %>
+<br>
+<% @my_locations.each do |location| %>
+  <%= location.name %>
+  <%= link_to 'Edit location', edit_location_path(location) %> <i class="fas fa-pencil-alt"></i>
+  <%= link_to 'Delete location', location_path(location), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+<% end %>
+<br>
+<% @owners.each do |gamenights| %>
+  <% gamenights.each do |gamenight| %>
+    <%= gamenight.date %>
+    <%= link_to 'Edit gamenight', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
+    <%= link_to 'Delete gamenight', gamenight_path(gamenight), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+  <% end %>
+<% end %>
+<br>
+<% if @participants %>
+  <% @participants.each do |participation| %>
+    <%= participation.rating %>
+    <%= participation.description %>
+    <%= link_to 'Edit participation', edit_gamenight_participation_path(participation) %> <i class="fas fa-pencil-alt"></i>
+    <%= link_to 'Delete participation', participation_path(participation), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+  <% end %>
+<% end %>

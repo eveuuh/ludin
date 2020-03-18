@@ -1,7 +1,7 @@
 <h1>view show gamenights</h1>
 
 <h2>Date : <%= @gamenight.date %></h2>
-<h3>de <%= @gamenight.start_time %> à <%= @gamenight.end_time %> %></h3>
+<h3>de <%= @gamenight.start_time.hour %>h à <%= @gamenight.end_time.hour %>h</h3>
 <p>à <%= @location.address %></p>
 <p>organisé par <%= @user.username %> (<%= @user.global_rating %>)</p>
 
@@ -9,4 +9,6 @@
 <p>type : <%= @boardgame.category %></p>
 <p>tranche d'âge : <%= @boardgame.age %></p>
 <p>de <%= @boardgame.players_min %> à <%= @boardgame.players_max %> joueurs</p>
-<p>description : <%= @boardgame.description %></p>
+<p>description du jeux : <%= @boardgame.description %></p>
+
+<p>description de la soirée : <%= @gamenight.description %></p>
