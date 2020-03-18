@@ -11,20 +11,20 @@
 <br>
 <br>
 <% @my_boardgames.each do |boardgame| %>
-  <p><%= boardgame.name %></p>
+  <%= boardgame.name %>
   <%= link_to 'Edit boardgame', edit_boardgame_path(boardgame) %> <i class="fas fa-pencil-alt"></i>
   <%= link_to 'Delete boardgame', boardgame_path(boardgame), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
 <% end %>
 <br>
 <% @my_locations.each do |location| %>
-  <p><%= location.name %></p>
+  <%= location.name %>
   <%= link_to 'Edit location', edit_location_path(location) %> <i class="fas fa-pencil-alt"></i>
   <%= link_to 'Delete location', location_path(location), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
 <% end %>
 <br>
 <% @owners.each do |gamenights| %>
   <% gamenights.each do |gamenight| %>
-    <p><%= gamenight.date %></p>
+    <%= gamenight.date %>
     <%= link_to 'Edit gamenight', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
     <%= link_to 'Delete gamenight', gamenight_path(gamenight), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
   <% end %>
@@ -32,8 +32,8 @@
 <br>
 <% if @participants %>
   <% @participants.each do |participation| %>
-    <p><%= participation.rating %></p>
-    <p><%= participation.description %></p>
+    <%= participation.rating %>
+    <%= participation.description %>
     <%= link_to 'Edit participation', edit_gamenight_participation_path(participation) %> <i class="fas fa-pencil-alt"></i>
     <%= link_to 'Delete participation', participation_path(participation), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
   <% end %>
