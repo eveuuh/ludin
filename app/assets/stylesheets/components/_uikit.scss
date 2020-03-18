@@ -1,2 +1,139 @@
+a {
+  text-decoration: none;
+}
 
+h2 {
+  margin : 30px 0;
+}
 
+//******************Buttons**************************//
+
+.button1 {
+  color: $main-blue;
+  padding: 15px 25px;
+  border-radius: 4px;
+  border: solid 1px $main-blue;
+  font-weight: bold;
+  background: transparent;
+  text-decoration: none;
+}
+
+.button1:hover {
+  color: $main-white;
+  background-color: $main-blue;
+  text-decoration: none;
+}
+
+.button2 {
+  color: $main-white;
+  padding: 15px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient($main-orange, $main-red);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.button2:hover {
+  background: linear-gradient($main-red, $main-orange);
+  transition: background 0.3s ease;
+  text-decoration: none;
+  color: $main-white;
+}
+
+//******************Cards****************************//
+
+.card-trip {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-trip > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+//******************Tags*****************************//
+
+.tagcloud {
+  line-height: 40px;
+}
+
+.tag {
+  margin: 5px 5px;
+  color: $main-white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: $main-red;
+  opacity: 0.6;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.tag:hover {
+  opacity: 1;
+  color: $main-white;
+  text-decoration: none;
+}
+
+.new-tag {
+  margin: 5px 5px;
+  color:$main-red;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: $main-beige;
+  opacity: 0.6;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.new-tag:hover {
+  opacity: 1;
+  color: $main-red;
+  text-decoration: none;
+}
+
+//******************Avatar***************************//
+
+.avatar1{
+  width: 60px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: linear-gradient($main-red, $main-orange) 1px solid;
+}
+
+.avatar2 {
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  border: linear-gradient($main-red, $main-orange) 1px solid;
+}
