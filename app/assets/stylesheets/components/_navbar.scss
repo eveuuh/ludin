@@ -1,12 +1,13 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: linear-gradient(90deg, #ff8a5b, #ea526f);
 }
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
+
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 100px;
 }
 
 .search-form-control {
@@ -31,4 +32,3 @@
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
-
