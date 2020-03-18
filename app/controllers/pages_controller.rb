@@ -12,8 +12,8 @@ class PagesController < ApplicationController
     @my_boardgames = current_user.boardgames
     @my_locations = current_user.locations
     @my_participations = current_user.participations
-    @owner = owner_gamenights
-    @participant = participant_gamenights
+    @owners = owner_gamenights
+    @participants = participant_gamenights
   end
 
   private

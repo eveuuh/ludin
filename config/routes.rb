@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   get 'uikit', to: 'pages#uikit'
 
   resources :locations, only: [ :new, :create, :edit, :update, :destroy ]
-
   resources :boardgames, only: [ :new, :create, :edit, :update, :destroy ]
 
-  resources :gamenights
-  resources :participations, only: [  ]
+  resources :gamenights do
+    resources :participations, only: [ :new, :create, :edit, :update ]
+  end
 
+  resources :participations, only: [ :destroy ]
 end
