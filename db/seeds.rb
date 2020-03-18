@@ -30,40 +30,43 @@ puts "#{User.count} users have been created !"
 puts 'Creating some boardgames...'
 
 # file_4 = URI.open('https://i.ebayimg.com/images/g/tzYAAOSwqNxeD08j/s-l400.jpg')
-game_1 = Boardgame.new({
+boardgame_1 = Boardgame.new({
   name: " Uno",
   description: "jeux de cartes",
   players_min: 2,
   players_max: 8,
+  category: "cartes",
   age: "10",
   user_id: user1.id
 })
 # game_1.photo.attach(io: file_4, filename: 'riskgot.jpg', content_type: 'image/jpg')
-game_1.save!
+boardgame_1.save!
 
 # file_5 = URI.open('https://static.fnac-static.com/multimedia/Images/FR/MDM/5f/2b/38/3681119/1505-1/tsp20200227140744/Jeu-de-strategie-Hasbro-Risk.jpg')
-game_2 = Boardgame.new({
+boardgame_2 = Boardgame.new({
   name: " Risk",
   description: "jeux de stratégie",
   players_min: 4,
   players_max: 6,
+  category: "stratégie",
   age: "12",
   user_id: user2.id
 })
 # game_2.photo.attach(io: file_5, filename: 'risk.jpg', content_type: 'image/jpg')
-game_2.save!
+boardgame_2.save!
 
 # file_6 = URI.open('https://images-na.ssl-images-amazon.com/images/I/81G3u55HEHL._AC_SX425_.jpg')
-game_3 = Boardgame.new({
+boardgame_3 = Boardgame.new({
  name: " Burger Quizz",
   description: "jeux de plateau ",
   players_min: 4,
   players_max: 8,
+  category: "ambiance",
   age: "16",
   user_id: user3.id
 })
 # game_3.photo.attach(io: file_6, filename: 'catan.jpg', content_type: 'image/jpg')
-game_3.save!
+boardgame_3.save!
 
 puts "#{Boardgame.count} boardgames have been created !"
 puts 'boardgames created'
@@ -107,7 +110,7 @@ gamenight_1 = Gamenight.new({
   start_time:"20:00:00",
   end_time: "22:00:00",
   description: "Apportez des bieres",
-  location_id: location_1.id
+  location_id: location_1.id,
   boardgame_id: boardgame_1.id
 
 })
@@ -118,7 +121,7 @@ gamenight_2 = Gamenight.new({
   start_time:"18:00:00",
   end_time: "21:00:00",
   description: "cool soirée",
-  location_id: location_2.id
+  location_id: location_2.id,
   boardgame_id: boardgame_2.id
 
 })
@@ -129,7 +132,7 @@ gamenight_3 = Gamenight.new({
   start_time:"19:00:00",
   end_time: "23:00:00",
   description: "venez comme vous etes",
-  location_id: location_3.id
+  location_id: location_3.id,
   boardgame_id: boardgame_3.id
 
 })
