@@ -13,4 +13,4 @@
 
 <p>description de la soirée : <%= @gamenight.description %></p>
 <br>
-<%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Vous êtes enregistré !"} %>
+<%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post %>

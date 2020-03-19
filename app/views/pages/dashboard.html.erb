@@ -24,8 +24,8 @@
   <%= link_to 'Delete location', location_path(location), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
 <% end %>
 <br>
-<% if @participants %>
-  <% @owners.each do |gamenights| %>
+<% if @gamenights_owner %>
+  <% @gamenights_owner.each do |gamenights| %>
     <% gamenights.each do |gamenight| %>
       <p>Le <%= gamenight.date %></p>
       <p><%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
@@ -36,8 +36,8 @@
   <% end %>
 <% end %>
 <br>
-<% if @participants %>
-  <% @participants.each do |gamenight| %>
+<% if @gamenights_participant %>
+  <% @gamenights_participant.each do |gamenight| %>
   <p>Le <%= gamenight.date %></p>
   <p><%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
   <%= link_to "Voir plus...", gamenight_path(gamenight) %>
