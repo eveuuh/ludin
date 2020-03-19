@@ -28,12 +28,16 @@ class GamenightsController < ApplicationController
   end
 
   def edit
+    @locations_user = current_user.locations
+    @boardgames_user = current_user.boardgames
   end
 
   def update
-    @gamenight.update(gamenight_params)
-
-    redirect_to dashboard_path
+    if @gamenight.update(gamenight_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
   end
 
   def destroy
