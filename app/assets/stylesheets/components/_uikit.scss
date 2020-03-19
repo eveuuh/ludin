@@ -309,7 +309,7 @@ h2 {
   font-weight: bold;
 }
 
-.nav-item {
+.tab-item {
   background: $main-white;
   flex: 0 0 50%;
   text-align: center;
@@ -319,14 +319,14 @@ h2 {
   }
 }
 
-.nav-item:first-child {
+.tab-item:first-child {
   border-radius: 10px 0 0 0;
 }
-.nav-item:last-child {
+.tab-item:last-child {
   border-radius: 0 10px 0 0;
 }
 
-.nav-item.active {
+.tab-item.active {
   background: $main-beige;
   border: none;
   a {
