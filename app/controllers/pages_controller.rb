@@ -13,18 +13,12 @@ class PagesController < ApplicationController
     @my_locations = current_user.locations
     @my_participations = current_user.participations
     @gamenights_owner = owner_gamenights
-    @gamenights_participant = participant_gamenights
   end
 
   private
 
   def owner_gamenights
     gamenights = @my_boardgames.map { |boardgame| boardgame.gamenights }
-    return gamenights
-  end
-
-  def participant_gamenights
-    gamenights = @my_participations.map { |participation| participation.gamenight }
     return gamenights
   end
 end
