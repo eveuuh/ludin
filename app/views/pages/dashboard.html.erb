@@ -45,3 +45,8 @@
   <%= link_to 'Delete gamenight', gamenight_path(gamenight), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
   <% end %>
 <% end %>
+<br>
+<% @my_participations.each do |participation| %>
+  <%= participation.gamenight.boardgame.name %>
+  <%= link_to 'Delete participation', participation_path(participation), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+<% end %>

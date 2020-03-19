@@ -1,7 +1,7 @@
 <h1>view show gamenights</h1>
 
 <h2>Date : <%= @gamenight.date %></h2>
-<h3><%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></h3>
+<h3><%= @gamenight.start_time.strftime("de %H:%M") %> <%= @gamenight.end_time.strftime("à %H:%M") %></h3>
 <p>à <%= @location.address %></p>
 <p>organisé par <%= @user.username %> (<%= @user.global_rating %>)</p>
 
@@ -12,3 +12,5 @@
 <p>description du jeux : <%= @boardgame.description %></p>
 
 <p>description de la soirée : <%= @gamenight.description %></p>
+<br>
+<%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Vous êtes enregistré !"} %>
