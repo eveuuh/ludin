@@ -1,5 +1,11 @@
 a {
   text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  text-decoration: none;
+  color: black;
 }
 
 h2 {
@@ -29,13 +35,13 @@ h2 {
   padding: 15px 25px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(to bottom right, $main-orange, $main-red);
+  background: linear-gradient(to bottom right, $main-beige, $main-red);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-decoration: none;
 }
 
 .button2:hover {
-  background: linear-gradient(to bottom right, $main-red, $main-orange);
+  background: linear-gradient(to bottom right, $main-red, $main-beige);
   text-decoration: none;
   color: $main-white;
 }
@@ -45,14 +51,14 @@ h2 {
 .card-gamenight {
   opacity: 0.8;
   overflow: hidden;
-  background: white;
+  background: $main-white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .card-gamenight:hover {
   opacity: 1;
   overflow: hidden;
-  background: white;
+  background: $main-beige;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
@@ -63,7 +69,7 @@ h2 {
   font-weight: bold;
   padding: 4px 8px;
   border-radius: 4px;
-  background-color: $main-orange;
+  background-color: $main-blue;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   opacity: 1;
 }
@@ -78,12 +84,13 @@ h2 {
   font-size: 16px;
   font-weight: bold;
   margin: 0;
-  color: $main-orange;
+  color: $main-red;
 }
 
 .card-gamenight p {
   font-size: 12px;
   margin: 0;
+  color: $main-red;
 }
 
 .card-gamenight .card-gamenight-infos {
@@ -162,19 +169,19 @@ h2 {
   width: 60px;
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: solid 2px $main-blue;
+  border: solid 2px $main-red;
 }
 
 .avatar2 {
   width: 80px;
   height: 80px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: solid 2px $main-blue;
+  border: solid 2px $main-red;
 }
 
-//*******************List****************************//
+//*******************Gametile****************************//
 
-.product {
+.gamenight {
   background-color: $main-white;
   display: flex;
   justify-content: space-between;
@@ -184,60 +191,146 @@ h2 {
   border-radius: 3px;
 }
 
-.product:hover {
+.gamenight:hover {
   background: $main-beige;
 }
 
-.product:hover .product-upvote {
+.gamenight:hover .gamenight-upvote {
   font-size: 25px;
 }
 
-.product-upvote {
+.gamenight-upvote {
   font-size: 20px;
   padding: 20px;
   transition: all 0.3s ease;
 }
 
-.product-description {
+.gamenight-description {
   flex: 1 0 auto;
   padding: 20px;
+  line-height: 1px;
 }
-.product-controls a {
+
+.gamenight-controls a {
   font-size: 15px;
   color: #CCCCCC;
+  transition: all 0.3s ease;
+}
+
+.gamenight-controls a:hover {
+  font-size: 18px;
+  color: $main-red;
+}
+
+//*******************Participation****************************//
+
+.participation-tile {
+  background-color: $main-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+.participation-tile:hover {
+  background: $main-beige;
+}
+
+.participation-tile:hover .participation-upvote {
+  font-size: 25px;
+}
+
+.participation-upvote {
+  font-size: 20px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.participation-description {
+  flex: 1 0 auto;
+  padding: 20px;
+  line-height: 1px;
+}
+
+.participation-controls a {
+  font-size: 15px;
+  color: #CCCCCC;
+  transition: all 0.3s ease;
+}
+
+.participation-controls a:hover {
+  font-size: 18px;
+  color: $main-red;
+}
+
+.participation-specs{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.owner {
+  display: flex;
+  align-items: center;
+
+  img {
+    margin-right: 15px;
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    margin-right: 15px;
+  }
+}
+
+.place {
+  display: flex;
+  align-items: center;
+
+  p{
+    margin-right: 10px;
+  }
 }
 
 //*******************Tabs****************************//
 
-.tabs {
-  background: $main-white;
+#dashboard-nav {
   color: white;
   display: flex;
-  padding: 10px 15px;
   line-height: 30px;
 }
 
-.tabs h3 {
+#dashboard-nav h3 {
   margin-top: 10px;
   font-size: 20px;
   font-weight: bold;
 }
 
-.tabs-item {
-  background: $main-red;
+.nav-item {
+  background: $main-white;
   flex: 0 0 50%;
   text-align: center;
-  color: $main-white;
+  border: solid 1px $main-red;
+  a {
+    color: $main-red;
+  }
 }
 
-.tabs-item:first-child {
+.nav-item:first-child {
   border-radius: 10px 0 0 0;
 }
-.tabs-item:last-child {
+.nav-item:last-child {
   border-radius: 0 10px 0 0;
 }
 
-.tabs-item.active {
+.nav-item.active {
   background: $main-beige;
-  color: $main-red;
+  border: none;
+  a {
+    color: $main-red;
+    outline: none;
+  }
 }
