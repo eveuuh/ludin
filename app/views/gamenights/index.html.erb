@@ -1,8 +1,10 @@
 <h1>View index gamenights</h1>
 
 <% @gamenights.each do |gamenight| %>
-  <p>Le <%= gamenight.date %>, <%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
-  <p>au <%= gamenight.location.address %></p>
-  <p>avec le jeu <%= gamenight.boardgame.name %></p>
-  <p><%= link_to "Voir plus...", gamenight_path(gamenight) %></p>
+  <% if (gamenight.date >= Time.now.to_date) && (gamenight.start_time.hour - 2 > Time.now.hour) %>
+    <p>Le <%= gamenight.date %>, <%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
+    <p>au <%= gamenight.location.address %></p>
+    <p>avec le jeu <%= gamenight.boardgame.name %></p>
+    <p><%= link_to "Voir plus...", gamenight_path(gamenight) %></p>
+  <% end %>
 <% end %>
