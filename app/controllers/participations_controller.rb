@@ -20,8 +20,11 @@ class ParticipationsController < ApplicationController
   def update
     @participation = Participation.find(params[:id])
 
-    @participation.update
-    redirect_to dashboard_path
+    if @participation.update(participation_params)
+      redirect_to dashboard_path
+    else
+      render :edit
+    end
   end
 
   def destroy

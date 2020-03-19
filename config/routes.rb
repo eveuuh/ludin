@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :boardgames, only: [ :new, :create, :edit, :update, :destroy ]
 
   resources :gamenights do
-    resources :participations, only: [ :create, :edit, :update ]
+    resources :participations, only: [ :create ]
   end
 
-  resources :participations, only: [ :destroy ]
+  resources :participations, only: [ :edit, :update, :destroy ]
 end

@@ -1,27 +1,27 @@
 <h1>Pages#dashboard</h1>
 <p>Find me in app/views/pages/dashboard.html.erb</p>
 <br>
-<%= link_to 'Edit account', edit_user_registration_path(@user) %>
+<%= link_to 'Modifier mon compte', edit_user_registration_path(@user) %>
 <br>
-<%= link_to 'All gamenights', gamenights_path %>
+<%= link_to 'Toutes les gamenights', gamenights_path %>
 <br>
-<%= link_to 'Create new location +', new_location_path %>
+<%= link_to 'Créer une nouvelle adresse +', new_location_path %>
 <br>
-<%= link_to 'Create new boardgame +', new_boardgame_path %>
+<%= link_to 'Ajouter un jeu +', new_boardgame_path %>
 <br>
-<%= link_to 'Create new gamenight +', new_gamenight_path %>
+<%= link_to 'Créer une nouvelle soirée +', new_gamenight_path %>
 <br>
 <br>
 <% @my_boardgames.each do |boardgame| %>
   <%= boardgame.name %>
-  <%= link_to 'Edit boardgame', edit_boardgame_path(boardgame) %> <i class="fas fa-pencil-alt"></i>
-  <%= link_to 'Delete boardgame', boardgame_path(boardgame), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+  <%= link_to 'Modifier le jeu', edit_boardgame_path(boardgame) %> <i class="fas fa-pencil-alt"></i>
+  <%= link_to 'Supprimer le jeu', boardgame_path(boardgame), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
 <% end %>
 <br>
 <% @my_locations.each do |location| %>
   <%= location.name %>
-  <%= link_to 'Edit location', edit_location_path(location) %> <i class="fas fa-pencil-alt"></i>
-  <%= link_to 'Delete location', location_path(location), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+  <%= link_to "Modifier l'adresse", edit_location_path(location) %> <i class="fas fa-pencil-alt"></i>
+  <%= link_to "Supprimer l'adresse", location_path(location), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
 <% end %>
 <br>
 <% if @gamenights_owner %>
@@ -30,8 +30,8 @@
       <p>Le <%= gamenight.date %></p>
       <p><%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
       <%= link_to "Voir plus...", gamenight_path(gamenight) %>
-      <%= link_to 'Edit gamenight', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
-      <%= link_to 'Delete gamenight', gamenight_path(gamenight), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+      <%= link_to 'Modifier la soirée', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
+      <%= link_to 'Supprimer la soirée', gamenight_path(gamenight), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
     <% end %>
   <% end %>
 <% end %>
@@ -41,12 +41,17 @@
   <p>Le <%= gamenight.date %></p>
   <p><%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
   <%= link_to "Voir plus...", gamenight_path(gamenight) %>
-  <%= link_to 'Edit gamenight', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
-  <%= link_to 'Delete gamenight', gamenight_path(gamenight), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+  <%= link_to 'Modifier la soirée', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
+  <%= link_to 'Supprimer la soirée', gamenight_path(gamenight), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
   <% end %>
 <% end %>
 <br>
 <% @my_participations.each do |participation| %>
   <%= participation.gamenight.boardgame.name %>
-  <%= link_to 'Delete participation', participation_path(participation), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+  <% if participation.gamenight.date < Time.now.to_date %>
+    <%= link_to 'Lache un com, stp', edit_participation_path(participation) %>
+  <% end %>
+  <% if participation.gamenight.date >= Time.now.to_date %>
+    <%= link_to 'Se désinscrire', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+  <% end %>
 <% end %>
