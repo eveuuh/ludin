@@ -3,6 +3,8 @@
 <br>
 <%= link_to 'Edit account', edit_user_registration_path(@user) %>
 <br>
+<%= link_to 'All gamenights', gamenights_path %>
+<br>
 <%= link_to 'Create new location +', new_location_path %>
 <br>
 <%= link_to 'Create new boardgame +', new_boardgame_path %>
@@ -22,19 +24,24 @@
   <%= link_to 'Delete location', location_path(location), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
 <% end %>
 <br>
-<% @owners.each do |gamenights| %>
-  <% gamenights.each do |gamenight| %>
-    <%= gamenight.date %>
-    <%= link_to 'Edit gamenight', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
-    <%= link_to 'Delete gamenight', gamenight_path(gamenight), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+<% if @participants %>
+  <% @owners.each do |gamenights| %>
+    <% gamenights.each do |gamenight| %>
+      <p>Le <%= gamenight.date %></p>
+      <p><%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
+      <%= link_to "Voir plus...", gamenight_path(gamenight) %>
+      <%= link_to 'Edit gamenight', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
+      <%= link_to 'Delete gamenight', gamenight_path(gamenight), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+    <% end %>
   <% end %>
 <% end %>
 <br>
 <% if @participants %>
-  <% @participants.each do |participation| %>
-    <%= participation.rating %>
-    <%= participation.description %>
-    <%= link_to 'Edit participation', edit_gamenight_participation_path(participation) %> <i class="fas fa-pencil-alt"></i>
-    <%= link_to 'Delete participation', participation_path(participation), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
+  <% @participants.each do |gamenight| %>
+  <p>Le <%= gamenight.date %></p>
+  <p><%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
+  <%= link_to "Voir plus...", gamenight_path(gamenight) %>
+  <%= link_to 'Edit gamenight', edit_gamenight_path(gamenight) %> <i class="fas fa-pencil-alt"></i>
+  <%= link_to 'Delete gamenight', gamenight_path(gamenight), method: :delete, data: { confirm: "Are you sure ?"} %> <i class="far fa-trash-alt"></i>
   <% end %>
 <% end %>

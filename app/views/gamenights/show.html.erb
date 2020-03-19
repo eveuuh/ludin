@@ -1,7 +1,7 @@
 <h1>view show gamenights</h1>
 
 <h2>Date : <%= @gamenight.date %></h2>
-<h3>de <%= @gamenight.start_time.hour %>h à <%= @gamenight.end_time.hour %>h</h3>
+<h3><%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></h3>
 <p>à <%= @location.address %></p>
 <p>organisé par <%= @user.username %> (<%= @user.global_rating %>)</p>
 
