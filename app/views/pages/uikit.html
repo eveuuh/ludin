@@ -29,6 +29,7 @@
   <h2>Cards design</h2>
   <div class="row">
     <div class="col-md-4">
+      <a href="#">
       <div class="card-gamenight">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
       <p class="category-tag">Category</p>
@@ -44,8 +45,10 @@
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
         </div>
       </div>
+      </a>
     </div>
     <div class="col-md-4">
+      <a href="#">
       <div class="card-gamenight">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
       <p class="category-tag">Category</p>
@@ -61,8 +64,10 @@
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
         </div>
       </div>
+      </a>
     </div>
     <div class="col-md-4">
+      <a href="#">
       <div class="card-gamenight">
       <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
       <p class="category-tag">Category</p>
@@ -78,85 +83,143 @@
           <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
         </div>
       </div>
+      </a>
     </div>
   </div>
 
 
   <h2>Tabs design</h2>
-  <div class="tabs">
-    <div class="tabs-item active">
-      <h3>My gamenights</h3>
-      <p>3 Gamenights to come</p>
-    </div>
-    <div class="tabs-item">
-      <h3>My participations</h3>
-      <p>8 participations to come</p>
-    </div>
-  </div>
 
-  <ul class="list-unstyled">
-    <li class="product">
-
-      <div class="product-upvote text-center">
-        <i class="fa fa-caret-up"></i>
-        <p>16</p>
-      </div>
-
-      <img src="http://unsplash.it/200/120/?random" alt="" class="product-image img-rounded">
-
-      <div class="product-description">
-        <h3>Intercom</h3>
-        <p>The best CRM tool.</p>
-      </div>
-
-      <ul class="list-inline product-controls">
-        <li><a href=""><i class="fa fa-heart"></i></a></li>
-        <li><a href=""><i class="fa fa-share"></i></a></li>
-        <li><a href=""><i class="fa fa-star"></i></a></li>
-      </ul>
+  <ul class="nav nav-pills" id="dashboard-nav" role="tablist">
+    <li class="nav-item active">
+       <a class="active text-center" id="games-tab" data-toggle="pill" href="#gamenights" role="tab" aria-controls="games" aria-selected="true" border="0">
+        <h3>My gamenights</h3>
+        <p>You have 3 gamenights to come</p>
+      </a>
     </li>
-    <li class="product">
-
-      <div class="product-upvote text-center">
-        <i class="fa fa-caret-up"></i>
-        <p>16</p>
-      </div>
-
-      <img src="http://unsplash.it/200/120/?random" alt="" class="product-image img-rounded">
-
-      <div class="product-description">
-        <h3>Game</h3>
-        <p>The best CRM tool.</p>
-      </div>
-
-      <ul class="list-inline product-controls">
-        <li><a href=""><i class="fa fa-heart"></i></a></li>
-        <li><a href=""><i class="fa fa-share"></i></a></li>
-        <li><a href=""><i class="fa fa-star"></i></a></li>
-      </ul>
-    </li>
-    <li class="product">
-
-      <div class="product-upvote text-center">
-        <i class="fa fa-caret-up"></i>
-        <p>16</p>
-      </div>
-
-      <img src="http://unsplash.it/200/120/?random" alt="" class="product-image img-rounded">
-
-      <div class="product-description">
-        <h3>Intercom</h3>
-        <p>The best CRM tool.</p>
-      </div>
-
-      <ul class="list-inline product-controls">
-        <li><a href=""><i class="fa fa-heart"></i></a></li>
-        <li><a href=""><i class="fa fa-share"></i></a></li>
-        <li><a href=""><i class="fa fa-star"></i></a></li>
-      </ul>
+    <li class="nav-item">
+       <a class="text-center" id="rentals-tab" data-toggle="pill" href="#participations" role="tab" aria-controls="rentals" aria-selected="false" border="0">
+        <h3>My participations</h3>
+        <p>You have 3 participations to come</p>
+      </a>
     </li>
   </ul>
 
+  <div class="tab-content" id="dashboard-tabContent">
+
+    <div class="tab-pane fade show active" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
+      <ul class="list-unstyled">
+
+        <li class="gamenight">
+          <div class="gamenight-upvote text-center">
+            <i class="fas fa-user-friends"></i>
+            <p>4</p>
+          </div>
+          <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-image img-rounded">
+          <div class="gamenight-description">
+            <h3>Risk</h3>
+            <p><i class="far fa-calendar-alt"></i> 2020-03-18 - 20h30</p>
+            <p><i class="fas fa-map-pin"></i> Dernier bar avant la fin du monde</p>
+          </div>
+          <div>
+            <ul class="list-inline gamenight-controls">
+              <li><a href=""><i class="fas fa-eye"></i></a></li>
+              <li><a href=""><i class="fas fa-pencil-alt"></i></a></li>
+              <li><a href=""><i class="fas fa-trash-alt"></i></a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="gamenight">
+          <div class="gamenight-upvote text-center">
+            <i class="fas fa-user-friends"></i>
+            <p>4</p>
+          </div>
+          <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-image img-rounded">
+          <div class="gamenight-description">
+            <h3>Risk</h3>
+            <p><i class="far fa-calendar-alt"></i> 2020-03-18 - 20h30</p>
+            <p><i class="fas fa-map-pin"></i> Dernier bar avant la fin du monde</p>
+          </div>
+          <div>
+            <ul class="list-inline gamenight-controls">
+              <li><a href=""><i class="fas fa-eye"></i></a></li>
+              <li><a href=""><i class="fas fa-pencil-alt"></i></a></li>
+              <li><a href=""><i class="fas fa-trash-alt"></i></a></li>
+            </ul>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="tab-pane fade" id="participations" role="tabpanel" aria-labelledby="participations-tab">
+      <ul class="list-unstyled">
+
+        <a href="#">
+        <li class="participation-tile">
+          <div class="participation-upvote text-center">
+            <i class="far fa-calendar-alt"></i>
+            <p>MAR</p>
+            <h3>30</h3>
+          </div>
+          <img src="http://unsplash.it/200/120/?random" alt="" class="participation-image img-rounded">
+          <div class="participation-specs">
+            <div class="participation-description">
+              <div class="owner">
+                <img class="avatar1" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+                <h3>Kevindu13 </h3>
+                <div>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              <div class="place">
+                <p><i class="fas fa-clock"></i> 20H30 </p>
+                <p><i class="fas fa-map-pin"></i> Dernier bar avant la fin du monde</p>
+                <p class="strong"><i class="fas fa-puzzle-piece"></i> RISK</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        </a>
+
+        <a href="#">
+        <li class="participation-tile">
+          <div class="participation-upvote text-center">
+            <i class="far fa-calendar-alt"></i>
+            <p>MAR</p>
+            <h3>30</h3>
+          </div>
+          <img src="http://unsplash.it/200/120/?random" alt="" class="participation-image img-rounded">
+          <div class="participation-specs">
+            <div class="participation-description">
+              <div class="owner">
+                <img class="avatar1" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+                <h3>Kevindu13 </h3>
+                <div>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+              </div>
+              <div class="place">
+                <p><i class="fas fa-clock"></i> 20H30 </p>
+                <p><i class="fas fa-map-pin"></i> Dernier bar avant la fin du monde</p>
+                <p class="strong"><i class="fas fa-puzzle-piece"></i> RISK</p>
+              </div>
+            </div>
+          </div>
+        </li>
+        </a>
+
+      </ul>
+    </div>
   </div>
 
 </div>
