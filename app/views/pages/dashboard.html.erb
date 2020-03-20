@@ -7,16 +7,26 @@
 <br>
 <%= link_to 'Créer une nouvelle adresse +', new_location_path %>
 <br>
-<%= link_to 'Ajouter un jeu +', new_boardgame_path %>
 <br>
 <%= link_to 'Créer une nouvelle soirée +', new_gamenight_path %>
 <br>
 <br>
-<% @my_boardgames.each do |boardgame| %>
-  <%= boardgame.name %>
-  <%= link_to 'Modifier le jeu', edit_boardgame_path(boardgame) %> <i class="fas fa-pencil-alt"></i>
-  <%= link_to 'Supprimer le jeu', boardgame_path(boardgame), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
-<% end %>
+
+<div class="container">
+  <h2>Games tags</h2>
+  <div class="row">
+    <div class="col-md-6 tagcloud">
+      <% @my_boardgames.each do |boardgame| %>
+        <a href="#" class="tag" data-toggle="modal" data-target="#modal"><%= boardgame.name %>s</a>
+        <%= link_to 'Supprimer le jeu', boardgame_path(boardgame), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+      <% end %>
+        <%= link_to new_boardgame_path do %>
+          <p class="new-tag text-center">Ajouter un jeu <i class="fas fa-plus"></i></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 <br>
 <% @my_locations.each do |location| %>
   <%= location.name %>
