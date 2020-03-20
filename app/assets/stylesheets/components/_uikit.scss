@@ -335,7 +335,6 @@ h2 {
   }
 }
 
-
 .card-big {
   margin-top: 100px;
   position: center;
@@ -353,3 +352,39 @@ h2 {
 //   height: 170px;
 //   background-color: black;
 // }
+
+//*******************Game Modal****************************//
+
+#game-modal {
+  border: solid 1px $main-red;
+  border-radius: 4px;
+  background-color: $main-white;
+}
+
+.modal-details {
+  border-top: solid 1px #dee2e6;
+  position: relative;
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.game-modal-button {
+  margin: 5px 5px;
+  color: $main-white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: $main-red;
+  opacity: 0.6;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.game-modal-button:hover {
+  opacity: 1;
+  color: $main-white;
+  text-decoration: none;
+}
+
+//*******************Location Modal****************************//
