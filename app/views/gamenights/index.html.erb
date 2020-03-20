@@ -1,46 +1,50 @@
-<h1>Toutes les soirées à venir</h1>
-
-<% @gamenights.each do |gamenight| %>
-  <% if (gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
-    <p>Le <%= gamenight.date %>, <%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
-    <p>au <%= gamenight.location.address %></p>
-    <p>avec le jeu <%= gamenight.boardgame.name %></p>
-    <p><%= link_to "Voir plus...", gamenight_path(gamenight) %></p>
-  <% elsif (gamenight.date == Time.now.to_date) && (gamenight.start_time.hour - 2 >= Time.now.hour) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
-    <p>Le <%= gamenight.date %>, <%= gamenight.start_time.strftime("de %H:%M") %> <%= gamenight.end_time.strftime("à %H:%M") %></p>
-    <p>au <%= gamenight.location.address %></p>
-    <p>avec le jeu <%= gamenight.boardgame.name %></p>
-    <p><%= link_to "Voir plus...", gamenight_path(gamenight) %></p>
-  <% else %>
-    <p></p>
-  <% end %>
-<% end %>
-
-<h2>Cards design</h2>
-<div class="row">
-  <div class="col-md-4">
-    <% @gamenights.each do |gamenight| %>
-      <% if (gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
-<!--    <a href="#"> -->
-        <div class="card-gamenight">
-          <%= link_to gamenight_path(gamenight) do %>
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+<div class="container">
+  <h1>Toutes les soirées à venir</h1>
+  <div class="mb-5">
+    <div class="row">
+      <% @gamenights.each do |gamenight| %>
+        <div class="col-md-4">
+          <% if (gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
+            <%= link_to gamenight_path(gamenight) do %>
+              <div class="card-gamenight">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <p class="category-tag"><%= gamenight.boardgame.category %></p>
+                <div class="card-gamenight-infos">
+                  <div class="game-infos-left">
+                    <h2><%= gamenight.boardgame.name %></h2>
+                    <p><%= gamenight.description %></p>
+                  </div>
+                  <div class="game-infos-right">
+                    <p><%= gamenight.boardgame.players_max %> joueurs <i class="fas fa-user-friends"></i></p>
+                    <p><%= gamenight.date.strftime("Le %d-%m-%Y") %> - <%= gamenight.start_time.strftime("à %H:%M") %> <i class="far fa-calendar-alt"></i> </p>
+                  </div>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
+                </div>
+              </div>
+            <% end %>
+          <% elsif (gamenight.date == Time.now.to_date) && (gamenight.start_time.hour - 2 >= Time.now.hour) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
+            <%= link_to gamenight_path(gamenight) do %>
+              <div class="card-gamenight">
+                <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <p class="category-tag"><%= gamenight.boardgame.category %></p>
+                <div class="card-gamenight-infos">
+                  <div class="game-infos-left">
+                    <h2><%= gamenight.boardgame.name %></h2>
+                    <p><%= gamenight.description %></p>
+                  </div>
+                  <div class="game-infos-right">
+                    <p><%= gamenight.boardgame.players_max %> joueurs <i class="fas fa-user-friends"></i></p>
+                    <p><%= gamenight.date.strftime("Le %d-%m-%Y") %> - <%= gamenight.start_time.strftime("à %H:%M") %> <i class="far fa-calendar-alt"></i> </p>
+                  </div>
+                  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p></p>
           <% end %>
-        <p class="category-tag"><%= gamenight.boardgame.category %></p>
-          <div class="card-gamenight-infos">
-            <div class="game-infos-left">
-              <h2><%= gamenight.boardgame.name %></h2>
-              <p><%= gamenight.description %></p>
-            </div>
-            <div class="game-infos-right">
-              <p><%= gamenight.boardgame.players_max %> joueurs <i class="fas fa-user-friends"></i></p>
-              <p><%= gamenight.date.strftime("Le %-d-%m-%Y") %> - <%= gamenight.start_time.strftime("à %H:%M") %> <i class="far fa-calendar-alt"></i> </p>
-            </div>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
-          </div>
         </div>
-      <!-- </a> -->
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
