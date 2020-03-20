@@ -14,11 +14,11 @@
 <p>description de la soirée : <%= @gamenight.description %></p>
 <br>
 
-<% if @gamenight.date > Time.now.to_date  %>
+<% if (@gamenight.date > Time.now.to_date) && (@boardgame.players_max > @participations.size)  %>
   <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
 <% elsif @gamenight.date < Time.now.to_date %>
   <p><strong>Participations closes</strong></p>
-<% elsif (@gamenight.date == Time.now.to_date) && (@gamenight.start_time.hour - 2 >= Time.now.hour) %>
+<% elsif (@gamenight.date == Time.now.to_date) && (@gamenight.start_time.hour - 2 >= Time.now.hour) && (@boardgame.players_max > @participations.size) %>
   <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
 <% else %>
   <p><strong>Participations closes</strong></p>
