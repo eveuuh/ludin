@@ -3,7 +3,13 @@
 <h2>Date : <%= @gamenight.date %></h2>
 <h3><%= @gamenight.start_time.strftime("de %H:%M") %> <%= @gamenight.end_time.strftime("à %H:%M") %></h3>
 <p>à <%= @location.address %></p>
-<p>organisé par <%= @user.username %> (<%= @user.global_rating %>)</p>
+<p>organisé par <%= link_to @user.username, profil_path(@user) %>
+  <% if @user.global_rating %>
+    (<%= @user.global_rating %>)
+  <% else %>
+    (nouveau membre)
+  <% end %>
+</p>
 
 <p>avec le jeu <%= @boardgame.name %></p>
 <p>type : <%= @boardgame.category %></p>
@@ -14,17 +20,12 @@
 <p>description de la soirée : <%= @gamenight.description %></p>
 <br>
 
- <!-- modifier les conditions if pour avoir 1 seul objet à comparer au lieu de Date & Time -->
-<% if @gamenight.date >= Time.now.to_date  %>
-  <% if @gamenight.start_time.hour - 2 > Time.now.hour %>
-    <% if (@gamenight.boardgame.players_max > @gamenight.participations.size) %>
-      <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
-    <% else %>
-      <p><strong>Participations closes</strong></p>
-    <% end %>
-  <% else %>
-    <p><strong>Participations closes</strong></p>
-  <% end %>
+<% if (@gamenight.date > Time.now.to_date) && (@boardgame.players_max > @participations.size)  %>
+  <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
+<% elsif @gamenight.date < Time.now.to_date %>
+  <p><strong>Participations closes</strong></p>
+<% elsif (@gamenight.date == Time.now.to_date) && (@gamenight.start_time.hour - 2 >= Time.now.hour) && (@boardgame.players_max > @participations.size) %>
+  <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
 <% else %>
   <p><strong>Participations closes</strong></p>
 <% end %>

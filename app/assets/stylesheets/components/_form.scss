@@ -1,0 +1,55 @@
+.form {
+  padding: 25px 25px;
+  font-family: 'ubuntu';
+  margin-top: 50px;
+  border-radius: 4px;
+  margin-bottom: 50px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: $main-beige;
+
+  input {
+    // border: solid 1px $main-red;
+  }
+
+  label {
+    color: $main-red;
+    font-weight: bold;
+  }
+}
+
+.button-form {
+  padding: 10px 20px;
+  color: $main-white;
+  background-color: $main-red;
+  opacity: 0.6;
+  border-radius: 5px;
+  border: none;
+  margin: 20px 0;
+  margin-right: 10px;
+}
+
+.button-form:hover {
+  opacity: 1;
+  color: white;
+}
+
+.button-link {
+  padding: 10px 20px;
+  color: $main-red;
+  background-color: $main-white;
+  border-radius: 5px;
+  border: solid 1px $main-red;
+  margin: 20px 0;
+  margin-right: 10px;
+}
+
+.button-link:hover {
+  background-color: $main-red;
+  color: $main-white;
+}
+
+.button-block {
+  display: flex;
+}
+
+

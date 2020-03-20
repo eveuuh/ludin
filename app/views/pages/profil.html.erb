@@ -1,0 +1,22 @@
+<h1>Profil de <%= @user.username %></h1>
+<!-- <h2>(note globale de <%= @global_rating %> sur 5)</h2> -->
+<br>
+<h3>Commentaires</h3>
+<% @user_gamenights.each do |gamenights| %>
+  <% gamenights.each do |gamenight| %>
+    <% gamenight.participations.each do |participation| %>
+      <p><%= participation.rating %>
+      <%= participation.description %></p>
+    <% end %>
+  <% end %>
+<% end %>
+<br>
+<h3>Soirée</h3>
+<% @user_gamenights.each do |gamenights| %>
+  <% gamenights.each do |gamenight| %>
+      <p>Le <%= gamenight.date %>,
+      <%= gamenight.start_time.strftime("à %H:%M") %>,
+      avec le jeu <%= link_to gamenight.boardgame.name, gamenight_path(gamenight) %>
+      </p>
+  <% end %>
+<% end %>
