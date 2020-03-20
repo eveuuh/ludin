@@ -1,5 +1,9 @@
-<%= simple_form_for(location) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.submit "Enregistrer" %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 offset-3 form">
+    <%= simple_form_for(location) do |f| %>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.submit "Enregistrer", class: "button-form"%>
+    <% end %>
+  </div>
+</div>
