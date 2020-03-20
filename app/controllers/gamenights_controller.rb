@@ -18,6 +18,8 @@ class GamenightsController < ApplicationController
     @boardgames_user = current_user.boardgames
   end
 
+
+
   def create
     @gamenight = Gamenight.new(gamenight_params)
     if @gamenight.save
