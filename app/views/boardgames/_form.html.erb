@@ -1,9 +1,13 @@
-<%= simple_form_for(boardgame) do |f| %>
+<div class="row">
+  <div class="col-md-6 offset-3 form">
+    <%= simple_form_for(boardgame) do |f| %>
       <%= f.input :name %>
       <%= f.input :category %>
       <%= f.input :age %>
       <%= f.input :players_min %>
       <%= f.input :players_max %>
       <%= f.input :description %>
-      <%= f.submit "Enregistrer" %>
-<% end %>
+      <%= f.submit "Enregistrer", class: "button-form"%>
+    <% end %>
+  </div>
+</div>

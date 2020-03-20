@@ -25,6 +25,7 @@ class GamenightsController < ApplicationController
     @boardgame = @gamenight.boardgame
     @location = @gamenight.location
     @user = @boardgame.user
+    @participations = @gamenight.participations
   end
 
   def new
@@ -32,6 +33,8 @@ class GamenightsController < ApplicationController
     @locations_user = current_user.locations
     @boardgames_user = current_user.boardgames
   end
+
+
 
   def create
     @gamenight = Gamenight.new(gamenight_params)

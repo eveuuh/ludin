@@ -19,8 +19,23 @@ class ParticipationsController < ApplicationController
 
   def update
     @participation = Participation.find(params[:id])
+    # @gamenight_user = @participation.gamenight.boardgame.user
+    # @global_rating = @gamenight_user.global_rating
+
+    # @ratings = []
+    # @all_user_gamenights = @gamenight_user.boardgames.map { |boardgame| boardgame.gamenights }
+    # @all_user_gamenights.each do |gamenights|
+    #   gamenights.each do |gamenight|
+    #     gamenight.participations.each do |participation|
+    #       @ratings << participation.rating if participation.rating
+    #     end
+    #   end
+    # end
 
     if @participation.update(participation_params)
+      # @ratings << @participation.rating
+      # @global_rating = (@ratings.sum).to_f / (@ratings.size)
+      # @gamenight_user.global_rating = @global_rating
       redirect_to dashboard_path
     else
       render :edit
