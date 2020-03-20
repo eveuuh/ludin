@@ -7,6 +7,13 @@ class PagesController < ApplicationController
   def uikit
   end
 
+  def profil
+    @user = User.find(params[:user_id])
+    @global_rating = @user.global_rating
+    @user_boardgames = @user.boardgames
+    @user_gamenights = @user_boardgames.map { |boardgame| boardgame.gamenights }
+  end
+
   def dashboard
     @user = current_user
     @my_boardgames = current_user.boardgames

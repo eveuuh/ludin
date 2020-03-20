@@ -3,7 +3,13 @@
 <h2>Date : <%= @gamenight.date %></h2>
 <h3><%= @gamenight.start_time.strftime("de %H:%M") %> <%= @gamenight.end_time.strftime("à %H:%M") %></h3>
 <p>à <%= @location.address %></p>
-<p>organisé par <%= @user.username %> (<%= @user.global_rating %>)</p>
+<p>organisé par <%= link_to @user.username, profil_path(@user) %>
+  <% if @user.global_rating %>
+    (<%= @user.global_rating %>)
+  <% else %>
+    (pas encore de notes)
+  <% end %>
+</p>
 
 <p>avec le jeu <%= @boardgame.name %></p>
 <p>type : <%= @boardgame.category %></p>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
+  get 'users/:user_id/profil', to: 'pages#profil', as: :profil
+
   get 'dashboard', to: 'pages#dashboard'
   get 'uikit', to: 'pages#uikit'
 
