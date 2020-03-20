@@ -40,8 +40,11 @@
   <%= participation.gamenight.boardgame.name %>
   <% if participation.gamenight.date < Time.now.to_date %>
     <%= link_to 'Lache un com, stp', edit_participation_path(participation) %>
-  <% end %>
-  <% if participation.gamenight.date >= Time.now.to_date %>
+  <% elsif participation.gamenight.date > Time.now.to_date %>
     <%= link_to 'Se désinscrire', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+  <% elsif (participation.gamenight.date == Time.now.to_date) && (participation.gamenight.start_time.hour - 2 > Time.now.hour) %>
+    <%= link_to 'Se désinscrire', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+  <% else %>
+    <p></p>
   <% end %>
 <% end %>

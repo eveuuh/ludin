@@ -1,6 +1,7 @@
 # require "open-uri"
 
 puts 'Destroy all database...'
+
 Gamenight.destroy_all
 Boardgame.destroy_all
 Location.destroy_all
@@ -69,7 +70,8 @@ boardgame_3 = Boardgame.new({
 boardgame_3.save!
 
 puts "#{Boardgame.count} boardgames have been created !"
-puts 'boardgames created'
+
+puts 'Creating some locations...'
 
 
 # file_7 = URI.open('https://cdn03.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_download_software_1/H2x1_NSwitchDS_Uno_image1600w.jpg')
@@ -102,11 +104,12 @@ location_3.save!
 
 
 puts "#{Location.count} locations have been created !"
-puts 'locations created'
+
+puts 'Creating some gamenights...'
 
 
 gamenight_1 = Gamenight.new({
-  date: "2020-04-01",
+  date: "2020-06-01",
   start_time:"20:00:00",
   end_time: "22:00:00",
   description: "Apportez des bieres",
@@ -117,7 +120,7 @@ gamenight_1 = Gamenight.new({
 gamenight_1.save!
 
 gamenight_2 = Gamenight.new({
-  date: "2020-03-19",
+  date: "2020-07-19",
   start_time:"18:00:00",
   end_time: "21:00:00",
   description: "cool soirée",
@@ -128,7 +131,7 @@ gamenight_2 = Gamenight.new({
 gamenight_2.save!
 
 gamenight_3 = Gamenight.new({
-  date: "2020-03-22",
+  date: "2020-06-22",
   start_time:"19:00:00",
   end_time: "23:00:00",
   description: "venez comme vous etes",
@@ -139,7 +142,3 @@ gamenight_3 = Gamenight.new({
 gamenight_3.save!
 
 puts "#{Gamenight.count} gamenights have been created !"
-puts 'gamenights created'
-
-
-
