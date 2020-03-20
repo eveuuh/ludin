@@ -2,7 +2,6 @@
 
 <div class="container">
 
-
   <h2>Button design</h2>
   <a href="#" class="button1">Button 1</a>
   <a href="#" class="button2">Button 2</a>
@@ -13,15 +12,79 @@
   <img class="avatar2" alt="avatar2" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
 
 
-  <h2>tags design</h2>
+  <h2>game tags design</h2>
   <div class="row">
     <div class="col-md-6 tagcloud">
-      <a href="#" class="tag">Risk Game of thrones</a>
+      <a href="#" class="tag" data-toggle="modal" data-target="#modal">Risk Game of thrones</a>
       <a href="#" class="tag">Cluedo</a>
       <a href="#" class="tag">Jungle speed</a>
       <a href="#" class="tag">Catan</a>
       <a href="#" class="tag">Times Up</a>
       <a href="#" class="new-tag">Ajouter un jeu <i class="fas fa-plus"></i></a>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="game-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Risk Game of Thrones</h5>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Description du jeu</p>
+          <p>Stratégie</p>
+        </div>
+        <div class="modal-details">
+          <i class="fas fa-user-friends"> 7</i>
+          <i class="fas fa-exclamation-circle"> 10+</i>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="game-modal-button">Editer</a>
+          <a href="#" class="game-modal-button">Supprimer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>location tags design</h2>
+  <div class="row">
+    <div class="col-md-6 tagcloud">
+      <a href="#" class="tag" data-toggle="modal" data-target="#modal">Home</a>
+      <a href="#" class="tag">Cluedo</a>
+      <a href="#" class="tag">Jungle speed</a>
+      <a href="#" class="tag">Catan</a>
+      <a href="#" class="tag">Times Up</a>
+      <a href="#" class="new-tag">Ajouter un jeu <i class="fas fa-plus"></i></a>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="game-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Risk Game of Thrones</h5>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Description du jeu</p>
+          <p>Stratégie</p>
+        </div>
+        <div class="modal-details">
+          <i class="fas fa-user-friends"> 7</i>
+          <i class="fas fa-exclamation-circle"> 10+</i>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="game-modal-button">Editer</a>
+          <a href="#" class="game-modal-button">Supprimer</a>
+        </div>
+      </div>
     </div>
   </div>
 
