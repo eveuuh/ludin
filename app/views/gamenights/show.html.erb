@@ -1,4 +1,4 @@
-<h1>view show gamenights</h1>
+<!-- <h1>view show gamenights</h1>
 
 <h2>Date : <%= @gamenight.date %></h2>
 <h3><%= @gamenight.start_time.strftime("de %H:%M") %> <%= @gamenight.end_time.strftime("à %H:%M") %></h3>
@@ -28,4 +28,21 @@
   <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
 <% else %>
   <p><strong>Participations closes</strong></p>
-<% end %>
+<% end %> -->
+
+<div class="container">
+  <div class="card-big">
+    <div class="card-img">
+      <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-show-image">
+      <img class="avatar3" id="show-gamenight" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+    </div>
+    <div class="games-specs">
+      <div class="row">
+        <h2><%= @boardgame.name %> / <%= link_to @user.username, profil_path(@user) %></h2>
+
+      </div>
+      <div class="row"></div>
+      <div class="row"></div>
+    </div>
+  </div>
+</div>
