@@ -3,19 +3,19 @@ class GamenightsController < ApplicationController
   before_action :find_gamenight, only: [:show, :edit, :update, :destroy]
 
 
-
   def index
-    @gamenights = Gamenight.geocoded #returns flats with coordinates
+    @gamenight_geocoded = Gamenight.geocoded
     @gamenights = Gamenight.all
 
-    @markers = @gamenights.map do |gamenight|
+    @markers = @gamenight_geocoded.map do |gamenight|
       {
-        lat: flat.latitude,
-        lng: flat.longitude,
+        lat: gamenight.latitude,
+        lng: gamenight.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { gamenight: gamenight }),
         image_url: helpers.asset_url('avatar.jpg')
 
       }
+    end
   end
 
   def show
