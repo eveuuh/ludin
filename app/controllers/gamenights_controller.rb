@@ -4,17 +4,20 @@ class GamenightsController < ApplicationController
 
 
   def index
-    @gamenight_geocoded = Gamenight.geocoded
-    @gamenights = Gamenight.all
-
+    # raise
+    @gamenight_geocoded = Location.geocoded.map do |location|
+      location.gamenights
+    end.flatten
     @markers = @gamenight_geocoded.map do |gamenight|
       {
-        lat: gamenight.latitude,
-        lng: gamenight.longitude,
+        lat: gamenight.location.latitude,
+        lng: gamenight.location.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { gamenight: gamenight }),
         image_url: helpers.asset_url('avatar.jpg')
 
+
       }
+
     end
   end
 
