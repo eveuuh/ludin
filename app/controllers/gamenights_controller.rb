@@ -2,8 +2,23 @@ class GamenightsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_gamenight, only: [:show, :edit, :update, :destroy]
 
+
   def index
-    @gamenights = Gamenight.all
+    # raise
+    @gamenight_geocoded = Location.geocoded.map do |location|
+      location.gamenights
+    end.flatten
+    @markers = @gamenight_geocoded.map do |gamenight|
+      {
+        lat: gamenight.location.latitude,
+        lng: gamenight.location.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { gamenight: gamenight }),
+        image_url: helpers.asset_url('avatar.jpg')
+
+
+      }
+
+    end
   end
 
   def show
@@ -18,6 +33,8 @@ class GamenightsController < ApplicationController
     @locations_user = current_user.locations
     @boardgames_user = current_user.boardgames
   end
+
+
 
   def create
     @gamenight = Gamenight.new(gamenight_params)
