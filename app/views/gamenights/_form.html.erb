@@ -1,13 +1,18 @@
-<%= simple_form_for(gamenight) do |f| %>
-  <%= f.input :date, as: :date, html5: true %>
-  <%= f.input :start_time, as: :time %>
-  <%= f.input :end_time, as: :time %>
-  <%= f.input :description, as: :text %>
-  <%= f.input :location_id, :collection => @locations_user %>
-  <%= f.input :boardgame_id, :collection => @boardgames_user %>
-  <% if gamenight.location_id.blank? %>
-    <%= f.submit "Créer votre soirée" %>
-  <% else %>
-    <%= f.submit "Modifier votre soirée" %>
-  <% end %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 offset-3 form">
+    <%= simple_form_for(gamenight) do |f| %>
+      <%= f.input :date, as: :date, html5: true %>
+      <%= f.input :start_time, as: :time %>
+      <%= f.input :end_time, as: :time %>
+      <%= f.input :description, as: :text %>
+      <%= f.input :location_id, :collection => @locations_user %>
+      <%= f.input :boardgame_id, :collection => @boardgames_user %>
+      <% if gamenight.location_id.blank? %>
+        <%= f.submit "Créer votre soirée", class: "button-form"%>
+      <% else %>
+        <%= f.submit "Modifier votre soirée", class: "button-form"%>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
