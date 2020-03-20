@@ -2,7 +2,7 @@
   <h1>Toutes les soirées à venir</h1>
   <div class="mb-5">
     <div class="row">
-      <% @gamenights.each do |gamenight| %>
+      <% @gamenight_geocoded.each do |gamenight| %>
         <div class="col-md-4">
           <% if (gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
             <%= link_to gamenight_path(gamenight) do %>
@@ -47,4 +47,11 @@
       <% end %>
     </div>
   </div>
+    <div
+      id="map"
+      style="width: 50%;
+      height: 100px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
 </div>
