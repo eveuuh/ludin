@@ -1,9 +1,6 @@
 <div class="container">
-
   <h1 class="mt-4 mb-4 title">Mon dashboard</h1>
-
   <div class="row">
-
     <!-- Profil card -->
     <div class="col-md-4 tagcloud profil">
       <div class="dashboard-profil-tile">
@@ -16,14 +13,14 @@
           <i class="fas fa-star"></i>
           <i class="far fa-star"></i>
         </div>
-        <div class="user-details">
-          <div>
-            <p><i class="fas fa-map-pin"><%= @my_locations.length %></i></p>
-            <p>Games</p>
-          </div>
-          <div>
-            <p><i class="fas fa-puzzle-piece"><%= @my_boardgames.length %></i></p>
+        <div class="user-details mt-4">
+          <div class="specs">
+            <i class="fas fa-map-pin"> <%= @my_locations.length %></i>
             <p>locations</p>
+          </div>
+          <div class="specs">
+            <i class="fas fa-puzzle-piece"> <%= @my_boardgames.length %></i>
+            <p>Games</p>
           </div>
         </div>
         <div class="profil-links">
@@ -36,74 +33,186 @@
 
     <!-- Gamenight related cards -->
     <div class="col-md-8 tagcloud" id="gamenight-area">
-
       <!-- game card -->
       <div class="dashboard-game-tile">
         <h2>Mes jeux</h2>
-        <% @my_boardgames.each do |boardgame| %>
-        <a href="#" class="tag" data-toggle="modal" data-target="#modal"><%= boardgame.name %></a>
+        <div id="tags">
+          <% @my_boardgames.each do |boardgame| %>
+          <a href="#" class="tag" data-toggle="modal" data-target="#modal"><%= boardgame.name %></a>
+          <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" id="game-modal">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"><%= boardgame.name %></h5>
 
-        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content" id="game-modal">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><%= boardgame.name %></h5>
-
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p><%= boardgame.description %></p>
-                <p><%= boardgame.category %></p>
-              </div>
-              <div class="modal-details">
-                <i class="fas fa-user-friends"> <%= boardgame.players_min %>-<%= boardgame.players_max %></i>
-                <i class="fas fa-exclamation-circle"> +<%= boardgame.age %>ans</i>
-              </div>
-              <div class="modal-footer">
-                <%= link_to 'Supprimer', boardgame_path(boardgame), class: "game-modal-button", method: :delete, data: { confirm: "Vous êtes sûr ?"} %>
-                <%= link_to 'Editer', edit_boardgame_path(boardgame), class: "game-modal-button" %>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p><%= boardgame.description %></p>
+                  <p><%= boardgame.category %></p>
+                </div>
+                <div class="modal-details">
+                  <i class="fas fa-user-friends"> <%= boardgame.players_min %>-<%= boardgame.players_max %></i>
+                  <i class="fas fa-exclamation-circle"> +<%= boardgame.age %>ans</i>
+                </div>
+                <div class="modal-footer">
+                  <%= link_to 'Supprimer', boardgame_path(boardgame), class: "game-modal-button", method: :delete, data: { confirm: "Vous êtes sûr ?"} %>
+                  <%= link_to 'Editer', edit_boardgame_path(boardgame), class: "game-modal-button" %>
+                </div>
               </div>
             </div>
           </div>
+          <% end %>
+          <%= link_to new_boardgame_path do %>
+            <p class="new-tag">Ajouter un jeu <i class="fas fa-plus"></i></p>
+          <% end %>
         </div>
-
-        <% end %>
-        <%= link_to new_boardgame_path do %>
-          <p class="new-tag">Ajouter un jeu <i class="fas fa-plus"></i></p>
-        <% end %>
       </div>
-
       <!-- location card -->
       <div class="dashboard-location-tile">
-        <h2>Mes Lieux</h2>
-        <% @my_locations.each do |location| %>
-        <a href="#" class="tag" data-toggle="modal" data-target="#modal2"><%= location.name %>s</a>
-          <%= link_to 'Supprimer le jeu', location_path(location), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
-        <% end %>
-          <%= link_to new_location_path do %>
-            <p class="new-tag-location">Ajouter un lieu <i class="fas fa-plus"></i></p>
-        <% end %>
-      </div>
+        <h2>Mes lieux</h2>
+        <div id="tags">
+          <% @my_locations.each do |location| %>
+          <a href="#" class="tag-location" data-toggle="modal" data-target="#modal-location"><%= location.name %></a>
+          <div class="modal fade" id="modal-location" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content" id="game-modal">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"><%= location.name %></h5>
 
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p><%= location.address %></p>
+                </div>
+                <div class="modal-footer">
+                  <%= link_to 'Supprimer', location_path(location), class: "location-modal-button", method: :delete, data: { confirm: "Vous êtes sûr ?"} %>
+                  <%= link_to 'Editer', edit_location_path(location), class: "location-modal-button" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% end %>
+          <%= link_to new_location_path do %>
+            <p class="new-tag-location">Ajouter un jeu <i class="fas fa-plus"></i></p>
+          <% end %>
+        </div>
+      </div>
       <!-- Gamenight creation link -->
       <%= link_to 'Créer gamenight', new_gamenight_path, class: "link-main text-center" %>
     </div>
   </div>
   <!-- end -->
 
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-pills mt-4" id="dashboard-nav" role="tablist">
+        <li class="tab-item active">
+          <a class="active text-center" id="games-tab" data-toggle="pill" href="#gamenights" role="tab" aria-controls="games" aria-selected="true" border="0">
+          <h3>My gamenights</h3>
+          <p>You have 3 gamenights to come</p>
+          </a>
+        </li>
+        <li class="tab-item">
+          <a class="text-center" id="rentals-tab" data-toggle="pill" href="#participations" role="tab" aria-controls="rentals" aria-selected="false" border="0">
+          <h3>My participations</h3>
+          <p>You have 3 participations to come</p>
+          </a>
+        </li>
+      </ul>
+
+      <div class="tab-content" id="dashboard-tabContent">
+
+        <div class="tab-pane fade show active" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
+          <ul class="list-unstyled">
+            <% if @gamenights_owner %>
+            <% @gamenights_owner.each do |gamenights| %>
+              <% gamenights.each do |gamenight| %>
+                <li class="gamenight">
+                  <div class="gamenight-upvote text-center">
+                    <i class="fas fa-user-friends"></i>
+                    <p><%= gamenight.boardgame.players_max %></p>
+                  </div>
+                  <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-image img-rounded">
+                  <div class="gamenight-description">
+                    <h3><%= gamenight.boardgame.name %></h3>
+                    <p><i class="far fa-calendar-alt"> </i> <%= gamenight.date %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
+                    <p><i class="fas fa-map-pin"></i> <%= gamenight.location.address %></p>
+                  </div>
+                  <div>
+                    <ul class="list-inline gamenight-controls">
+                      <li>
+                        <%= link_to gamenight_path(gamenight) do %>
+                        <i class="fas fa-eye"></i>
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to edit_gamenight_path(gamenight) do %>
+                        <i class="fas fa-pencil-alt"></i>
+                        <% end %>
+                      </li>
+                      <li>
+                        <%= link_to gamenight_path(gamenight), method: :delete, data: { confirm: "Vous êtes sûr ?"} do %>
+                        <i class="fas fa-trash-alt"></i>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <% end %>
+            <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+        <div class="tab-pane fade" id="participations" role="tabpanel" aria-labelledby="participations-tab">
+          <ul class="list-unstyled">
+
+            <% @my_participations.each do |participation| %>
+            <%= link_to participation_path(participation) do %>
+            <li class="participation-tile">
+              <div class="participation-upvote text-center">
+                <i class="far fa-calendar-alt"> <%= participation.date %></i>
+              </div>
+              <img src="http://unsplash.it/200/120/?random" alt="" class="participation-image img-rounded">
+              <div class="participation-specs">
+                <div class="participation-description">
+                  <div class="owner">
+                    <img class="avatar1" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+                    <h3> Username </h3>
+                    <div>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  </div>
+                  <div class="place">
+                    <p><i class="fas fa-clock"></i> <%= participation.gamenight.start_time %></p>
+                    <p><i class="fas fa-map-pin"></i> <%= participation.gamenight.location.address %></p>
+                    <p class="strong"><i class="fas fa-puzzle-piece"></i> <%= participation.gamenight.boardgame.name %></p>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <% end %>
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
 
-<br>
-<% @my_locations.each do |location| %>
-  <%= location.name %>
-  <%= link_to "Modifier l'adresse", edit_location_path(location) %> <i class="fas fa-pencil-alt"></i>
-  <%= link_to "Supprimer l'adresse", location_path(location), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
-<% end %>
-<br>
 
-<% if @gamenights_owner %>
+
+<!-- <% if @gamenights_owner %>
   <% @gamenights_owner.each do |gamenights| %>
     <% gamenights.each do |gamenight| %>
       <p>Le <%= gamenight.date %></p>
@@ -114,7 +223,7 @@
     <% end %>
   <% end %>
 <% end %>
-<br>
+<br> -->
 
 <% @my_participations.each do |participation| %>
   <%= participation.gamenight.boardgame.name %>

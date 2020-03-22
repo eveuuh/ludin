@@ -132,7 +132,7 @@ a:hover {
 .tag {
   margin: 5px 5px;
   color: $main-white;
-  padding: 5px 10px;
+  padding: 0px 10px;
   border-radius: 4px;
   background-color: $main-red;
   opacity: 0.6;
@@ -148,7 +148,7 @@ a:hover {
 .new-tag {
   margin: 5px 5px;
   color:$main-red;
-  padding: 5px 10px;
+  padding: 0px 10px;
   border-radius: 4px;
   background-color: $main-beige;
   opacity: 0.6;
@@ -170,7 +170,7 @@ a:hover {
 .tag-location {
   margin: 5px 3px;
   color: $main-white;
-  padding: 10px 15px;
+  padding: 0px 15px;
   border-radius: 4px;
   background-color: $main-blue;
   opacity: 0.6;
@@ -186,7 +186,7 @@ a:hover {
 .new-tag-location {
   margin: 5px 5px;
   color: $main-blue;
-  padding: 5px 10px;
+  padding: 0px 15px;
   border-radius: 4px;
   background-color: $main-white;
   border: solid 1px $main-blue;
@@ -394,7 +394,7 @@ a:hover {
 .game-modal-button {
   margin: 5px 5px;
   color: $main-red;
-  padding: 0px 10px;
+  padding: 0px 15px;
   border-radius: 4px;
   background-color: $main-white;
   border: solid 1px $main-red;
@@ -422,7 +422,7 @@ a:hover {
 .location-modal-button {
   margin: 5px 5px;
   color: $main-white;
-  padding: 10px 15px;
+  padding: 0px 15px;
   border-radius: 4px;
   background-color: $main-blue;
   opacity: 0.6;

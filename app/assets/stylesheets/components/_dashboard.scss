@@ -1,9 +1,11 @@
+
+/****************profil***********************/
+
 .profil {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-
 }
 
 .dashboard-profil-tile {
@@ -22,6 +24,7 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  width: 80%;
 }
 
 .user-scoring {
@@ -30,9 +33,12 @@
 }
 
 .profil-links {
-
+  display: flex;
+  justify-content: center;
+  width: 100%;
   .link {
-    padding : 5px 10px;
+    margin: 5px;
+    padding : 0px 10px;
     background-color: $main-red;
     color: white;
     opacity: 0.6;
@@ -43,6 +49,19 @@
     opacity: 1;
   }
 }
+
+.specs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 30px;
+  i {
+    color: $main-red;
+  }
+}
+
+/****************gamenight elements***********************/
 
 #gamenight-area {
   display: flex;
@@ -87,6 +106,10 @@
   h2 {
     color: $main-blue;
   }
+}
+
+#tags {
+  display: flex;
 }
 
 
