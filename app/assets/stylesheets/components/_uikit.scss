@@ -7,11 +7,11 @@ a:hover {
   text-decoration: none;
   color: black;
 }
-
-h2 {
-  margin : 30px 0;
+.title {
+  padding: 15px 0;
+  color: $main-red;
+  border-bottom: solid 1px $main-red;
 }
-
 //******************Buttons**************************//
 
 .button1 {
@@ -136,7 +136,6 @@ h2 {
   border-radius: 4px;
   background-color: $main-red;
   opacity: 0.6;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   text-decoration: none;
 }
 
@@ -153,13 +152,51 @@ h2 {
   border-radius: 4px;
   background-color: $main-beige;
   opacity: 0.6;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   text-decoration: none;
 }
 
 .new-tag:hover {
   opacity: 1;
   color: $main-red;
+  text-decoration: none;
+}
+
+//******************Tags location*****************************//
+
+.tagcloud {
+  line-height: 40px;
+}
+
+.tag-location {
+  margin: 5px 5px;
+  color: $main-white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: $main-blue;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.tag-location:hover {
+  opacity: 1;
+  color: $main-white;
+  text-decoration: none;
+}
+
+.new-tag-location {
+  margin: 5px 5px;
+  color: $main-blue;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: $main-white;
+  border: solid 1px $main-blue;
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.new-tag-location:hover {
+  opacity: 1;
+  color: $main-blue;
   text-decoration: none;
 }
 
@@ -172,9 +209,10 @@ h2 {
   border: solid 2px $main-red;
 }
 
-.avatar2 {
-  width: 80px;
-  height: 80px;
+.avatar-profil {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: solid 2px $main-red;
 }
@@ -371,3 +409,26 @@ h2 {
 }
 
 //*******************Location Modal****************************//
+
+#location-modal {
+  border: solid 1px $main-blue;
+  border-radius: 4px;
+  background-color: $main-white;
+}
+
+.location-modal-button {
+  margin: 5px 5px;
+  color: $main-white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background-color: $main-blue;
+  opacity: 0.6;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.location-modal-button:hover {
+  opacity: 1;
+  color: $main-white;
+  text-decoration: none;
+}

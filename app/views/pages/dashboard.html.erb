@@ -1,30 +1,72 @@
-<h1>Pages#dashboard</h1>
-<p>Find me in app/views/pages/dashboard.html.erb</p>
-<br>
-<%= link_to 'Modifier mon compte', edit_user_registration_path(@user) %>
-<br>
-<%= link_to 'Toutes les gamenights', gamenights_path %>
-<br>
-<%= link_to 'Créer une nouvelle adresse +', new_location_path %>
-<br>
-<br>
-<%= link_to 'Créer une nouvelle soirée +', new_gamenight_path %>
-<br>
-<br>
-
 <div class="container">
-  <h2>Games tags</h2>
+
+  <h1 class="mt-4 mb-4 title">Mon dashboard</h1>
+
   <div class="row">
-    <div class="col-md-6 tagcloud">
-      <% @my_boardgames.each do |boardgame| %>
+
+    <!-- Profil card -->
+    <div class="col-md-4 tagcloud profil">
+      <div class="dashboard-profil-tile">
+        <img class="avatar-profil" alt="avatar-profil" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+        <h3><% @user.username %></h3>
+        <div class="user-scoring">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="far fa-star"></i>
+        </div>
+        <div class="user-details">
+          <div>
+            <p><i class="fas fa-map-pin"><%= @my_locations.length %></i></p>
+            <p>Games</p>
+          </div>
+          <div>
+            <p><i class="fas fa-puzzle-piece"><%= @my_boardgames.length %></i></p>
+            <p>locations</p>
+          </div>
+        </div>
+        <div class="profil-links">
+          <%= link_to 'Modifier', edit_user_registration_path(@user), class: "link" %>
+          <%= link_to 'Gamenights', gamenights_path, class: "link" %>
+        </div>
+      </div>
+    </div>
+    <!-- end -->
+
+    <!-- Gamenight related cards -->
+    <div class="col-md-8 tagcloud" id="gamenight-area">
+
+      <!-- game card -->
+      <div class="dashboard-game-tile">
+        <h2>Mes jeux</h2>
+        <% @my_boardgames.each do |boardgame| %>
         <a href="#" class="tag" data-toggle="modal" data-target="#modal"><%= boardgame.name %>s</a>
-        <%= link_to 'Supprimer le jeu', boardgame_path(boardgame), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
-      <% end %>
-        <%= link_to new_boardgame_path do %>
-          <p class="new-tag text-center">Ajouter un jeu <i class="fas fa-plus"></i></p>
-      <% end %>
+          <%= link_to 'Supprimer le jeu', boardgame_path(boardgame), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+        <% end %>
+          <%= link_to new_boardgame_path do %>
+            <p class="new-tag">Ajouter un jeu <i class="fas fa-plus"></i></p>
+        <% end %>
+      </div>
+
+      <!-- location card -->
+      <div class="dashboard-location-tile">
+        <h2>Mes Lieux</h2>
+        <% @my_boardgames.each do |location| %>
+        <a href="#" class="tag" data-toggle="modal" data-target="#modal2"><%= location.name %>s</a>
+          <%= link_to 'Supprimer le jeu', location_path(boardgame), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+        <% end %>
+          <%= link_to new_location_path do %>
+            <p class="new-tag-location">Ajouter un lieu <i class="fas fa-plus"></i></p>
+        <% end %>
+      </div>
+
+      <!-- Gamenight creation link -->
+      <%= link_to 'Créer gamenight', new_gamenight_path, class: "link-main text-center" %>
     </div>
   </div>
+  <!-- end -->
+
 </div>
 
 <br>
@@ -34,6 +76,7 @@
   <%= link_to "Supprimer l'adresse", location_path(location), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
 <% end %>
 <br>
+
 <% if @gamenights_owner %>
   <% @gamenights_owner.each do |gamenights| %>
     <% gamenights.each do |gamenight| %>
@@ -46,6 +89,7 @@
   <% end %>
 <% end %>
 <br>
+
 <% @my_participations.each do |participation| %>
   <%= participation.gamenight.boardgame.name %>
   <% if participation.gamenight.date < Time.now.to_date %>
