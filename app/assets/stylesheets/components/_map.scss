@@ -1,14 +1,18 @@
 .mapboxgl-popup {
   max-width: 200px;
-  border : solid 1px #EF629F;
-  background-color: white;
+  border : solid 2px #EF629F;
   padding: 8px;
   border-radius: 5px;
+  background:  $main-beige;
+  color: $main-red;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .mapboxgl-popup-content {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
+  background: linear-gradient(to bottom right, $main-beige, $main-red);
+
 }
 
 .main-container {
@@ -16,7 +20,7 @@
 }
 
 #map {
-  margin-top: 40px;
+  margin-top: 0px;
   height: 100vh;
   position: -webkit-sticky;
   position: sticky;
