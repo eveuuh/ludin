@@ -41,20 +41,46 @@
       <div class="dashboard-game-tile">
         <h2>Mes jeux</h2>
         <% @my_boardgames.each do |boardgame| %>
-        <a href="#" class="tag" data-toggle="modal" data-target="#modal"><%= boardgame.name %>s</a>
-          <%= link_to 'Supprimer le jeu', boardgame_path(boardgame), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+        <a href="#" class="tag" data-toggle="modal" data-target="#modal"><%= boardgame.name %></a>
+
+        <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content" id="game-modal">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><%= boardgame.name %></h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p><%= boardgame.description %></p>
+                <p><%= boardgame.category %></p>
+              </div>
+              <div class="modal-details">
+                <i class="fas fa-user-friends"> <%= boardgame.players_min %>-<%= boardgame.players_max %></i>
+                <i class="fas fa-exclamation-circle"> +<%= boardgame.age %>ans</i>
+              </div>
+              <div class="modal-footer">
+                <%= link_to 'Supprimer', boardgame_path(boardgame), class: "game-modal-button", method: :delete, data: { confirm: "Vous êtes sûr ?"} %>
+                <%= link_to 'Editer', edit_boardgame_path(boardgame), class: "game-modal-button" %>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <% end %>
-          <%= link_to new_boardgame_path do %>
-            <p class="new-tag">Ajouter un jeu <i class="fas fa-plus"></i></p>
+        <%= link_to new_boardgame_path do %>
+          <p class="new-tag">Ajouter un jeu <i class="fas fa-plus"></i></p>
         <% end %>
       </div>
 
       <!-- location card -->
       <div class="dashboard-location-tile">
         <h2>Mes Lieux</h2>
-        <% @my_boardgames.each do |location| %>
+        <% @my_locations.each do |location| %>
         <a href="#" class="tag" data-toggle="modal" data-target="#modal2"><%= location.name %>s</a>
-          <%= link_to 'Supprimer le jeu', location_path(boardgame), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+          <%= link_to 'Supprimer le jeu', location_path(location), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
         <% end %>
           <%= link_to new_location_path do %>
             <p class="new-tag-location">Ajouter un lieu <i class="fas fa-plus"></i></p>
