@@ -348,10 +348,10 @@ a:hover {
 }
 
 .tab-item {
-  background: $main-white;
+  background: $main-beige;
   flex: 0 0 50%;
   text-align: center;
-  border: solid 1px $main-red;
+  border: none;
   a {
     color: $main-red;
   }
@@ -365,8 +365,8 @@ a:hover {
 }
 
 .tab-item.active {
-  background: $main-beige;
-  border: none;
+  background: $main-white;
+  border: solid 1px $main-red;
   a {
     color: $main-red;
     outline: none;
