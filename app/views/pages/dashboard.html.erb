@@ -140,7 +140,7 @@
                   <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-image img-rounded">
                   <div class="gamenight-description">
                     <h3><%= gamenight.boardgame.name %></h3>
-                    <p><i class="far fa-calendar-alt"> </i> <%= gamenight.date %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
+                    <p><i class="far fa-calendar-alt"> </i> <%= gamenight.date.strftime("%d-%m-%Y") %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
                     <p><i class="fas fa-map-pin"></i> <%= gamenight.location.address %></p>
                   </div>
                   <div>
@@ -176,7 +176,7 @@
             <%= link_to participation_path(participation) do %>
             <li class="participation-tile">
               <div class="participation-upvote text-center">
-                <i class="far fa-calendar-alt"> <%= participation.date %></i>
+                <i class="far fa-calendar-alt"> <%= participation.gamenight.date.strftime("%d-%m-%Y") %></i>
               </div>
               <img src="http://unsplash.it/200/120/?random" alt="" class="participation-image img-rounded">
               <div class="participation-specs">
@@ -193,13 +193,22 @@
                     </div>
                   </div>
                   <div class="place">
-                    <p><i class="fas fa-clock"></i> <%= participation.gamenight.start_time %></p>
+                    <p><i class="fas fa-clock"></i> <%= participation.gamenight.start_time.strftime("%H:%M") %></p>
                     <p><i class="fas fa-map-pin"></i> <%= participation.gamenight.location.address %></p>
                     <p class="strong"><i class="fas fa-puzzle-piece"></i> <%= participation.gamenight.boardgame.name %></p>
                   </div>
                 </div>
-              </div>
-            </li>
+                  <div>
+                    <ul class="list-inline gamenight-controls">
+                      <li>
+                        <%= link_to participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} do %>
+                        <i class="fas fa-trash-alt"></i>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </li>
             <% end %>
             <% end %>
           </ul>
@@ -225,7 +234,7 @@
 <% end %>
 <br> -->
 
-<% @my_participations.each do |participation| %>
+<!-- <% @my_participations.each do |participation| %>
   <%= participation.gamenight.boardgame.name %>
   <% if participation.gamenight.date < Time.now.to_date %>
     <%= link_to 'Note la soirée', edit_participation_path(participation) %>
@@ -236,4 +245,4 @@
   <% else %>
     <p></p>
   <% end %>
-<% end %>
+<% end %>  -->
