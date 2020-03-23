@@ -37,17 +37,13 @@
 }
 
 .dropdown-menu {
-  position: absolute;
-  top: 14px;
-  right: 10px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-    background-color: DodgerBlue;
- color: #ffffff;
-  padding: 8px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  border-color: #fff transparent transparent transparent;
+  float: left;
+  overflow: hidden;
+  background-color:white;
+}
+
+
+.dropdown-item:hover{
+  color:#ee6e73;
+  text-decoration: none;
 }
