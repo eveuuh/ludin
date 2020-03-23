@@ -33,4 +33,17 @@
   border: 1px solid #1EDD88;
   outline: none !important;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+
+}
+
+.dropdown-menu {
+  float: left;
+  overflow: hidden;
+  background-color:white;
+}
+
+
+.dropdown-item:hover{
+  color:#ee6e73;
+  text-decoration: none;
 }
