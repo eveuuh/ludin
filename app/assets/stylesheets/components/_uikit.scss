@@ -11,6 +11,7 @@ a:hover {
   padding: 15px 0;
   color: $main-red;
   border-bottom: solid 1px $main-red;
+  margin-bottom: 10px;
 }
 //******************Buttons**************************//
 
@@ -332,6 +333,23 @@ a:hover {
     margin-right: 10px;
   }
 }
+//*******************Nilltile****************************//
+
+.nill-tile {
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: $main-white;
+  border-bottom: solid 5px $main-red;
+  p {
+    color: $main-red;
+    font-weight: bold;
+    margin: 0;
+  }
+}
 
 //*******************Tabs****************************//
 
@@ -348,10 +366,10 @@ a:hover {
 }
 
 .tab-item {
-  background: $main-white;
+  background: $main-beige;
   flex: 0 0 50%;
   text-align: center;
-  border: solid 1px $main-red;
+  border: none;
   a {
     color: $main-red;
   }
@@ -365,8 +383,8 @@ a:hover {
 }
 
 .tab-item.active {
-  background: $main-beige;
-  border: none;
+  background: $main-white;
+  border: solid 1px $main-red;
   a {
     color: $main-red;
     outline: none;
