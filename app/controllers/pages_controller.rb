@@ -25,7 +25,12 @@ class PagesController < ApplicationController
   private
 
   def owner_gamenights
-    gamenights = @my_boardgames.map { |boardgame| boardgame.gamenights }
+    gamenights = []
+    @my_boardgames.each do |boardgame|
+      boardgame.gamenights.each do |gamenight|
+        gamenights << gamenight
+      end
+    end
     return gamenights
   end
 end
