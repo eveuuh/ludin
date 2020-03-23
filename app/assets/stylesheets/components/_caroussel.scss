@@ -1,7 +1,13 @@
 .carousel-item {
-  height: 800px;
+  height: 500px;
   max-width: 100%;
+  fit: cover;
+  margin : 10px;
+  padding: 20px ;
+  align: auto;
 }
 
 .carousel img {
+ width: 100%;
+ height: auto;
 }
