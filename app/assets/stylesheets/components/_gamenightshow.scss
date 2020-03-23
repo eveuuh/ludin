@@ -38,3 +38,46 @@
   border-radius: 50%;
   border: solid 4px white;
 }
+
+.gamename {
+  // margin-left: 400px;
+  color: #ea526f;
+  font-weight: bold;
+}
+
+.desc {
+  margin-left: 400px;
+  font-size: 12px;
+  height: 100px;
+  width: 600px;
+}
+
+.button3 {
+  margin-top: 90px;
+  margin-left: 10px;
+  color: $main-white;
+  padding: 15px 25px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(to bottom right, $main-beige, $main-red);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none;
+}
+
+.button3:hover {
+  background: linear-gradient(to bottom right, $main-red, $main-beige);
+  text-decoration: none;
+  color: $main-white;
+}
+
+.username {
+  font-weight: bold;
+  // margin-left: 200px;
+  // text-align: center;
+}
+
+.joueurs {
+  // margin-left: 200px;
+  font-weight: bold;
+  color: #ea526f;
+}
