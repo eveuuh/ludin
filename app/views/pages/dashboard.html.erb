@@ -5,7 +5,7 @@
     <div class="col-md-4 tagcloud profil">
       <div class="dashboard-profil-tile">
         <img class="avatar-profil" alt="avatar-profil" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
-        <h3><% @user.username %></h3>
+        <h3><%= @user.username %></h3>
         <div class="user-scoring">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>
@@ -114,13 +114,13 @@
     <div class="col-md-12">
       <ul class="nav nav-pills mt-4" id="dashboard-nav" role="tablist">
         <li class="tab-item active">
-          <a class="active text-center" id="games-tab" data-toggle="pill" href="#gamenights" role="tab" aria-controls="games" aria-selected="true" border="0">
+          <a class="active text-center" id="games-tab" data-toggle="pill" href="#gamenights" role="tab" aria-controls="gamenights" aria-selected="true" border="0">
           <h3>Mes gamenights</h3>
           <p>Vous avez <%= @gamenights_owner.length %> gamenights à venir</p>
           </a>
         </li>
         <li class="tab-item">
-          <a class="text-center" id="rentals-tab" data-toggle="pill" href="#participations" role="tab" aria-controls="rentals" aria-selected="false" border="0">
+          <a class="text-center" id="rentals-tab" data-toggle="pill" href="#participations" role="tab" aria-controls="participations" aria-selected="false" border="0">
           <h3>Mes participations</h3>
           <p>Vous avez <%= @my_participations.length %> participations à venir</p>
           </a>
@@ -166,7 +166,9 @@
                 </li>
               <% end %>
             <% else %>
-              <p>Vous n'avez pas de gamenight à venir</p>
+              <li class="nill-tile">
+                <p>Vous n'avez pas de gamenight à venir</p>
+              </li>
             <% end %>
           </ul>
         </div>
@@ -215,20 +217,13 @@
                     </li>
                   </ul>
                 </div>
-                  <div>
-                    <ul class="list-inline gamenight-controls">
-                      <li>
-                        <%= link_to participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} do %>
-                        <i class="fas fa-trash-alt"></i>
-                        <% end %>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </li>
+              </div>
+            </li>
             <% end %>
             <% else %>
-              <p>Vous n'avez pas de participation à venir</p>
+              <li class="nill-tile">
+                <p>Vous n'avez pas de participation à venir</p>
+              </li>
             <% end %>
           </ul>
         </div>
