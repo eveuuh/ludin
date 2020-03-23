@@ -4,10 +4,16 @@ class GamenightsController < ApplicationController
 
 
   def index
-    # raise
     @gamenight_geocoded = Location.geocoded.map do |location|
       location.gamenights
     end.flatten
+      if params[:query].present?
+     boardgames= Boardgame.search_by_name_and_category(params[:query])
+      @gamenight_geocoded = @gamenight_geocoded.filter do |gamenight|
+        boardgames.include?(gamenight.boardgame)
+      end
+    end
+
     @markers = @gamenight_geocoded.map do |gamenight|
       {
         lat: gamenight.location.latitude,
