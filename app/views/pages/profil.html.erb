@@ -18,64 +18,112 @@
           </div>
         </div>
         <div class="profil-links">
-          <%= link_to 'Send Messages', "#", class: "link" %>
+          <%= link_to 'Send a Message', "#", class: "link" %>
         </div>
       </div>
     </div>
 <!-- end -->
 
 <!-- Soirées -->
-    <div class="tab-pane fade show active" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
+    <div class="tab-pane fade show active ml-5" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
       <h2>Ses soirées à venir</h2>
-          <ul class="list-unstyled">
-            <% @user_gamenights.each do |gamenights| %>
-              <% gamenights.each do |gamenight| %>
-                <li class="gamenight">
-                  <div class="gamenight-upvote text-center">
-                    <i class="fas fa-user-friends"></i>
-                    <p><%= gamenight.boardgame.players_max %></p>
-                  </div>
-                  <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-image img-rounded">
-                  <div class="gamenight-description">
-                    <h3><%= gamenight.boardgame.name %></h3>
-                    <p><i class="far fa-calendar-alt"> </i> <%= gamenight.date.strftime("%d-%m-%Y") %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
-                    <p><i class="fas fa-map-pin"></i> <%= gamenight.location.address %></p>
-                  </div>
-                  <div>
-                    <ul class="list-inline gamenight-controls">
-                      <li>
-                        <%= link_to gamenight_path(gamenight) do %>
-                        <i class="fas fa-eye"></i>
-                        <% end %>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-<!-- end -->
-
-<!-- Commentaires -->
-    <div class="tab-pane fade show active" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
-      <h2>Commentaires sur ses soirées</h2>
       <ul class="list-unstyled">
         <% @user_gamenights.each do |gamenights| %>
           <% gamenights.each do |gamenight| %>
-            <% gamenight.participations.each do |participation| %>
             <li class="gamenight">
               <div class="gamenight-upvote text-center">
-                <p><%= participation.rating %></p>
+                <i class="fas fa-user-friends"></i>
+                <p><%= gamenight.boardgame.players_max %></p>
               </div>
+              <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-image img-rounded">
               <div class="gamenight-description">
-                <h3><%= participation.description %></h3>
+                <h3><%= gamenight.boardgame.name %></h3>
+                <p><i class="far fa-calendar-alt"> </i> <%= gamenight.date.strftime("%d-%m-%Y") %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
+                <p><i class="fas fa-map-pin"></i> <%= gamenight.location.address %></p>
+              </div>
+              <div>
+                <ul class="list-inline gamenight-controls">
+                  <li>
+                    <%= link_to gamenight_path(gamenight) do %>
+                    <i class="fas fa-eye"></i>
+                    <% end %>
+                  </li>
+                </ul>
               </div>
             </li>
-            <% end %>
           <% end %>
         <% end %>
       </ul>
+    </div>
+<!-- end -->
+
+<!-- Commentaires -->
+    <div class="col-md-12">
+      <div class="tab-pane fade show active mt-5" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
+        <h2>Commentaires sur ses soirées</h2>
+        <ul class="list-unstyled">
+          <% @user_gamenights.each do |gamenights| %>
+            <% gamenights.each do |gamenight| %>
+              <% gamenight.participations.each do |participation| %>
+              <li class="gamenight mb-1">
+                <div class="gamenight-upvote text-center border-right">
+                  <% case participation.rating %>
+                  <% when 5 %>
+                    <div class="user-scoring">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                  <% when 4 %>
+                    <div class="user-scoring">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  <% when 3 %>
+                    <div class="user-scoring">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                  <% when 2 %>
+                      <div class="user-scoring">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                      </div>
+                  <% when 1 %>
+                      <div class="user-scoring">
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                      </div>
+                  <% else %>
+                    <p><em>(en attente)</em></p>
+                  <% end %>
+                </div>
+                <div class="gamenight-description text-center border-right">
+                  <h3><%= link_to participation.user.username, profil_path(participation.user) %></h3>
+                </div>
+                <div class="gamenight-description text-center">
+                  <h5><%= participation.description %></h5>
+                </div>
+              </li>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
     </div>
 <!-- end -->
   </div>
