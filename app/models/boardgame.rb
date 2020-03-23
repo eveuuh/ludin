@@ -5,6 +5,7 @@ class Boardgame < ApplicationRecord
       tsearch: { prefix: true }
     }
 
+
   belongs_to :user
   has_many :gamenights
 
@@ -14,4 +15,6 @@ class Boardgame < ApplicationRecord
   validates :players_min, presence: true
   validates :players_max, presence: true
   validates :description, presence: true
+
+
 end
