@@ -38,8 +38,10 @@
         <h2>Mes jeux</h2>
         <div id="tags">
           <% @my_boardgames.each do |boardgame| %>
-          <a href="#" class="tag" data-toggle="modal" data-target="#modal"><%= boardgame.name %></a>
-          <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <a href="#" class="tag" data-toggle="modal" data-target="#<%= boardgame.name %>"><%= boardgame.name %></a>
+          <% end %>
+          <% @my_boardgames.each do |boardgame| %>
+          <div class="modal fade" id="<%= boardgame.name %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content" id="game-modal">
                 <div class="modal-header">
@@ -75,8 +77,8 @@
         <h2>Mes lieux</h2>
         <div id="tags">
           <% @my_locations.each do |location| %>
-          <a href="#" class="tag-location" data-toggle="modal" data-target="#modal-location"><%= location.name %></a>
-          <div class="modal fade" id="modal-location" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <a href="#" class="tag-location" data-toggle="modal" data-target="#<%= location.name %>"><%= location.name %></a>
+          <div class="modal fade" id="<%= location.name %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content" id="game-modal">
                 <div class="modal-header">
@@ -113,14 +115,14 @@
       <ul class="nav nav-pills mt-4" id="dashboard-nav" role="tablist">
         <li class="tab-item active">
           <a class="active text-center" id="games-tab" data-toggle="pill" href="#gamenights" role="tab" aria-controls="games" aria-selected="true" border="0">
-          <h3>My gamenights</h3>
-          <p>You have 3 gamenights to come</p>
+          <h3>Mes gamenights</h3>
+          <p>Vous avez <%= @gamenights_owner.length %> gamenights à venir</p>
           </a>
         </li>
         <li class="tab-item">
           <a class="text-center" id="rentals-tab" data-toggle="pill" href="#participations" role="tab" aria-controls="rentals" aria-selected="false" border="0">
-          <h3>My participations</h3>
-          <p>You have 3 participations to come</p>
+          <h3>Mes participations</h3>
+          <p>Vous avez <%= @my_participations.length %> participations à venir</p>
           </a>
         </li>
       </ul>
@@ -129,9 +131,8 @@
 
         <div class="tab-pane fade show active" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
           <ul class="list-unstyled">
-            <% if @gamenights_owner %>
-            <% @gamenights_owner.each do |gamenights| %>
-              <% gamenights.each do |gamenight| %>
+            <% if @gamenights_owner.length >= 1 %>
+              <% @gamenights_owner.each do |gamenight| %>
                 <li class="gamenight">
                   <div class="gamenight-upvote text-center">
                     <i class="fas fa-user-friends"></i>
@@ -140,7 +141,7 @@
                   <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-image img-rounded">
                   <div class="gamenight-description">
                     <h3><%= gamenight.boardgame.name %></h3>
-                    <p><i class="far fa-calendar-alt"> </i> <%= gamenight.date %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
+                    <p><i class="far fa-calendar-alt"> </i> <%= gamenight.date.strftime("%d-%m-%Y") %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
                     <p><i class="fas fa-map-pin"></i> <%= gamenight.location.address %></p>
                   </div>
                   <div>
@@ -163,8 +164,9 @@
                     </ul>
                   </div>
                 </li>
-                <% end %>
-            <% end %>
+              <% end %>
+            <% else %>
+              <p>Vous n'avez pas de gamenight à venir</p>
             <% end %>
           </ul>
         </div>
@@ -172,18 +174,18 @@
         <div class="tab-pane fade" id="participations" role="tabpanel" aria-labelledby="participations-tab">
           <ul class="list-unstyled">
 
+            <% if @my_participations.length >= 1 %>
             <% @my_participations.each do |participation| %>
-            <%= link_to participation_path(participation) do %>
             <li class="participation-tile">
               <div class="participation-upvote text-center">
-                <i class="far fa-calendar-alt"> <%= participation.date %></i>
+                <i class="far fa-calendar-alt"> <%= participation.gamenight.date.strftime("%d-%m-%Y") %></i>
               </div>
               <img src="http://unsplash.it/200/120/?random" alt="" class="participation-image img-rounded">
               <div class="participation-specs">
                 <div class="participation-description">
                   <div class="owner">
                     <img class="avatar1" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
-                    <h3> Username </h3>
+                    <h3><%= participation.gamenight.boardgame.user.username %> </h3>
                     <div>
                       <i class="fas fa-star"></i>
                       <i class="fas fa-star"></i>
@@ -192,19 +194,35 @@
                       <i class="far fa-star"></i>
                     </div>
                   </div>
+                  <%= link_to participation_path(participation) do %>
                   <div class="place">
-                    <p><i class="fas fa-clock"></i> <%= participation.gamenight.start_time %></p>
+                    <p><i class="fas fa-clock"></i> <%= participation.gamenight.start_time.strftime("%H:%M")  %></p>
                     <p><i class="fas fa-map-pin"></i> <%= participation.gamenight.location.address %></p>
                     <p class="strong"><i class="fas fa-puzzle-piece"></i> <%= participation.gamenight.boardgame.name %></p>
                   </div>
+                  <% end %>
+                  <ul class="list-inline gamenight-controls">
+                    <li>
+                      <% if participation.gamenight.date < Time.now.to_date %>
+                        <%= link_to 'Note la soirée', edit_participation_path(participation) %> <i class="fas fa-star"></i>
+                      <% elsif participation.gamenight.date > Time.now.to_date %>
+                        <%= link_to 'Se désinscrire', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+                      <% elsif (participation.gamenight.date == Time.now.to_date) && (participation.gamenight.start_time.hour - 2 > Time.now.hour) %>
+                        <%= link_to 'Se désinscrire', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+                      <% else %>
+                        <p></p>
+                      <% end %>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </li>
             <% end %>
+            <% else %>
+              <p>Vous n'avez pas de participation à venir</p>
             <% end %>
           </ul>
         </div>
-
       </div>
     </div>
   </div>
@@ -225,7 +243,7 @@
 <% end %>
 <br> -->
 
-<% @my_participations.each do |participation| %>
+<!-- <% @my_participations.each do |participation| %>
   <%= participation.gamenight.boardgame.name %>
   <% if participation.gamenight.date < Time.now.to_date %>
     <%= link_to 'Note la soirée', edit_participation_path(participation) %>
@@ -236,4 +254,4 @@
   <% else %>
     <p></p>
   <% end %>
-<% end %>
+<% end %> -->
