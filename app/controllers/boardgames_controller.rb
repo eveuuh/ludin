@@ -37,6 +37,6 @@ class BoardgamesController < ApplicationController
   end
 
   def boardgame_params
-    params.require(:boardgame).permit(:name, :category, :age, :players_min, :players_max, :description)
+    params.require(:boardgame).permit(:name, :category, :age, :players_min, :players_max, :description, :photo)
   end
 end

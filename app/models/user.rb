@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :boardgames, dependent: :destroy
   has_many :locations, dependent: :destroy
   has_many :participations, dependent: :destroy
+  has_one_attached :photo
   # has_many :gamenights, through: :boardgames, dependent: :destroy
 
   # Include default devise modules. Others available are:
@@ -9,7 +10,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # validates :username, presence: true, uniqueness: true
+  validates :username, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A.*@.*\..*\z/ }
 
   def has_a_global_rating?
