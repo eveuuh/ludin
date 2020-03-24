@@ -147,19 +147,20 @@ a:hover {
 }
 
 .new-tag {
-  margin: 5px 5px;
+  font-weight: 500;
+  margin: 5px 3px;
   color:$main-red;
   padding: 0px 10px;
   border-radius: 4px;
-  background-color: $main-beige;
-  opacity: 0.6;
+  background-color: $main-white;
   text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .new-tag:hover {
-  opacity: 1;
-  color: $main-red;
+  color: $main-white;
   text-decoration: none;
+  background-color: $main-red;
 }
 
 //******************Tags location*****************************//
@@ -185,19 +186,20 @@ a:hover {
 }
 
 .new-tag-location {
+  font-weight: 500;
   margin: 5px 5px;
   color: $main-blue;
   padding: 0px 15px;
   border-radius: 4px;
   background-color: $main-white;
-  border: solid 1px $main-blue;
-  opacity: 0.6;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   text-decoration: none;
 }
 
 .new-tag-location:hover {
-  opacity: 1;
-  color: $main-blue;
+  color: $main-white;
+  background-color: $main-blue;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   text-decoration: none;
 }
 
@@ -208,6 +210,7 @@ a:hover {
   border-radius: 50%;
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   border: solid 2px $main-red;
+  transition: all 0.3s ease;
 }
 
 .avatar-profil {
@@ -288,20 +291,33 @@ a:hover {
 }
 
 .participation-description {
-  flex: 1 0 auto;
   padding: 20px;
   line-height: 1px;
 }
 
-.participation-controls a {
-  font-size: 15px;
-  color: #CCCCCC;
-  transition: all 0.3s ease;
+.participation-controls {
+  color: $main-red;
 }
 
-.participation-controls a:hover {
-  font-size: 18px;
+.participation-controls a {
+  margin-right: 10px;
+  font-size: 15px;
   color: $main-red;
+  opacity: 0;
+  transition: all 0.1s ease;
+}
+
+.participation-controls i {
+  opacity: 0;
+  transition: all 0.1s ease;
+}
+
+.participation-tile:hover .participation-controls a {
+  opacity: 1;
+}
+
+.participation-tile:hover .participation-controls i {
+  opacity: 1;
 }
 
 .participation-specs{
@@ -311,21 +327,20 @@ a:hover {
   flex-grow: 1;
 }
 
-.owner {
+#owner {
   display: flex;
   align-items: center;
-
+  color: $main-red;
   img {
     margin-right: 15px;
     margin-bottom: 10px;
   }
-
   h3 {
     margin-right: 15px;
   }
 }
 
-.place {
+#place {
   display: flex;
   align-items: center;
 
@@ -333,6 +348,21 @@ a:hover {
     margin-right: 10px;
   }
 }
+
+#date {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  p {
+    color: $main-red;
+  }
+
+  i {
+    margin-bottom: 5px;
+  }
+}
+
 //*******************Nilltile****************************//
 
 .nill-tile {
