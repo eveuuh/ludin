@@ -353,7 +353,10 @@ a:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: $main-red;
+  p {
+    color: $main-red;
+  }
+
   i {
     margin-bottom: 5px;
   }

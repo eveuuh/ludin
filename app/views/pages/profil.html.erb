@@ -39,7 +39,7 @@
         <% @user_gamenights.each do |gamenights| %>
           <% gamenights.each do |gamenight| %>
             <li class="profil-gamenight-card">
-              <div class="gamenight-upvote text-center">
+              <div class="gamenight-upvote text-center" id="profil-gamenight-upvote">
                 <i class="fas fa-user-friends"></i>
                 <p><%= gamenight.boardgame.players_max %></p>
               </div>

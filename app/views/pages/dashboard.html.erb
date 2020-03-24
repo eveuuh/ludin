@@ -196,7 +196,7 @@
                       <i class="far fa-star"></i>
                     </div>
                   </div>
-                  <%= link_to participation.gamenight_path(participation) do %>
+                  <%= link_to participation_path(participation) do %>
                   <div id="place">
                     <p><i class="fas fa-clock"></i> <%= participation.gamenight.start_time.strftime("%H:%M")  %></p>
                     <p><i class="fas fa-map-pin"></i> <%= participation.gamenight.location.address %></p>

@@ -6,14 +6,29 @@
   padding: 10px;
   transition: all 0.3s ease;
   border-radius: 3px;
+
+ p {
+  text-align: left;
+ }
+
+ h3 {
+  color: $main-red;
+  margin-bottom: 10px;
+ }
 }
 
+#profil-gamenight-upvote {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
 .profil-gamenight-card:hover {
   background: $main-beige;
 }
 
-.profil-gamenight-card:hover .gamenight-upvote {
+.profil-gamenight-card:hover #profil-gamenight-upvote {
   font-size: 25px;
 }
 
