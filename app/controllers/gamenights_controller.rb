@@ -77,6 +77,6 @@ class GamenightsController < ApplicationController
   end
 
   def gamenight_params
-    params.require(:gamenight).permit(:date, :start_time, :end_time, :description, :boardgame_id, :location_id, :photo)
+    params.require(:gamenight).permit(:date, :start_time, :end_time, :description, :boardgame_id, :location_id)
   end
 end
