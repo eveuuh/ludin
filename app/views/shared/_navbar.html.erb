@@ -19,26 +19,27 @@
         </div>
       <% end %>
         <li class="nav-item active">
-          <%= link_to "Gamenights", gamenights_path, class: "nav-link", :style=>'color: white;' %>
+          <%= link_to "Soirées", gamenights_path, class: "nav-link", :style=>'color: white;' %>
         </li>
         <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% else %>
+          <%= image_tag "avatar.jpg", crop: :fill, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
             <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link", :style=>'color: white;' %>
+          <%= link_to "Me connecter", new_user_session_path, class: "nav-link", :style=>'color: white;' %>
         </li>
         <li>
-          <%= link_to "Register", new_user_registration_path, class: "nav-link", :style=>'color: white;' %>
+          <%= link_to "Créer un compte", new_user_registration_path, class: "nav-link", :style=>'color: white;' %>
         </li>
       <% end %>
     </ul>
   </div>
 </div>
-
-
-
