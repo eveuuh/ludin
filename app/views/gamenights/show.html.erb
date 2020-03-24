@@ -41,7 +41,7 @@
     <div class="games-specs col-6">
       <div class="row d-flex justify-content-between offset-4">
         <h2 class="gamename"><%= @boardgame.name %></h2>
-        <h6 class="username"><%= @user.username.capitalize %>'s GameNight</h6>
+        <h6 class="username"><%= link_to @user.username.capitalize, profil_path(@user) %>'s GameNight</h6>
         <h6 class="joueurs"><%= @boardgame.players_min %> - <%= @boardgame.players_max %> joueurs</h6>
       </div>
       <div class="description">
