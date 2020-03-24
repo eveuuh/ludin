@@ -8,6 +8,7 @@ class Boardgame < ApplicationRecord
 
   belongs_to :user
   has_many :gamenights
+  has_one_attached :photo
 
   validates :name, presence: true
   validates :category, presence: true
@@ -15,6 +16,4 @@ class Boardgame < ApplicationRecord
   validates :players_min, presence: true
   validates :players_max, presence: true
   validates :description, presence: true
-
-
 end

@@ -7,6 +7,7 @@
       <%= f.input :description, as: :text %>
       <%= f.input :location_id, :collection => @locations_user %>
       <%= f.input :boardgame_id, :collection => @boardgames_user %>
+      <%= f.input :photo, as: :file %>
       <% if gamenight.location_id.blank? %>
         <%= f.submit "Créer votre soirée", class: "button-form"%>
       <% else %>
