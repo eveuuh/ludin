@@ -33,7 +33,8 @@
 <!-- end -->
 
 <!-- Soirées -->
-    <div class="col-md-8" id="profil-list">
+    <div class="col-md-8">
+      <div id="profil-list">
       <h2 class="title">Ses soirées à venir</h2>
       <ul class="list-unstyled">
         <% @user_gamenights.each do |gamenights| %>
@@ -63,76 +64,80 @@
         <% end %>
       </ul>
     </div>
+    </div>
+  </div>
 <!-- end -->
 
 <!-- Commentaires -->
-    <div class="col-md-12">
-      <div class="tab-pane fade show active mt-5" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
-        <h2>Commentaires sur ses soirées</h2>
+  <div class="row">
+    <div class="col-md-12 mt-4 mb-4">
+      <div class="reviews-tile">
+        <h2 class="title">Commentaires sur ses soirées</h2>
         <ul class="list-unstyled">
-          <% @user_gamenights.each do |gamenights| %>
-            <% gamenights.each do |gamenight| %>
-              <% gamenight.participations.each do |participation| %>
-              <li class="gamenight mb-1">
-                <div class="gamenight-upvote text-center border-right">
-                  <% case participation.rating %>
-                  <% when 5 %>
-                    <div class="user-scoring">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                  <% when 4 %>
-                    <div class="user-scoring">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                  <% when 3 %>
-                    <div class="user-scoring">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                    </div>
-                  <% when 2 %>
+            <% @user_gamenights.each do |gamenights| %>
+              <% gamenights.each do |gamenight| %>
+                <% gamenight.participations.each do |participation| %>
+                <li class="gamenight mb-1">
+                  <div class="profil-review-upvote text-center border-right">
+                    <img class="avatar1" alt="avatar-user" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+                    <%= link_to participation.user.username, profil_path(participation.user) %>
+                  </div>
+                  <div class="profil-review-description text-left border-right">
+                    <p><%= participation.description %></p>
+                  </div>
+                  <div class="profil-review-rating text-center">
+                    <% case participation.rating %>
+                    <% when 5 %>
                       <div class="user-scoring">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                    <% when 4 %>
+                      <div class="user-scoring">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                       </div>
-                  <% when 1 %>
+                    <% when 3 %>
                       <div class="user-scoring">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
                       </div>
-                  <% else %>
-                    <p><em>(en attente)</em></p>
-                  <% end %>
-                </div>
-                <div class="gamenight-description text-center border-right">
-                  <h3><%= link_to participation.user.username, profil_path(participation.user) %></h3>
-                </div>
-                <div class="gamenight-description text-center">
-                  <h5><%= participation.description %></h5>
-                </div>
-              </li>
+                    <% when 2 %>
+                        <div class="user-scoring">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                        </div>
+                    <% when 1 %>
+                        <div class="user-scoring">
+                          <i class="fas fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                          <i class="far fa-star"></i>
+                        </div>
+                    <% else %>
+                      <p><em>(en attente)</em></p>
+                    <% end %>
+                  </div>
+                </li>
+                <% end %>
               <% end %>
             <% end %>
-          <% end %>
-        </ul>
+          </ul>
+        </div>
       </div>
     </div>
 <!-- end -->
-  </div>
 </div>

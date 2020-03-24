@@ -17,6 +17,14 @@
  }
 }
 
+.profil-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right : 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
 #profil-gamenight-upvote {
   display:flex;
   justify-content: center;
@@ -33,9 +41,51 @@
 }
 
 #profil-list {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   background-color: $main-white;
+
   h2 {
     text-align: center;
   }
 }
+
+.reviews-tile {
+  background-color: $main-white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.profil-review-upvote {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  a {
+    color: $main-red;
+    margin-top: 10px;
+  }
+}
+
+.reviews-tile:hover .profil-review-upvote{
+  font-size: 16px;
+  img {
+    width:70px;
+  }
+}
+
+.profil-review-description {
+  flex: grow;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.profil-review-rating {
+  padding: 10px;
+  font-size: 20px;
+}
+
+
+
+
+
