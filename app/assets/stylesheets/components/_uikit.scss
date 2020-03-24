@@ -49,7 +49,16 @@ a:hover {
 
 //******************Cards****************************//
 
+.cards {
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  padding: 0 30px;
+}
+
 .card-gamenight {
+  position: relative;
   opacity: 0.8;
   overflow: hidden;
   background: $main-white;
