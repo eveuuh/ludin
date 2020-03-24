@@ -1,0 +1,99 @@
+.banner {
+  background-size: cover;
+  background-position: center;
+  padding: 150px 0;
+  height:600px;
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+  text-align:left;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-align:left;
+}
+#search_query{
+  width: 450px;
+  text-align: left;
+  display: inline;
+
+}
+
+.fas.fa-search {
+  text-align:right;
+  cursor: pointer;
+  margin-right: 60px;
+  padding-bottom: 185px;
+  display: flex;
+  opacity: 1 !important;
+  color: black;
+}
+
+.btn.btn-flat{
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    right: -100px;
+    color: #FADBD8
+}
+
+.search-form-control{
+  margin-top: 20px;
+  opacity:.7;
+}
+
+ ::placeholder{
+  color:#726e6f !important ;
+  opacity: 1;
+ }
+.hello {
+  margin-top:50px;
+  padding: 10px;
+}
+.bg-light.page-section {
+  margin-top:100px;
+}
+.coupebanner{
+  background-image: url(/assets/image.png);
+  background-position:left;
+  background-size: 60%;
+  // background-repeat: no-repeat;
+  width:100%;
+  height:50px;
+  margin: 50px auto 0 auto;
+  margin-top:50px;
+}
+
+.text-ludin{
+  padding: 20px;
+}
+
+.container h2{
+  padding: 30px;
+}
+
+.team, .concept{
+  box-shadow: 0px 0px 15px lightgrey;
+}
+
+.container-home{
+  background: rgba(255,255,255,0);
+}
+
+.section-heading{
+  font-weight: bold;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.bg-light{
+  background-color: rgba(255,255,255,0)!important;
+}
