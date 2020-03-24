@@ -1,11 +1,20 @@
-<div class="row">
-  <div class="col-md-6 offset-3">
-    <%= simple_form_for(@participation) do |f| %>
-      <%= f.input :description, as: :text, required: true %>
-      <%= f.input :rating, :collection => [1, 2, 3, 4, 5], required: true %>
-      <% if (@participation.gamenight.date < Time.now.to_date) && (@participation.rating.blank?) %>
-        <%= f.submit "Note ta soirée" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-2 form">
+      <h1 class="title">Note la soirée</h1>
+      <%= simple_form_for(@participation) do |f| %>
+        <div class="form-inputs">
+        <%= f.input :description, as: :text, required: true %>
+        <%= f.input :rating, :collection => [1, 2, 3, 4, 5], required: true %>
+        </div>
+        <div class="button-block">
+          <div class="form-actions">
+            <% if (@participation.gamenight.date < Time.now.to_date) && (@participation.rating.blank?) %>
+              <%= f.submit "Note ta soirée", class: "button-form" %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
