@@ -43,6 +43,7 @@
 #profil-list {
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   background-color: $main-white;
+  border-bottom: solid 5px $main-red;
 
   h2 {
     text-align: center;
@@ -52,6 +53,7 @@
 .reviews-tile {
   background-color: $main-white;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  border-bottom: solid 5px $main-red;
 }
 
 .profil-review-upvote {
