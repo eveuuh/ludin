@@ -36,7 +36,7 @@
   // margin-left: 400px;
   color: #ea526f;
   font-weight: bold;
-  padding-left: 15px;
+  // padding-left: 15px;
 }
 
 
@@ -98,9 +98,11 @@ p {
   font-weight: lighter;
 }
 
-// .games-specs {
-//   border-spacing: 5em;
-// }
+.games-specs h2{
+padding-left: 15px;
+padding-bottom: 0px;
+padding-top: 0px;
+}
 
 .position-btn {
   position: absolute;
