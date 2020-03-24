@@ -36,13 +36,9 @@
   // margin-left: 400px;
   color: #ea526f;
   font-weight: bold;
+  // padding-left: 15px;
 }
 
-.desc {
-  font-size: 12px;
-  height: 100px;
-  width: 900px;
-}
 
 .button3 {
   // margin-top: 90px;
@@ -86,6 +82,7 @@
 }
 
 h1 {
+  font-size: 10px;
   color: #ea526f;
   font-family: 'Ubuntu', sans-serif;
   text-align: center;
@@ -95,8 +92,19 @@ h1 {
 }
 
 p {
-   color: #ea526f;
+   color: black;
   font-family: 'Ubuntu', sans-serif;
-  text-align: center;
+  text-align: justify;
   font-weight: lighter;
+}
+
+.games-specs h2{
+padding-left: 15px;
+padding-bottom: 0px;
+padding-top: 0px;
+}
+
+.position-btn {
+  position: absolute;
+  bottom: 0px;
 }
