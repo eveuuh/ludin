@@ -95,8 +95,17 @@ h1 {
 }
 
 p {
-   color: #ea526f;
+   color: black;
   font-family: 'Ubuntu', sans-serif;
-  text-align: center;
+  text-align: justify;
   font-weight: lighter;
+}
+
+// .games-specs {
+//   border-spacing: 5em;
+// }
+
+.position-btn {
+  position: absolute;
+  bottom: 0px;
 }
