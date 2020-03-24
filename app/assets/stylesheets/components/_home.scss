@@ -44,7 +44,7 @@ ul.social-buttons li a {
 }
 
 a:-webkit-any-link {
-    color: -webkit-link;
+    // color: -webkit-link;
     cursor: pointer;
     text-decoration: underline;
 
@@ -71,4 +71,11 @@ ul.social-buttons {
   margin-bottom: 0;
 }
 
+p.body.faq {
+  font-weight:bold;
+  padding: 10px;
+}
+br.body.faq{
+  font-weight: lighter;
+}
 
