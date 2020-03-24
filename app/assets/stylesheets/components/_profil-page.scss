@@ -1,0 +1,26 @@
+.profil-gamenight-card {
+  background-color: $main-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+}
+
+
+.profil-gamenight-card:hover {
+  background: $main-beige;
+}
+
+.profil-gamenight-card:hover .gamenight-upvote {
+  font-size: 25px;
+}
+
+#profil-list {
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  background-color: $main-white;
+  h2 {
+    text-align: center;
+  }
+}

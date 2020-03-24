@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row mt-5">
     <!-- Profil card -->
     <div class="col-md-4 tagcloud profil">
       <div class="dashboard-profil-tile">
@@ -99,7 +99,7 @@
           </div>
           <% end %>
           <%= link_to new_location_path do %>
-            <p class="new-tag-location">Ajouter un jeu <i class="fas fa-plus"></i></p>
+            <p class="new-tag-location">Ajouter un lieu <i class="fas fa-plus"></i></p>
           <% end %>
         </div>
       </div>
@@ -178,13 +178,14 @@
             <% if @my_participations.length >= 1 %>
             <% @my_participations.each do |participation| %>
             <li class="participation-tile">
-              <div class="participation-upvote text-center">
-                <i class="far fa-calendar-alt"> <%= participation.gamenight.date.strftime("%d-%m-%Y") %></i>
+              <div class="participation-upvote text-center"  id="date">
+                <i class="far fa-calendar-alt"></i>
+                <p><%= participation.gamenight.date.strftime("%d-%m-%Y") %></p>
               </div>
               <img src="http://unsplash.it/200/120/?random" alt="" class="participation-image img-rounded">
               <div class="participation-specs">
                 <div class="participation-description">
-                  <div class="owner">
+                  <div id="owner">
                     <img class="avatar1" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
                     <h3><%= participation.gamenight.boardgame.user.username %> </h3>
                     <div>
@@ -195,21 +196,23 @@
                       <i class="far fa-star"></i>
                     </div>
                   </div>
-                  <%= link_to participation_path(participation) do %>
-                  <div class="place">
+                  <%= link_to participation.gamenight_path(participation) do %>
+                  <div id="place">
                     <p><i class="fas fa-clock"></i> <%= participation.gamenight.start_time.strftime("%H:%M")  %></p>
                     <p><i class="fas fa-map-pin"></i> <%= participation.gamenight.location.address %></p>
                     <p class="strong"><i class="fas fa-puzzle-piece"></i> <%= participation.gamenight.boardgame.name %></p>
                   </div>
                   <% end %>
-                  <ul class="list-inline gamenight-controls">
+                </div>
+                <div>
+                  <ul class="list-inline participation-controls">
                     <li>
                       <% if participation.gamenight.date < Time.now.to_date %>
-                        <%= link_to 'Note la soirée', edit_participation_path(participation) %> <i class="fas fa-star"></i>
+                        <%= link_to 'Noter', edit_participation_path(participation) %> <i class="fas fa-star"></i>
                       <% elsif participation.gamenight.date > Time.now.to_date %>
-                        <%= link_to 'Se désinscrire', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+                        <%= link_to 'Sortir', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
                       <% elsif (participation.gamenight.date == Time.now.to_date) && (participation.gamenight.start_time.hour - 2 > Time.now.hour) %>
-                        <%= link_to 'Se désinscrire', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
+                        <%= link_to 'Sortir', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
                       <% else %>
                         <p></p>
                       <% end %>

@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="mt-4 mb-4 title">Profil de <%= @user.username %></h1>
   <div class="row">
-<!-- Profil card -->
+  <!-- Profil card -->
     <div class="col-md-4 tagcloud profil">
       <div class="dashboard-profil-tile">
         <img class="avatar-profil" alt="avatar-profil" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
@@ -25,12 +25,12 @@
 <!-- end -->
 
 <!-- Soirées -->
-    <div class="tab-pane fade show active ml-5" id="gamenights" role="tabpanel" aria-labelledby="gamenights-tab">
-      <h2>Ses soirées à venir</h2>
+    <div class="col-md-8" id="profil-list">
+      <h2 class="title">Ses soirées à venir</h2>
       <ul class="list-unstyled">
         <% @user_gamenights.each do |gamenights| %>
           <% gamenights.each do |gamenight| %>
-            <li class="gamenight">
+            <li class="profil-gamenight-card">
               <div class="gamenight-upvote text-center">
                 <i class="fas fa-user-friends"></i>
                 <p><%= gamenight.boardgame.players_max %></p>
