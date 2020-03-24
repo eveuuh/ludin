@@ -45,6 +45,6 @@ class User < ApplicationRecord
 
     global_rating = (ratings_of_user.sum).to_f / (ratings_of_user.size)
 
-    return global_rating
+    return global_rating.round(1)
   end
 end
