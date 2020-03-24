@@ -34,8 +34,21 @@
   <div class="row row-design">
     <div class="card-big col-6">
       <div class="card-img">
-        <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-show-image">
-        <img class="avatar3" id="show-gamenight" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+        <% if @boardgame.photo.attached? %>
+        <%= cl_image_tag @boardgame.photo.key, class: "gamenight-show-image" %>
+        <% else %>
+        <%= image_tag "game-card.png", class: "gamenight-show-image" %>
+        <% end %>
+<!--         <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-show-image"> -->
+
+        <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, class: "avatar3", id: "show-gamenight" %>
+        <% else %>
+        <%= image_tag "avatar.jpg", class: "avatar3", id: "show-gamenight" %>
+        <% end %>
+
+<!--         <img class="avatar3" id="show-gamenight" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" /> -->
+
       </div>
     </div>
     <div class="games-specs col-6">
