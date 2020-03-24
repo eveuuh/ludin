@@ -8,6 +8,7 @@
   background-color: $main-beige;
 
   input {
+    font-family: 'ubuntu';
     // border: solid 1px $main-red;
   }
 
@@ -19,22 +20,6 @@
 
 .button-form {
   padding: 10px 20px;
-  color: $main-white;
-  background-color: $main-red;
-  opacity: 0.6;
-  border-radius: 5px;
-  border: none;
-  margin: 20px 0;
-  margin-right: 10px;
-}
-
-.button-form:hover {
-  opacity: 1;
-  color: white;
-}
-
-.button-link {
-  padding: 10px 20px;
   color: $main-red;
   background-color: $main-white;
   border-radius: 5px;
@@ -43,9 +28,25 @@
   margin-right: 10px;
 }
 
-.button-link:hover {
+.button-form:hover {
   background-color: $main-red;
   color: $main-white;
+}
+
+.button-link {
+  padding: 10px 20px;
+  color: $main-white;
+  background-color: $main-red;
+  opacity: 0.8;
+  border-radius: 5px;
+  border: none;
+  margin: 20px 0;
+  margin-right: 10px;
+}
+
+.button-link:hover {
+  opacity: 1;
+  color: white;
 }
 
 .button-block {
