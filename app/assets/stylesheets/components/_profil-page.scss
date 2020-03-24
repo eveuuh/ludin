@@ -1,0 +1,93 @@
+.profil-gamenight-card {
+  background-color: $main-white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+
+ p {
+  text-align: left;
+ }
+
+ h3 {
+  color: $main-red;
+  margin-bottom: 10px;
+ }
+}
+
+.profil-tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right : 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+#profil-gamenight-upvote {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.profil-gamenight-card:hover {
+  background: $main-beige;
+}
+
+.profil-gamenight-card:hover #profil-gamenight-upvote {
+  font-size: 25px;
+}
+
+#profil-list {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  background-color: $main-white;
+  border-bottom: solid 5px $main-red;
+
+  h2 {
+    text-align: center;
+  }
+}
+
+.reviews-tile {
+  background-color: $main-white;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  border-bottom: solid 5px $main-red;
+}
+
+.profil-review-upvote {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  a {
+    color: $main-red;
+    margin-top: 10px;
+  }
+}
+
+.reviews-tile:hover .profil-review-upvote{
+  font-size: 16px;
+  img {
+    width:70px;
+  }
+}
+
+.profil-review-description {
+  flex: grow;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.profil-review-rating {
+  padding: 10px;
+  font-size: 20px;
+}
+
+
+
+
+
