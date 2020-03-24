@@ -30,9 +30,9 @@
   <p><strong>Participations closes</strong></p>
 <% end %> -->
 
-<div class="container w-100 mt-3 mb-3">
-  <div class="row row-design">
-    <div class="card-big col-6">
+<div class="container mt-3 mb-3">
+  <div class="row row-design position-relative">
+    <div class="card-big col-4">
       <div class="card-img">
         <% if @boardgame.photo.attached? %>
         <%= cl_image_tag @boardgame.photo.key, class: "gamenight-show-image" %>
@@ -51,23 +51,29 @@
 
       </div>
     </div>
-    <div class="games-specs col-6">
-      <div class="row d-flex justify-content-between offset-4">
+    <div class="col-8">
+      <div class="games-specs row justify-content-between align-items-center">
         <h2 class="gamename"><%= @boardgame.name %></h2>
         <h6 class="username"><%= link_to @user.username.capitalize, profil_path(@user) %>'s GameNight</h6>
         <h6 class="joueurs"><%= @boardgame.players_min %> - <%= @boardgame.players_max %> joueurs</h6>
       </div>
-      <div class="description">
-        <p>Description : <br> <%= @boardgame.description.capitalize %></p>
-        <div class="button3 d-flex offset-9"><% if (@gamenight.date > Time.now.to_date) && (@boardgame.players_max > @participations.size)  %>
-          <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
-            <% elsif @gamenight.date < Time.now.to_date %>
-              <p><strong>Participations closes</strong></p>
-            <% elsif (@gamenight.date == Time.now.to_date) && (@gamenight.start_time.hour - 2 >= Time.now.hour) && (@boardgame.players_max > @participations.size) %>
-              <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
-            <% else %>
-              <p><strong>Participations closes</strong></p>
-            <% end %>
+      <div class="row">
+        <div class="description col-8">
+          <p>Description : <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<%= @boardgame.description.capitalize %></p>
+        </div>
+        <div class="row align-items-end col-4">
+          <div class="button3 offset-3"><% if (@gamenight.date > Time.now.to_date) && (@boardgame.players_max > @participations.size)  %>
+            <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
+              <% elsif @gamenight.date < Time.now.to_date %>
+                <p><strong>Participations closes</strong></p>
+              <% elsif (@gamenight.date == Time.now.to_date) && (@gamenight.start_time.hour - 2 >= Time.now.hour) && (@boardgame.players_max > @participations.size) %>
+                <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
+              <% else %>
+                <p><strong>Participations closes</strong></p>
+              <% end %>
+          </div>
         </div>
       </div>
     </div>
