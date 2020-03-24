@@ -6,7 +6,11 @@
 
     <div class="col-md-4 tagcloud profil">
       <div class="dashboard-profil-tile">
-        <img class="avatar-profil" alt="avatar-profil" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+        <% if @user.photo.attached? %>
+        <%= cl_image_tag @user.photo.key, crop: :fill, class: "avatar-profil" %>
+        <% else %>
+        <%= image_tag "avatar.jpg", crop: :fill, class: "avatar-profil" %>
+        <% end %>
 <!--         <div class="user-scoring">
           <i class="fas fa-star"></i>
           <i class="fas fa-star"></i>

@@ -19,16 +19,16 @@
         <div class="user-details mt-4">
           <div class="specs">
             <i class="fas fa-map-pin"> <%= @my_locations.length %></i>
-            <p>locations</p>
+            <p>Adresses</p>
           </div>
           <div class="specs">
             <i class="fas fa-puzzle-piece"> <%= @my_boardgames.length %></i>
-            <p>Games</p>
+            <p>Jeux</p>
           </div>
         </div>
         <div class="profil-links">
           <%= link_to 'Modifier', edit_user_registration_path(@user), class: "link" %>
-          <%= link_to 'Gamenights', gamenights_path, class: "link" %>
+          <%= link_to 'Soirées', gamenights_path, class: "link" %>
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
       </div>
       <!-- location card -->
       <div class="dashboard-location-tile">
-        <h2>Mes lieux</h2>
+        <h2>Mes adresses</h2>
         <div id="tags">
           <% @my_locations.each do |location| %>
           <a href="#" class="tag-location" data-toggle="modal" data-target="#<%= location.name %>"><%= location.name %></a>
@@ -108,7 +108,7 @@
         </div>
       </div>
       <!-- Gamenight creation link -->
-      <%= link_to 'Créer gamenight', new_gamenight_path, class: "link-main text-center" %>
+      <%= link_to 'Programmer une soirée', new_gamenight_path, class: "link-main text-center" %>
     </div>
   </div>
   <!-- end -->
@@ -118,8 +118,8 @@
       <ul class="nav nav-pills mt-4" id="dashboard-nav" role="tablist">
         <li class="tab-item active">
           <a class="active text-center" id="gamenight-tab" data-toggle="pill" href="#gamenights" role="tab" aria-controls="gamenights" aria-selected="true" border="0">
-          <h3>Mes gamenights</h3>
-          <p>Vous avez <%= @gamenights_owner.length %> gamenights à venir</p>
+          <h3>Mes soirées</h3>
+          <p>Vous avez <%= @gamenights_owner.length %> soirées à venir</p>
           </a>
         </li>
         <li class="tab-item">
@@ -141,7 +141,11 @@
                     <i class="fas fa-user-friends"></i>
                     <p><%= gamenight.boardgame.players_max %></p>
                   </div>
-                  <img src="http://unsplash.it/200/120/?random" alt="" class="gamenight-image img-rounded">
+                    <% if gamenight.boardgame.photo.attached? %>
+                    <%= cl_image_tag gamenight.boardgame.photo.key, height: 150, width: 250, crop: :limit, class: "gamenight-image img-rounded" %>
+                    <% else %>
+                    <%= image_tag "game-card.png", height: 150, width: 150, crop: :limit, class: "gamenight-image img-rounded" %>
+                    <% end %>
                   <div class="gamenight-description">
                     <h3><%= gamenight.boardgame.name %></h3>
                     <p><i class="far fa-calendar-alt"> </i> <%= gamenight.date.strftime("%d-%m-%Y") %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
@@ -170,7 +174,7 @@
               <% end %>
             <% else %>
               <li class="nill-tile">
-                <p>Vous n'avez pas de gamenight à venir</p>
+                <p>Vous n'avez pas de soirée à venir</p>
               </li>
             <% end %>
           </ul>
@@ -186,11 +190,19 @@
                 <i class="far fa-calendar-alt"></i>
                 <p><%= participation.gamenight.date.strftime("%d-%m-%Y") %></p>
               </div>
-              <img src="http://unsplash.it/200/120/?random" alt="" class="participation-image img-rounded">
+              <% if participation.gamenight.boardgame.photo.attached? %>
+              <%= cl_image_tag participation.gamenight.boardgame.photo.key, height: 150, width: 250, crop: :limit, class: "participation-image img-rounded" %>
+              <% else %>
+              <%= image_tag "game-card.png",height: 150, width: 150, crop: :limit, class: "participation-image img-rounded" %>
+              <% end %>
               <div class="participation-specs">
                 <div class="participation-description">
                   <div id="owner">
-                    <img class="avatar1" alt="avatar1" src="https://kitt.lewagon.com/placeholder/users/sarahlafer" />
+                    <% if participation.gamenight.boardgame.user.photo.attached? %>
+                    <%= cl_image_tag participation.gamenight.boardgame.user.photo.key, crop: :fill, class: "avatar1" %>
+                    <% else %>
+                    <%= image_tag "avatar.jpg", crop: :fill, class: "avatar1" %>
+                    <% end %>
                     <h3><%= participation.gamenight.boardgame.user.username %> </h3>
                     <div>
                       <i class="fas fa-star"></i>
