@@ -6,6 +6,7 @@
   margin-bottom: 50px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   background-color: $main-beige;
+  -webkit-appearance: none;
 
   input {
     font-family: 'ubuntu',sans-serif;
@@ -59,5 +60,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-
