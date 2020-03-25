@@ -11,7 +11,29 @@
     <% @gamenight_geocoded.each do |gamenight| %>
       <% if (gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
         <%= link_to gamenight_path(gamenight) do %>
-        <div class="card-gamenight">
+          <div class="card">
+
+            <% gamenight_image = gamenight.boardgame.photo.attached? ? cl_image_path(gamenight.boardgame.photo.key) : "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" %>
+            <div class="card-image" style="background-image: url(<%= gamenight_image %>)">
+              <p class="category-tag"><%= gamenight.boardgame.category %></p>
+            </div>
+            <div class="card-text">
+              <h2><%= gamenight.boardgame.name %></h2>
+              <span class="date"><%= gamenight.date.strftime("Le %d-%m-%Y") %></span>
+              <p><%= gamenight.description %></p>
+            </div>
+            <div class="card-stats">
+              <div class="stat">
+                <div class="value"><i class="fas fa-user-friends"></i></div>
+                <div class="type"><%= gamenight.boardgame.players_max %></div>
+              </div>
+              <div class="stat2">
+                <div class="value"><i class="fas fa-clock"></i></div>
+                <div class="type"><%= gamenight.start_time.strftime("à %H:%M") %></div>
+              </div>
+            </div>
+          </div>
+<!--         <div class="card-gamenight">
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
           <p class="category-tag"><%= gamenight.boardgame.category %></p>
             <div class="card-gamenight-infos">
@@ -25,11 +47,32 @@
               </div>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
             </div>
-          </div>
+          </div> -->
         <% end %>
       <% elsif (gamenight.date == Time.now.to_date) && (gamenight.start_time.hour - 2 >= Time.now.hour) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
         <%= link_to gamenight_path(gamenight) do %>
-        <div class="card-gamenight">
+        <div class="card">
+            <div class="card-image">
+              <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+              <p class="category-tag"><%= gamenight.boardgame.category %></p>
+            </div>
+            <div class="card-text">
+              <h2><%= gamenight.boardgame.name %></h2>
+              <span class="date"><%= gamenight.date.strftime("Le %d-%m-%Y") %></span>
+              <p><%= gamenight.description %></p>
+            </div>
+            <div class="card-stats">
+              <div class="stat">
+                <div class="value"><i class="fas fa-user-friends"></i></div>
+                <div class="type"><%= gamenight.boardgame.players_max %></div>
+              </div>
+              <div class="stat2">
+                <div class="value">5123</div>
+                <div class="type"><%= gamenight.start_time.strftime("à %H:%M") %></div>
+              </div>
+            </div>
+          </div>
+<!--         <div class="card-gamenight">
           <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
           <p class="category-tag"><%= gamenight.boardgame.category %></p>
             <div class="card-gamenight-infos">
@@ -43,7 +86,7 @@
               </div>
               <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
             </div>
-          </div>
+          </div> -->
         <% end %>
       <% else %>
         <p></p>
