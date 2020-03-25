@@ -1,20 +1,22 @@
 .form {
   padding: 25px 25px;
-  font-family: 'ubuntu';
+  font-family: 'ubuntu',sans-serif;
   margin-top: 50px;
   border-radius: 4px;
   margin-bottom: 50px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   background-color: $main-beige;
+  -webkit-appearance: none;
 
   input {
-    font-family: 'ubuntu';
+    font-family: 'ubuntu',sans-serif;
     // border: solid 1px $main-red;
   }
 
   label {
     color: $main-red;
     font-weight: bold;
+    font-family: 'ubuntu',sans-serif;
   }
 }
 
@@ -58,5 +60,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-

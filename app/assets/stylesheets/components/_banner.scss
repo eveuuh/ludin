@@ -33,13 +33,14 @@
   // padding-bottom: 185px;
   display: flex;
   flex-direction: row;
-  opacity: 1 !important;
-  color: black;
+  opacity: 1;
+  color: white;
 }
 
 .btn.btn-flat{
     // padding: -350px;
-    background-color:#ea526f;
+  background-color:#ea526f;
+
 }
 .longform{
   width: 450px;
@@ -47,7 +48,7 @@
 }
 .search-for-banner{
   margin-top: 20px;
-  opacity:.7;
+  opacity:.9;
   display:flex;
   flex-direction:row;
 
@@ -82,7 +83,7 @@
   padding: 20px;
 }
 
-.container h2{
+#team h2{
   padding: 30px;
 }
 

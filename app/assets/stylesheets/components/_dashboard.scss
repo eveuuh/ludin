@@ -78,15 +78,16 @@
   padding: 10px 20px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(to bottom right, $main-beige, $main-red);
+  background: $main-red;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-decoration: none;
+  opacity:0.8;
 }
 
 .link-main:hover {
-  background: linear-gradient(to bottom right, $main-red, $main-beige);
   text-decoration: none;
   color: $main-white;
+  opacity:1;
 }
 
 .dashboard-game-tile {
@@ -107,7 +108,7 @@
   margin-bottom: 30px;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
   h2 {
-    color: $main-blue;
+    color: $main-red;
   }
 }
 
