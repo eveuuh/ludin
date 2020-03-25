@@ -1,9 +1,12 @@
+<div class="container">
 <div class="row">
   <div class="col-md-6 offset-3 form">
+    <h1 class="title">Ajoute un lieu </h1>
     <%= simple_form_for(location) do |f| %>
-      <%= f.input :name %>
-      <%= f.input :address %>
+      <%= f.input :name, :label => "Nom" %>
+      <%= f.input :address, :label => "Adresse" %>
       <%= f.submit "Enregistrer", class: "button-form"%>
     <% end %>
   </div>
+</div>
 </div>

@@ -7,6 +7,12 @@ a:hover {
   text-decoration: none;
   color: black;
 }
+
+body {
+  height:100vh;
+  font-family:'Ubuntu', sans-serif;
+}
+
 .title {
   padding: 15px 0;
   color: $main-red;
