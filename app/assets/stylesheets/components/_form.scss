@@ -1,6 +1,6 @@
 .form {
   padding: 25px 25px;
-  font-family: 'ubuntu';
+  font-family: 'ubuntu',sans-serif;
   margin-top: 50px;
   border-radius: 4px;
   margin-bottom: 50px;
@@ -8,13 +8,14 @@
   background-color: $main-beige;
 
   input {
-    font-family: 'ubuntu';
+    font-family: 'ubuntu',sans-serif;
     // border: solid 1px $main-red;
   }
 
   label {
     color: $main-red;
     font-weight: bold;
+    font-family: 'ubuntu',sans-serif;
   }
 }
 

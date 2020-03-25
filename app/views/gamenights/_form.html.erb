@@ -1,5 +1,7 @@
+<div class="container">
 <div class="row">
-  <div class="col-md-6 offset-3 form">
+  <div class="col-md-8 offset-2 form">
+    <h1 class="title">Creer ta soirée </h1>
     <%= simple_form_for(gamenight) do |f| %>
       <%= f.input :date, as: :date, html5: true %>
       <%= f.input :start_time, as: :time %>
@@ -15,4 +17,4 @@
     <% end %>
   </div>
 </div>
-
+</div>
