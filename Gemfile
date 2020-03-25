@@ -20,8 +20,6 @@ gem 'pg_search', '~> 2.3.0'
 
 gem 'cloudinary', '~> 1.12.0'
 gem 'jquery-rails'
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
