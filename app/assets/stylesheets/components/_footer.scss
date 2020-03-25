@@ -1,5 +1,5 @@
 .footer {
-  background: linear-gradient(90deg, #ff8a5b, #ea526f);
+  background: linear-gradient(90deg, #fceade, #ea526f);
   // position: fixed;
   display: flex;
   align-items: center;
@@ -26,7 +26,7 @@
 }
 .footer-links a:hover {
   opacity: 1;
-  color: $main-blue;
+  color: $main-red;
 }
 .footer .fa-heart {
   color: white;
