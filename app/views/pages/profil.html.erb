@@ -1,5 +1,9 @@
 <div class="container">
-  <h1 class="mt-4 mb-4 title">Profil de <%= @user.username %></h1>
+  <% if @user.username.blank? %>
+    <h1 class="mt-4 mb-4 title">Profil d'un inconnu</h1>
+  <% else %>
+    <h1 class="mt-4 mb-4 title">Profil de <%= @user.username %></h1>
+  <% end %>
   <div class="row">
 
     <!-- Profil card -->
@@ -82,11 +86,13 @@
   <div class="row">
     <div class="col-md-12 mt-4 mb-4">
       <div class="reviews-tile">
-        <h2 class="title">Commentaires sur ses soirées</h2>
+          <h2 class="title">
+            <div class="ml-3">
+              Commentaires sur ses soirées
+            </div>
+          </h2>
         <ul class="list-unstyled">
-          <% if @user_full_gamenights.length >= 1 %>
             <% @user_full_gamenights.each do |gamenights| %>
-              <% if gamenights.length >= 1 %>
                 <% gamenights.each do |gamenight| %>
                   <% gamenight.participations.each do |participation| %>
                     <li class="gamenight mb-1">
@@ -150,13 +156,7 @@
                     </li>
                   <% end %>
                 <% end %>
-              <% else %>
-                <li class="nill-tile-bb pt-5"><p>Pas de commentaires</p></li>
-              <% end %>
             <% end %>
-          <% else %>
-            <li class="nill-tile-bb pt-5"><p>Pas de commentaires</p></li>
-          <% end %>
           </ul>
         </div>
       </div>
