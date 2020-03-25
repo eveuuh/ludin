@@ -1,7 +1,7 @@
     .card {
       position: relative;
       display: grid;
-      grid-template-columns: 320px;
+      grid-template-columns: auto;
       grid-template-rows: 210px 150px 80px;
       grid-template-areas: "image" "text" "stats";
       border-radius: 10px;
@@ -11,7 +11,7 @@
       text-align: center;
       transition: 0.5s ease;
       cursor: pointer;
-      margin:10px;
+      margin:0 10px;
     }
 
     .card-image {
