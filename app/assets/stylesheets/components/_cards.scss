@@ -1,0 +1,99 @@
+    .card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 300px;
+      grid-template-rows: 210px 150px 80px;
+      grid-template-areas: "image" "text" "stats";
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 0 5px rgba(0,0,0,0.4);
+      font-family: 'Ubuntu', sans-serif;
+      text-align: center;
+      transition: 0.5s ease;
+      cursor: pointer;
+      margin:30px;
+    }
+
+    .card-image {
+      grid-area: image;
+    }
+    .card-text {
+      grid-area: text;
+    }
+    .card-stats {
+      grid-area: stats;
+    }
+
+    .card-image {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .card-text {
+      grid-area: text;
+      margin: 25px;
+    }
+    .card-text .date {
+      color: rgb(255, 7, 110);
+      font-size:13px;
+    }
+    .card-text p {
+      color: grey;
+      font-size:15px;
+      font-weight: 300;
+    }
+    .card-text h2 {
+      margin-top:0px;
+      font-size:28px;
+    }
+
+    .card-stats {
+      grid-area: stats;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+      background-color: $main-red;
+      width: 100%;
+    }
+
+    .card-stats .stat {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      padding:10px;
+    }
+
+
+    .card-stats .stat2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      padding:10px;
+      border-right: solid 1px white;
+      border-left: solid 1px white;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
+    .category-tag {
+      font-size:13px;
+      font-weight: 500;
+      position: absolute;
+      top: 10px; right: 30px;
+      color: $main-white;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background-color: $main-blue;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
