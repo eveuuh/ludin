@@ -2,7 +2,7 @@
       position: relative;
       display: grid;
       grid-template-columns: auto;
-      grid-template-rows: 210px 150px 80px;
+      grid-template-rows: 200px 160px 60px;
       grid-template-areas: "image" "text" "stats";
       border-radius: 10px;
       background: white;
@@ -11,7 +11,7 @@
       text-align: center;
       transition: 0.5s ease;
       cursor: pointer;
-      margin:0 10px;
+      margin: 10px;
     }
 
     .card-image {
@@ -46,7 +46,7 @@
     }
     .card-text h2 {
       margin-top:0px;
-      font-size:28px;
+      font-size:24px;
     }
 
     .card-stats {
@@ -96,4 +96,13 @@
       border-radius: 4px;
       background-color: $main-blue;
       box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .avatar-card {
+      width: 70px;
+      border-radius: 50px;
+      border: solid 2px $main-red;
+      position: absolute;
+      left: 40%;
+      top: 36%;
     }
