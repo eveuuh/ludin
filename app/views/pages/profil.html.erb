@@ -87,8 +87,8 @@
           <% if @user_full_gamenights.length >= 1 %>
             <% @user_full_gamenights.each do |gamenights| %>
               <% if gamenights.length >= 1 %>
-              <% gamenights.each do |gamenight| %>
-                <% gamenight.participations.each do |participation| %>
+                <% gamenights.each do |gamenight| %>
+                  <% gamenight.participations.each do |participation| %>
                     <li class="gamenight mb-1">
                       <div class="profil-review-upvote text-center border-right">
                         <% if participation.gamenight.boardgame.user.photo.attached? %>
@@ -148,8 +148,8 @@
                         <% end %>
                       </div>
                     </li>
+                  <% end %>
                 <% end %>
-              <% end %>
               <% else %>
                 <li class="nill-tile-bb pt-5"><p>Pas de commentaires</p></li>
               <% end %>

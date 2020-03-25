@@ -1,7 +1,7 @@
 <div class="container">
 <div class="row">
   <div class="col-md-8 offset-2 form">
-    <h1 class="title">Edit <%= resource_name.to_s.humanize %></h1>
+    <h1 class="title">Modifier mon compte</h1>
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= f.error_notification %>
 
@@ -13,29 +13,33 @@
         <% end %>
         <%= f.input :username,
                     hint: "leave it blank if you don't want to change it",
+                    label: "Pseudo",
                     required: false,
                     autofocus: true,
                     input_html: { autocomplete: "new-username" } %>
         <%= f.input :password,
+                    label: "Nouveau mot de passe",
                     hint: "leave it blank if you don't want to change it",
                     required: false,
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :password_confirmation,
                     required: false,
+                    label: "Confirmation du nouveau mot de passe",
                     input_html: { autocomplete: "new-password" } %>
         <%= f.input :current_password,
                     hint: "we need your current password to confirm your changes",
+                    label: "Mot de passe actuel",
                     required: true,
                     input_html: { autocomplete: "current-password" } %>
         <%= f.input :photo, as: :file %>
       </div>
       <div id="links">
         <div class="form-actions">
-          <%= f.button :submit, "Update", class: "button-form" %>
+          <%= f.button :submit, "Modifier", class: "button-form" %>
         </div>
         <div class="form-links">
-          <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button-link" %>
-          <%= link_to "Back", :back, class: "button-link" %>
+          <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "button-link" %>
+          <%= link_to "Retour au dashboard", :back, class: "button-link" %>
         </div>
       </div>
 

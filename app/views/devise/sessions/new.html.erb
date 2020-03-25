@@ -2,21 +2,22 @@
 <div class="container">
 <div class="row">
   <div class="col-md-8 offset-2 form">
-    <h1 class="title">Log in</h1>
+    <h1 class="title">Connexion</h1>
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email,
-                    required: false,
+                    required: true,
                     autofocus: true,
                     input_html: { autocomplete: "email" } %>
         <%= f.input :password,
-                    required: false,
+                    required: true,
+                    label: "Mot de passe",
                     input_html: { autocomplete: "current-password" } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        <%= f.input :remember_me, label: "Rester connecté", as: :boolean if devise_mapping.rememberable? %>
       </div>
       <div class="button-block">
         <div class="form-actions">
-          <%= f.button :submit, "Log in", class: "button-form"%>
+          <%= f.button :submit, "S'identifier", class: "button-form"%>
         </div>
       <% end %>
       <%= render "devise/shared/links" %>
