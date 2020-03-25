@@ -1,18 +1,14 @@
 .mapboxgl-popup {
   max-width: 200px;
-  border : solid 2px #EF629F;
-  padding: 8px;
-  border-radius: 5px;
-  background:  $main-beige;
-  color: $main-red;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
 }
 
 .mapboxgl-popup-content {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 8px;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
-  background: linear-gradient(to bottom right, $main-beige, $main-red);
-
 }
 
 .main-container {
@@ -26,4 +22,21 @@
   position: sticky;
   top: 0;
   width:40vw;
+}
+
+.pop-title {
+  font-size: 20px;
+  color: black;
+}
+
+.pop-time {
+  font-size: 18px;
+  color: rgb(255, 7, 110);
+}
+
+.pop-user {
+  font-size: 16px;
+  color: grey;
+  margin-top: 0;
+  margin-bottom: 0;
 }

@@ -16,6 +16,11 @@
             <% gamenight_image = gamenight.boardgame.photo.attached? ? cl_image_path(gamenight.boardgame.photo.key) : "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" %>
             <div class="card-image" style="background-image: url(<%= gamenight_image %>)">
               <p class="category-tag"><%= gamenight.boardgame.category %></p>
+              <% if gamenight.boardgame.user.photo.attached? %>
+              <%= cl_image_tag gamenight.boardgame.user.photo.key, crop: :fill, class: "avatar-card" %>
+              <% else %>
+              <%= image_tag "avatar.jpg", crop: :fill, class: "avatar-card" %>
+              <% end %>
             </div>
             <div class="card-text">
               <h2><%= gamenight.boardgame.name %></h2>
@@ -29,7 +34,7 @@
               </div>
               <div class="stat2">
                 <div class="value"><i class="fas fa-clock"></i></div>
-                <div class="type"><%= gamenight.start_time.strftime("à %H:%M") %></div>
+                <div class="type"><%= gamenight.start_time.strftime("%H:%M") %></div>
               </div>
             </div>
           </div>
@@ -68,7 +73,7 @@
               </div>
               <div class="stat2">
                 <div class="value">5123</div>
-                <div class="type"><%= gamenight.start_time.strftime("à %H:%M") %></div>
+                <div class="type"><%= gamenight.start_time.strftime("%H:%M") %></div>
               </div>
             </div>
           </div>
