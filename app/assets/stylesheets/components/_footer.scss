@@ -1,6 +1,6 @@
 .footer {
   background: linear-gradient(90deg, #ff9472, #f2709c);
-  position: bottom;
+  position: absolute!important;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,8 +9,9 @@
   color: white;
   width: 100%;
   left: 0;
-  bottom: 0;
-  margin: auto;
+  bottom: 0!important;
+  margin: 100px auto 0 auto;
+
 
 }
 .footer-links {
@@ -32,3 +33,7 @@
   color: white;
 }
 
+body {
+  position:relative;
+  min-height:100vh;
+}
