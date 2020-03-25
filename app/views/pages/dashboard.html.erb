@@ -80,7 +80,7 @@
         <h2>Mes adresses</h2>
         <div id="tags">
           <% @my_locations.each do |location| %>
-          <a href="#" class="tag-location" data-toggle="modal" data-target="#<%= location.name %>"><%= location.name %></a>
+          <a href="#" class="tag" data-toggle="modal" data-target="#<%= location.name %>"><%= location.name %></a>
           <div class="modal fade" id="<%= location.name %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content" id="game-modal">
@@ -95,15 +95,15 @@
                   <p><%= location.address %></p>
                 </div>
                 <div class="modal-footer">
-                  <%= link_to 'Supprimer', location_path(location), class: "location-modal-button", method: :delete, data: { confirm: "Vous êtes sûr ?"} %>
-                  <%= link_to 'Editer', edit_location_path(location), class: "location-modal-button" %>
+                  <%= link_to 'Supprimer', location_path(location), class: "game-modal-button", method: :delete, data: { confirm: "Vous êtes sûr ?"} %>
+                  <%= link_to 'Editer', edit_location_path(location), class: "game-modal-button" %>
                 </div>
               </div>
             </div>
           </div>
           <% end %>
           <%= link_to new_location_path do %>
-            <p class="new-tag-location">Ajouter un lieu <i class="fas fa-plus"></i></p>
+            <p class="new-tag">Ajouter un lieu <i class="fas fa-plus"></i></p>
           <% end %>
         </div>
       </div>
@@ -142,9 +142,9 @@
                     <p><%= gamenight.boardgame.players_max %></p>
                   </div>
                     <% if gamenight.boardgame.photo.attached? %>
-                    <%= cl_image_tag gamenight.boardgame.photo.key, height: 150, width: 250, crop: :limit, class: "gamenight-image img-rounded" %>
+                    <%= cl_image_tag gamenight.boardgame.photo.key, height: 150, width: 200, crop: :limit, class: "gamenight-image img-rounded" %>
                     <% else %>
-                    <%= image_tag "game-card.png", height: 150, width: 150, crop: :limit, class: "gamenight-image img-rounded" %>
+                    <%= image_tag "game-card.png", height: 150, width: 200, crop: :limit, class: "gamenight-image img-rounded" %>
                     <% end %>
                   <div class="gamenight-description">
                     <h3><%= gamenight.boardgame.name %></h3>
@@ -191,9 +191,9 @@
                 <p><%= participation.gamenight.date.strftime("%d-%m-%Y") %></p>
               </div>
               <% if participation.gamenight.boardgame.photo.attached? %>
-              <%= cl_image_tag participation.gamenight.boardgame.photo.key, height: 150, width: 250, crop: :limit, class: "participation-image img-rounded" %>
+              <%= cl_image_tag participation.gamenight.boardgame.photo.key, height: 150, width: 200, crop: :limit, class: "participation-image img-rounded" %>
               <% else %>
-              <%= image_tag "game-card.png",height: 150, width: 150, crop: :limit, class: "participation-image img-rounded" %>
+              <%= image_tag "game-card.png",height: 150, width: 200, crop: :limit, class: "participation-image img-rounded" %>
               <% end %>
               <div class="participation-specs">
                 <div class="participation-description">
