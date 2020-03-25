@@ -5,12 +5,12 @@
       <%= simple_form_for(@participation) do |f| %>
         <div class="form-inputs">
         <%= f.input :description, as: :text, required: true %>
-        <%= f.input :rating, :collection => [1, 2, 3, 4, 5], required: true %>
+        <%= f.input :rating, :collection => [1, 2, 3, 4, 5], required: true, :label => "Note" %>
         </div>
         <div class="button-block">
           <div class="form-actions">
             <% if (@participation.gamenight.date < Time.now.to_date) && (@participation.rating.blank?) %>
-              <%= f.submit "Note ta soirée", class: "button-form" %>
+              <%= f.submit "Valider", class: "button-form" %>
             <% end %>
           </div>
         </div>

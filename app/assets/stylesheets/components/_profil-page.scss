@@ -87,7 +87,19 @@
   font-size: 20px;
 }
 
+//******************texte par défaut**************************//
 
-
-
-
+.nill-tile-bb {
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: $main-white;
+  p {
+    color: $main-red;
+    font-weight: bold;
+    margin: 0;
+  }
+}
