@@ -4,10 +4,10 @@
     <h1 class="title">Ajoute ton jeu</h1>
     <%= simple_form_for(boardgame) do |f| %>
       <%= f.input :name, :label => "Nom" %>
-      <%= f.input :category, :label => "Categorie", :collection =>["Stratégie", "Ambiance","Cartes", "Plateau", "Dés", "Adresse","Enquête", "Rôle","Gestion","Connaissance"] %>
+      <%= f.input :category, :label => "Categorie", :collection =>["Stratégie", "Ambiance","Cartes", "Plateau", "Dés", "Adresse","Enquête", "Rôle","Gestion","Connaissance"], input_html: { class: "select2" } %>
       <%= f.input :age %>
-      <%= f.input :players_min, :label => "Joueurs Minimum" %>
-      <%= f.input :players_max, :label => "Joueurs Maximum" %>
+      <%= f.input :players_min, :label => "Joueurs Min" %>
+      <%= f.input :players_max, :label => "Joueurs Max" %>
       <%= f.input :description %>
       <%= f.input :photo, as: :file %>
       <%= f.submit "Enregistrer", class: "button-form"%>
