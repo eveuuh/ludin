@@ -4,15 +4,15 @@
       <h1 class="title">Creer ta soirée </h1>
       <%= simple_form_for(gamenight) do |f| %>
         <%= f.input :date, as: :date, html5: true %>
-        <%= f.input :start_time, input_html: { class: "select2" } %>
-        <%= f.input :end_time, input_html: { class: "select2" } %>
+        <%= f.input :start_time, :label => "Heure de début", input_html: { class: "select2" } %>
+        <%= f.input :end_time, :label => "Heure de fin", input_html: { class: "select2" } %>
         <%= f.input :description, as: :text %>
-        <%= f.input :location_id, :collection => @locations_user, input_html: { class: "select2" } %>
-        <%= f.input :boardgame_id, :collection => @boardgames_user, input_html: { class: "select2" } %>
+        <%= f.input :location_id, :collection => @locations_user, :label => "Adresse", input_html: { class: "select2" } %>
+        <%= f.input :boardgame_id, :collection => @boardgames_user, :label => "Jeux", input_html: { class: "select2" } %>
         <% if gamenight.location_id.blank? %>
-          <%= f.submit "Créer votre soirée", class: "button-form"%>
+          <%= f.submit "Créer ma soirée", class: "button-form"%>
         <% else %>
-          <%= f.submit "Modifier votre soirée", class: "button-form"%>
+          <%= f.submit "Modifier ma soirée", class: "button-form"%>
         <% end %>
       <% end %>
     </div>
