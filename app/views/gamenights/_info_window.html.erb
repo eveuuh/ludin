@@ -1,2 +1,9 @@
-<p><%= gamenight.boardgame.name %></p>
-<p><%= gamenight.location.address %></p>
+<div class="container">
+  <div>
+    <p class="pop-title"><%= gamenight.boardgame.name %></p>
+    <p class="pop-time"><%= gamenight.date.strftime("Le %d-%m-%Y") %> <%= gamenight.start_time.strftime("à %H:%M") %></p>
+    <p class="pop-user">Chez <%= gamenight.boardgame.user.username %></p>
+  </div>
+</div>
+
+
