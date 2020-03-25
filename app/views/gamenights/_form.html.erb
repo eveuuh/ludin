@@ -2,11 +2,11 @@
   <div class="col-md-6 offset-3 form">
     <%= simple_form_for(gamenight) do |f| %>
       <%= f.input :date, as: :date, html5: true %>
-      <%= f.input :start_time, as: :time, class: "select2 js-example-responsive" %>
-      <%= f.input :end_time, as: :time, class: "select2 js-example-responsive" %>
+      <%= f.input :start_time, input_html: { class: "select2" } %>
+      <%= f.input :end_time, input_html: { class: "select2" } %>
       <%= f.input :description, as: :text %>
-      <%= f.input :location_id, :collection => @locations_user, class: "select2 js-example-responsive" %>
-      <%= f.input :boardgame_id, :collection => @boardgames_user, class: "select2 js-example-responsive" %>
+      <%= f.input :location_id, :collection => @locations_user, input_html: { class: "select2" } %>
+      <%= f.input :boardgame_id, :collection => @boardgames_user, input_html: { class: "select2" } %>
       <% if gamenight.location_id.blank? %>
         <%= f.submit "Créer votre soirée", class: "button-form"%>
       <% else %>
