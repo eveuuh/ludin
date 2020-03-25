@@ -240,6 +240,12 @@ a:hover {
   padding: 10px;
   transition: all 0.3s ease;
   border-radius: 3px;
+  p {
+    color:$main-red;
+  }
+  h3 {
+    color:$main-red;
+  }
 }
 
 .gamenight:hover {
@@ -352,7 +358,7 @@ a:hover {
 #place {
   display: flex;
   align-items: center;
-
+  color: $main-red;
   p{
     margin-right: 10px;
   }
@@ -438,6 +444,7 @@ a:hover {
   border: solid 1px $main-red;
   border-radius: 4px;
   background-color: $main-white;
+  font-family: 'ubuntu';
 }
 
 .modal-details {
@@ -475,6 +482,7 @@ a:hover {
   border: solid 1px $main-blue;
   border-radius: 4px;
   background-color: $main-white;
+  font-family: 'ubuntu';
 }
 
 .location-modal-button {
