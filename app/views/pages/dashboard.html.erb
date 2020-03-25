@@ -10,11 +10,13 @@
         <% end %>
         <h3><%= @user.username %></h3>
         <div class="user-scoring">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="far fa-star"></i>
+          <% if @user.calculation_global_rating.nan? %>
+              <h5><em>(nouveau membre)</em></h5>
+            <% elsif @user.has_a_global_rating? %>
+              <h3>Fiabilité : <%= @user.calculation_global_rating %>/5</h3>
+            <% else %>
+              <h3>(nouveau membre)</h3>
+            <% end %>
         </div>
         <div class="user-details mt-4">
           <div class="specs">
