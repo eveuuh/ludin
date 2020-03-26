@@ -11,10 +11,10 @@ User.destroy_all
 puts 'Find some photos...'
 
 # photos
-file_1 = URI.open('https://avatars1.githubusercontent.com/u/58520849?s=460&u=1301c93ff900425c348f99a20ed0abcd139b6e4b&v=4')
+file_1 = URI.open('https://avatars3.githubusercontent.com/u/58520849?v=4')
 file_2 = URI.open('https://avatars3.githubusercontent.com/u/59261819?v=4')
-file_3 = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1580120746/mzwtpnxkz9ugmcstes1l.jpg')
-file_4 = URI.open('https://avatars0.githubusercontent.com/u/59578436?v=4')
+file_3 = URI.open('https://avatars1.githubusercontent.com/u/59608059?v=4')
+file_4 = URI.open('https://avatars0.githubusercontent.com/u/50374101?v=4')
 
 puts 'Creating some users...'
 
@@ -26,12 +26,12 @@ user2 = User.new({username: "David", email: "david@gmail.com", password: "passwo
 user2.photo.attach(io: file_2, filename: 'david.png', content_type: 'image/png')
 user2.save!
 
-user3 = User.new({username: "Patrick", email: "patrick@gmail.com", password: "password" })
-user3.photo.attach(io: file_3, filename: 'patrick.png', content_type: 'image/png')
+user3 = User.new({username: "Estelle", email: "estelle@gmail.com", password: "password" })
+user3.photo.attach(io: file_3, filename: 'estelle.png', content_type: 'image/png')
 user3.save!
 
-user4 = User.new({username: "Théo", email: "theo@gmail.com", password: "password" })
-user4.photo.attach(io: file_4, filename: 'theo.png', content_type: 'image/png')
+user4 = User.new({username: "Matti", email: "matti@gmail.com", password: "password" })
+user4.photo.attach(io: file_4, filename: 'matti.png', content_type: 'image/png')
 user4.save!
 
 puts "#{User.count} users have been created !"
