@@ -12,7 +12,7 @@
       <% if (gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
         <%= link_to gamenight_path(gamenight) do %>
           <div class="card">
-            <% gamenight_image = gamenight.boardgame.photo.attached? ? cl_image_path(gamenight.boardgame.photo.key) : "game-card.png" %>
+            <% gamenight_image = gamenight.boardgame.photo.attached? ? cl_image_path(gamenight.boardgame.photo.key) : image_path("game-card.png") %>
             <div class="card-image" style="background-image: url(<%= gamenight_image %>)">
               <p class="category-tag"><%= gamenight.boardgame.category %></p>
               <% if gamenight.boardgame.user.photo.attached? %>
