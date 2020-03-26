@@ -12,9 +12,9 @@ puts 'Find some photos...'
 
 # photos
 file_1 = URI.open('https://avatars1.githubusercontent.com/u/58520849?s=460&u=1301c93ff900425c348f99a20ed0abcd139b6e4b&v=4')
-file_2 = URI.open('https://avatars0.githubusercontent.com/u/58363552?s=460&u=9e561ac312d0e2c5078020b04f0cb8183817d848&v=4')
-file_3 = URI.open('https://avatars1.githubusercontent.com/u/58553969?s=460&v=4')
-file_4 = URI.open('https://avatars2.githubusercontent.com/u/57662511?s=460&u=d3701998a8288749855f015129381d9c7997c4af&v=4')
+file_2 = URI.open('https://avatars3.githubusercontent.com/u/59261819?v=4')
+file_3 = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1580120746/mzwtpnxkz9ugmcstes1l.jpg')
+file_4 = URI.open('https://avatars0.githubusercontent.com/u/59578436?v=4')
 
 puts 'Creating some users...'
 
@@ -22,16 +22,16 @@ user1 = User.new({username: "Eve", email: "eve@gmail.com", password: "password" 
 user1.photo.attach(io: file_1, filename: 'eve.png', content_type: 'image/png')
 user1.save!
 
-user2 = User.new({username: "Kévin", email: "kevin@gmail.com", password: "password" })
-user2.photo.attach(io: file_2, filename: 'kevin.png', content_type: 'image/png')
+user2 = User.new({username: "David", email: "david@gmail.com", password: "password" })
+user2.photo.attach(io: file_2, filename: 'david.png', content_type: 'image/png')
 user2.save!
 
-user3 = User.new({username: "Bertrand", email: "bertrand@gmail.com", password: "password" })
-user3.photo.attach(io: file_3, filename: 'bertrand.png', content_type: 'image/png')
+user3 = User.new({username: "Patrick", email: "patrick@gmail.com", password: "password" })
+user3.photo.attach(io: file_3, filename: 'patrick.png', content_type: 'image/png')
 user3.save!
 
-user4 = User.new({username: "Sébastien", email: "sebastien@gmail.com", password: "password" })
-user4.photo.attach(io: file_4, filename: 'sebastien.png', content_type: 'image/png')
+user4 = User.new({username: "Théo", email: "theo@gmail.com", password: "password" })
+user4.photo.attach(io: file_4, filename: 'theo.png', content_type: 'image/png')
 user4.save!
 
 puts "#{User.count} users have been created !"
@@ -142,6 +142,19 @@ boardgame_8 = Boardgame.new({
 boardgame_8.photo.attach(io: file_12, filename: 'trivial.jpg', content_type: 'image/jpg')
 boardgame_8.save!
 
+file_13 = URI.open('https://cdn3.philibertnet.com/443132-large_default/jungle-speed.jpg')
+boardgame_9 = Boardgame.new({
+  name: "Jungle Speed",
+  description: "Jungle Speed est un grand classique des jeux de société qui allie simplicité, adrénaline, réflexes et observation. Jouez vos cartes et soyez le plus rapide à vous saisir du totem.",
+  players_min: 2,
+  players_max: 10,
+  category: "Ambiance",
+  age: "7 ans et +",
+  user_id: user2.id
+})
+boardgame_9.photo.attach(io: file_13, filename: 'jungle.jpg', content_type: 'image/jpg')
+boardgame_9.save!
+
 puts "#{Boardgame.count} boardgames have been created !"
 
 puts 'Creating some locations...'
@@ -172,8 +185,8 @@ location_3 = Location.new({
 location_3.save!
 
 location_4 = Location.new({
-  name: "Le Wagon",
-  address: "167 Rue Paradis, 13006 Marseille",
+  name: "appart estaque",
+  address: "72 Plage de l'Estaque, 13016 Marseille",
   user_id: user2.id
 
 })
@@ -267,10 +280,10 @@ gamenight_5 = Gamenight.new({
 gamenight_5.save!
 
 gamenight_6 = Gamenight.new({
-  date: "2020-06-24",
-  start_time:"12:00:00",
-  end_time: "20:00:00",
-  description: "Après-midi Time's Up pour fêter mon anniversaire",
+  date: "2020-03-28",
+  start_time:"19:00:00",
+  end_time: "22:00:00",
+  description: "Soirée détente bières-pizzas",
   location_id: location_6.id,
   boardgame_id: boardgame_6.id
 })
@@ -295,6 +308,16 @@ gamenight_8 = Gamenight.new({
   boardgame_id: boardgame_8.id
 })
 gamenight_8.save!
+
+gamenight_9 = Gamenight.new({
+  date: "2020-03-28",
+  start_time:"20:00:00",
+  end_time: "22:00:00",
+  description: "Soirée Jungle Speed pour décompresser après la semaine de taf",
+  location_id: location_4.id,
+  boardgame_id: boardgame_9.id
+})
+gamenight_9.save!
 
 puts "#{Gamenight.count} gamenights have been created !"
 
