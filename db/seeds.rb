@@ -8,13 +8,15 @@ Boardgame.destroy_all
 Location.destroy_all
 User.destroy_all
 
-puts 'Creating some users...'
+puts 'Find some photos...'
 
 # photos
-file_1 = URI.open("https://media-exp1.licdn.com/dms/image/C5603AQHGtG5xDFaCoQ/profile-displayphoto-shrink_200_200/0?e=1590624000&v=beta&t=8NO3a_1xAB4VjMhqAicVwcRgipFyJJ9qaBui0tGT9dM")
-file_2 = URI.open('https://media-exp1.licdn.com/dms/image/C5603AQE-cZ6NtSOuCw/profile-displayphoto-shrink_200_200/0?e=1590624000&v=beta&t=uurZLfxIa_ylzf24p9owIVYjhL0IObfTK2cqUnDCuQQ')
-file_3 = URI.open('https://media-exp1.licdn.com/dms/image/C5603AQGookoe-K8dLw/profile-displayphoto-shrink_200_200/0?e=1590624000&v=beta&t=VF775I2vJEVdbh3NKuZA1T9pFujiBsj-rQZLdfAabtA')
-file_4 = URI.open('https://media-exp1.licdn.com/dms/image/C4D03AQHaRXdyF-08Vw/profile-displayphoto-shrink_200_200/0?e=1590624000&v=beta&t=uRIR7DNeeNi0w3Bm5WF25en2KS07E-UZN8MCadyYy1Y')
+file_1 = URI.open('https://avatars1.githubusercontent.com/u/58520849?s=460&u=1301c93ff900425c348f99a20ed0abcd139b6e4b&v=4')
+file_2 = URI.open('https://avatars0.githubusercontent.com/u/58363552?s=460&u=9e561ac312d0e2c5078020b04f0cb8183817d848&v=4')
+file_3 = URI.open('https://avatars1.githubusercontent.com/u/58553969?s=460&v=4')
+file_4 = URI.open('https://avatars2.githubusercontent.com/u/57662511?s=460&u=d3701998a8288749855f015129381d9c7997c4af&v=4')
+
+puts 'Creating some users...'
 
 user1 = User.new({username: "Eve", email: "eve@gmail.com", password: "password" })
 user1.photo.attach(io: file_1, filename: 'eve.png', content_type: 'image/png')
@@ -36,7 +38,7 @@ puts "#{User.count} users have been created !"
 
 puts 'Creating some boardgames...'
 
-# file_4 = URI.open('https://i.ebayimg.com/images/g/tzYAAOSwqNxeD08j/s-l400.jpg')
+file_5 = URI.open('https://cdn2.philibertnet.com/307631-large_default/dixit.jpg')
 boardgame_1 = Boardgame.new({
   name: "Dixit",
   description: "Jeux de déduction. Le but est de deviner à qui appartient chaque carte posées sur la table. Vous ne pourrez vous fiez qu'aux illustrations des cartes et à l'indice donné par le conteur",
@@ -46,10 +48,10 @@ boardgame_1 = Boardgame.new({
   age: "8 ans et +",
   user_id: user1.id
 })
-# boardgame_1.photo.attach(io: file_4, filename: 'riskgot.jpg', content_type: 'image/jpg')
+boardgame_1.photo.attach(io: file_5, filename: 'dixit.jpg', content_type: 'image/jpg')
 boardgame_1.save!
 
-# file_5 = URI.open('https://static.fnac-static.com/multimedia/Images/FR/MDM/5f/2b/38/3681119/1505-1/tsp20200227140744/Jeu-de-strategie-Hasbro-Risk.jpg')
+file_6 = URI.open('https://cdn1.philibertnet.com/314274-large_default/takenoko.jpg')
 boardgame_2 = Boardgame.new({
   name: "Takenoko",
   description: "Jeux de plateau. Vous êtes un jardinier japonais du Moyen-Âge en charge de l'aménagement d'une bambouseraie. Votre but : prendre soin du nouveau locataire des jardins de l'Empereur : un panda. Attention, il est très affamé",
@@ -59,10 +61,10 @@ boardgame_2 = Boardgame.new({
   age: "8 ans et +",
   user_id: user1.id
 })
-# boardgame_2.photo.attach(io: file_5, filename: 'risk.jpg', content_type: 'image/jpg')
+boardgame_2.photo.attach(io: file_6, filename: 'takenoko.jpg', content_type: 'image/jpg')
 boardgame_2.save!
 
-# file_6 = URI.open('https://images-na.ssl-images-amazon.com/images/I/81G3u55HEHL._AC_SX425_.jpg')
+file_7 = URI.open('https://cdn1.philibertnet.com/339595-large_default/risk-vf.jpg')
 boardgame_3 = Boardgame.new({
   name: "Risk",
   description: "Le jeu de conquête stratégique de référence ! Déplacez vos régiments, choisissez votre stratégie et que la conquête du monde commence ! Attendez-vous à passer de très longues parties autour de la table",
@@ -72,10 +74,10 @@ boardgame_3 = Boardgame.new({
   age: "10 ans et +",
   user_id: user2.id
 })
-# boardgame_3.photo.attach(io: file_6, filename: 'catan.jpg', content_type: 'image/jpg')
+boardgame_3.photo.attach(io: file_7, filename: 'risk.jpg', content_type: 'image/jpg')
 boardgame_3.save!
 
-# file_7 = URI.open('https://images-na.ssl-images-amazon.com/images/I/81G3u55HEHL._AC_SX425_.jpg')
+file_8 = URI.open('https://cdn3.philibertnet.com/434838-large_default/dungeons-dragons-vaults-of-dragons.jpg')
 boardgame_4 = Boardgame.new({
   name: "Dungeons & Dragons",
   description: "Jeu de rôle. A la tête de votre faction, fouillez la cité de Waterdeep à la recherche de trésors enfouis et dissimulés. Mais soyez plus rapides que vos adversaires !",
@@ -85,10 +87,10 @@ boardgame_4 = Boardgame.new({
   age: "14 ans et +",
   user_id: user2.id
 })
-# boardgame_4.photo.attach(io: file_7, filename: 'catan.jpg', content_type: 'image/jpg')
+boardgame_4.photo.attach(io: file_8, filename: 'dungeon.jpg', content_type: 'image/jpg')
 boardgame_4.save!
 
-# file_8 = URI.open('https://images-na.ssl-images-amazon.com/images/I/81G3u55HEHL._AC_SX425_.jpg')
+file_9 = URI.open('https://cdn2.philibertnet.com/378184-large_default/river-dragons.jpg')
 boardgame_5 = Boardgame.new({
   name: "River Dragons",
   description: "Chaque année dans le Delta du Mékong, un grand concours oppose les plus vaillants jeunes gens du royaume. En construisant les passerelles avec des planches et des pierres, ils doivent atteindre le village situé en face du leur.",
@@ -98,11 +100,11 @@ boardgame_5 = Boardgame.new({
   age: "8 ans et +",
   user_id: user3.id
 })
-# boardgame_5.photo.attach(io: file_8, filename: 'catan.jpg', content_type: 'image/jpg')
+boardgame_5.photo.attach(io: file_9, filename: 'river.jpg', content_type: 'image/jpg')
 boardgame_5.save!
 
-# file_9 = URI.open('https://images-na.ssl-images-amazon.com/images/I/81G3u55HEHL._AC_SX425_.jpg')
-boardgame_6= Boardgame.new({
+file_10 = URI.open('https://cdn3.philibertnet.com/362537-large_default/times-up-party-version-jaune.jpg')
+boardgame_6 = Boardgame.new({
   name: "Time's Up",
   description: "Avec Time's Up Party, faites deviner à votre équipe vos cartes en parlant ou en mimant. Gardez votre calme et soyez dans l'équipe qui aura obtenu le plus grand nombre de points.",
   players_min: 4,
@@ -111,11 +113,11 @@ boardgame_6= Boardgame.new({
   age: "12 ans et +",
   user_id: user3.id
 })
-# boardgame_6.photo.attach(io: file_9, filename: 'catan.jpg', content_type: 'image/jpg')
+boardgame_6.photo.attach(io: file_10, filename: 'timesup.jpg', content_type: 'image/jpg')
 boardgame_6.save!
 
-# file_10 = URI.open('https://images-na.ssl-images-amazon.com/images/I/81G3u55HEHL._AC_SX425_.jpg')
-boardgame_7= Boardgame.new({
+file_11 = URI.open('https://cdn2.philibertnet.com/305182-large_default/perudo.jpg')
+boardgame_7 = Boardgame.new({
   name: "Perudo",
   description: "Perudo est un jeu de dés, mêlant probabilités et bluff. Analysez vos adversaires et vos jets dés. Soyez suffisamment rusé pour faire le bon pari et tromper les autres joueurs.",
   players_min: 2,
@@ -124,11 +126,11 @@ boardgame_7= Boardgame.new({
   age: "8 ans et +",
   user_id: user4.id
 })
-# boardgame_7.photo.attach(io: file_10, filename: 'catan.jpg', content_type: 'image/jpg')
+boardgame_7.photo.attach(io: file_11, filename: 'perudo.jpg', content_type: 'image/jpg')
 boardgame_7.save!
 
-# file_11 = URI.open('https://images-na.ssl-images-amazon.com/images/I/81G3u55HEHL._AC_SX425_.jpg')
-boardgame_8= Boardgame.new({
+file_12 = URI.open('https://cdn3.philibertnet.com/376564-large_default/trivial-pursuit-edition-classique.jpg')
+boardgame_8 = Boardgame.new({
   name: "Trivial Pursuit",
   description: "Le premier jeu de questions réponses. Jouez sur le plateau de jeu de vos souvenirs ! Avec 2400 questions réponses réparties en plusieurs thèmes. ",
   players_min: 2,
@@ -137,7 +139,7 @@ boardgame_8= Boardgame.new({
   age: "16 ans et +",
   user_id: user4.id
 })
-# boardgame_8.photo.attach(io: file_11, filename: 'catan.jpg', content_type: 'image/jpg')
+boardgame_8.photo.attach(io: file_12, filename: 'trivial.jpg', content_type: 'image/jpg')
 boardgame_8.save!
 
 puts "#{Boardgame.count} boardgames have been created !"
@@ -163,7 +165,7 @@ location_2.save!
 
 location_3 = Location.new({
   name: "Domicile",
-  address: "Place Ange Estève, 13480 Cabriès",
+  address: "246 Rue de Lyon, 13015 Marseille",
   user_id: user2.id
 
 })
@@ -187,7 +189,7 @@ location_5.save!
 
 location_6 = Location.new({
   name: "Les Arpenteurs",
-  address: "13 Rue Lanterne, 69001 Lyon",
+  address: "1 chemin colline saint joseph, 13009 Marseille",
   user_id: user3.id
 
 })
@@ -195,7 +197,7 @@ location_6.save!
 
 location_7 = Location.new({
   name: "Game Taverne",
-  address: "22 Rue de Candolle, 34000 Montpellier",
+  address: "2 Place de la Major, 13002 Marseille",
   user_id: user4.id
 
 })
