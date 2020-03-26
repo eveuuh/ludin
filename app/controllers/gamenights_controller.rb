@@ -47,7 +47,7 @@ class GamenightsController < ApplicationController
         lat: gamenight.location.latitude,
         lng: gamenight.location.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { gamenight: gamenight }),
-        image_url: helpers.asset_url('avatar.jpg')
+        image_url: helpers.asset_url('avatar.png')
 
 
       }
