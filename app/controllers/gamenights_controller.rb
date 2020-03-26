@@ -32,6 +32,26 @@ class GamenightsController < ApplicationController
     @location = @gamenight.location
     @user = @boardgame.user
     @participations = @gamenight.participations
+    @gamenight_geocoded = Location.geocoded.map do |location|
+      location.gamenights
+    end.flatten
+      if params[:query].present?
+     boardgames= Boardgame.search_by_name_and_category(params[:query])
+      @gamenight_geocoded = @gamenight_geocoded.filter do |gamenight|
+        boardgames.include?(gamenight.boardgame)
+      end
+    end
+
+    @markers = @gamenight_geocoded.map do |gamenight|
+      {
+        lat: gamenight.location.latitude,
+        lng: gamenight.location.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { gamenight: gamenight }),
+        image_url: helpers.asset_url('avatar.jpg')
+
+
+      }
+    end
   end
 
   def new
