@@ -30,8 +30,8 @@
   <p><strong>Participations closes</strong></p>
 <% end %> -->
 
-<div class="container mt-3 mb-3">
-  <div class="row row-design position-relative">
+<div class="container mt-5 mb-4">
+  <div class="row row-design position-relative mb-5">
     <div class="card-big col-4">
       <div class="card-img">
         <% if @boardgame.photo.attached? %>
@@ -62,14 +62,14 @@
           <p>Description : <br><%= @boardgame.description.capitalize %></p>
         </div>
         <div class="row align-items-end col-4">
-          <div class="button3 offset-3" id="button3-bb"><% if (@gamenight.date > Time.now.to_date) && (@boardgame.players_max > @participations.size)  %>
+          <div class="button-participation offset-3"><% if (@gamenight.date > Time.now.to_date) && (@boardgame.players_max > @participations.size)  %>
             <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
               <% elsif @gamenight.date < Time.now.to_date %>
-                <p><strong>Participations closes</strong></p>
+                <p><strong>Participations fermées</strong></p>
               <% elsif (@gamenight.date == Time.now.to_date) && (@gamenight.start_time.hour - 2 >= Time.now.hour) && (@boardgame.players_max > @participations.size) %>
                 <%= link_to 'Participer', gamenight_participations_path(@gamenight), method: :post, data: { confirm: "Participation prise en compte"} %>
               <% else %>
-                <p><strong>Participations closes</strong></p>
+                <p><strong>Participations fermées</strong></p>
               <% end %>
           </div>
         </div>
@@ -79,32 +79,57 @@
 </div>
 
 <div class="container mt-3 mb-3">
-  <div class="row row-design position-relative">
-    <div class="mr-5">
-      <h3>Participants déjà inscrits :</h3>
-    </div>
-    <% if @participations.length == 0 %>
-      <h3>Aucun</h3>
-    <% else %>
-      <% @participations.each do |participation| %>
-        <div class="mr-5">
-          <% if participation.user.username %>
-            <%= participation.user.username %>
-          <% end %>
-          <% if participation.user.photo.attached? %>
-            <%= link_to profil_path(participation.user) do %>
-              <%= cl_image_tag participation.user.photo.key, crop: :fill, class: "avatar1" %>
+  <div class="row position-relative">
+    <div class= "participants-tile">
+      <div class="mr-5">
+        <h3>Participants déjà inscrits :</h3>
+      </div>
+      <% if @participations.length == 0 %>
+      <div class="mr-5">
+        <h3>Aucun</h3>
+      </div>
+      <% else %>
+        <% @participations.each do |participation| %>
+          <div class="mr-5 participants-profil">
+            <% if participation.user.photo.attached? %>
+              <%= link_to profil_path(participation.user) do %>
+              <div>
+                <%= cl_image_tag participation.user.photo.key, crop: :fill, class: "avatar1" %>
+              </div>
+              <% end %>
+            <% else %>
+              <%= link_to profil_path(participation.user) do %>
+              <div>
+                <%= image_tag "avatar.jpg", crop: :fill, class: "avatar1" %>
+              </div>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to profil_path(participation.user) do %>
-              <%= image_tag "avatar.jpg", crop: :fill, class: "avatar1" %>
+            <% if participation.user.username %>
+            <div>
+              <%= participation.user.username %>
+            </div>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
+<!--
+<div class="container mt-3 mb-3">
+  <div class="row position-relative">
+    <div
+      id="map"
+      style="
+      width: 100%;
+      flex-grow: 1;
+      position: sticky;
+      top: 0;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    ></div>
+  </div>
+</div> -->
 
 <!--<div class="card-big">
     <div class="card-img">

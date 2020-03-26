@@ -32,6 +32,8 @@ class GamenightsController < ApplicationController
     @location = @gamenight.location
     @user = @boardgame.user
     @participations = @gamenight.participations
+
+
   end
 
   def new
