@@ -12,8 +12,7 @@
       <% if (gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
         <%= link_to gamenight_path(gamenight) do %>
           <div class="card">
-
-            <% gamenight_image = gamenight.boardgame.photo.attached? ? cl_image_path(gamenight.boardgame.photo.key) : "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" %>
+            <% gamenight_image = gamenight.boardgame.photo.attached? ? cl_image_path(gamenight.boardgame.photo.key) : "game-card.png" %>
             <div class="card-image" style="background-image: url(<%= gamenight_image %>)">
               <p class="category-tag"><%= gamenight.boardgame.category %></p>
               <% if gamenight.boardgame.user.photo.attached? %>
