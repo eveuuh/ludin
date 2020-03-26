@@ -149,7 +149,7 @@ puts 'Creating some locations...'
 
 location_1 = Location.new({
   name: "Le nexus",
-  address: "52 cours julien, 13006 Marseille",
+  address: "30 Cours Lieutaud, 13001 Marseille",
   user_id: user1.id
 
 })
@@ -189,7 +189,7 @@ location_5.save!
 
 location_6 = Location.new({
   name: "Les Arpenteurs",
-  address: "1 chemin colline saint joseph, 13009 Marseille",
+  address: "21 Boulevard de la Gaye, 13009 Marseille",
   user_id: user3.id
 
 })
@@ -197,7 +197,7 @@ location_6.save!
 
 location_7 = Location.new({
   name: "Game Taverne",
-  address: "2 Place de la Major, 13002 Marseille",
+  address: "25 Rue du Refuge, 13002 Marseille",
   user_id: user4.id
 
 })
@@ -257,7 +257,7 @@ gamenight_4 = Gamenight.new({
 gamenight_4.save!
 
 gamenight_5 = Gamenight.new({
-  date: "2020-04-07",
+  date: "2020-03-07",
   start_time:"19:30:00",
   end_time: "22:00:00",
   description: "Venez découvrir un nouveau jeu d'adresse.",
@@ -297,3 +297,49 @@ gamenight_8 = Gamenight.new({
 gamenight_8.save!
 
 puts "#{Gamenight.count} gamenights have been created !"
+
+puts 'Creating some participations...'
+
+participation_1 = Participation.new({
+  gamenight_id: gamenight_1.id,
+  user_id: user2.id
+})
+participation_1.save!
+
+participation_2 = Participation.new({
+  gamenight_id: gamenight_1.id,
+  user_id: user3.id
+})
+participation_2.save!
+
+participation_3 = Participation.new({
+  gamenight_id: gamenight_1.id,
+  user_id: user4.id
+})
+participation_3.save!
+
+participation_4 = Participation.new({
+  gamenight_id: gamenight_5.id,
+  user_id: user1.id,
+  description: "Bonne soirée",
+  rating: 4
+})
+participation_4.save!
+
+participation_5 = Participation.new({
+  gamenight_id: gamenight_5.id,
+  user_id: user2.id,
+  description: "Très bon moment de jeu",
+  rating: 5
+})
+participation_5.save!
+
+participation_6 = Participation.new({
+  gamenight_id: gamenight_5.id,
+  user_id: user4.id,
+  description: "Pas mon style de jeu, mais bonne ambiance",
+  rating: 3
+})
+participation_6.save!
+
+puts "#{Participation.count} participations have been created !"
