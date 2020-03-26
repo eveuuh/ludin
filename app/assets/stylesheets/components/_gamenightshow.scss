@@ -40,29 +40,28 @@
 }
 
 
-.button3 {
+.button-participation {
   // margin-top: 90px;
   // margin-left: 10px;
   color: $main-white;
-  padding: 15px 25px;
+  padding: 10px 15px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(to bottom right, $main-beige, $main-red);
+  background: $main-red;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-decoration: none;
-}
-
-.button3:hover {
-  background: linear-gradient(to bottom right, $main-red, $main-beige);
-  text-decoration: none;
-  color: $main-white;
-}
-
-#button3-bb {
-  a {
+  opacity: 0.8;
+   a {
   color: $main-white;
   }
 }
+
+.button-participation:hover {
+  text-decoration: none;
+  color: $main-white;
+  opacity: 1;
+}
+
 
 .username {
   font-weight: bold;
@@ -84,7 +83,25 @@
   height: 250px;
   background-color: white;
   box-shadow: 0px 10px 10px 0px #cfcfcf;
-  border-bottom: 20px #ea526f solid;
+  border-bottom: 10px #ea526f solid;
+}
+
+.participants-tile {
+  display: flex;
+  align-items: center;
+  padding: 30px;
+  height: auto;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 10px 10px 0px #cfcfcf;
+  border-bottom: 10px #ea526f solid;
+}
+
+.participants-profil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 // h1 {
