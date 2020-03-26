@@ -134,8 +134,8 @@
                   <% gamenight.participations.each do |participation| %>
                     <li class="gamenight mb-1">
                       <div class="profil-review-upvote text-center border-right">
-                        <% if participation.gamenight.boardgame.user.photo.attached? %>
-                        <%= cl_image_tag participation.gamenight.boardgame.user.photo.key, crop: :fill, class: "avatar1" %>
+                        <% if participation.user.photo.attached? %>
+                        <%= cl_image_tag participation.user.photo.key, crop: :fill, class: "avatar1" %>
                         <% else %>
                         <%= image_tag "avatar.jpg", crop: :fill, class: "avatar1" %>
                         <% end %>

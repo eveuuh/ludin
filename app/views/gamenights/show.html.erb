@@ -27,9 +27,7 @@
       </div>
       <div class="row gamenight-elements">
         <div class="description col-8">
-          <p>Description : <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmo
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<%= @boardgame.description.capitalize %></p>
+          <p>Description : <br><%= @boardgame.description.capitalize %></p>
         </div>
         <div class="row align-items-end col-4">
           <div class="button-participation offset-3"><% if (@gamenight.date > Time.now.to_date) && (@boardgame.players_max > @participations.size)  %>
