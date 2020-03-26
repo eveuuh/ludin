@@ -7,11 +7,14 @@
     <meta property="og:description" content="Ludin à été crée dans le but de se faire rencontrer les ludophiles les plus prés de chez toi ! Marre de ne pas pouvoir tester ou jouer à ses jeux car il manque toujours Pierre ou Paul ? Postez une annonce, et rencontrer vos futurs partenaires de jeux ! Rejoins une gamenight, augmente tes stats,
 et soit le meilleur joueur de plateau!" />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.ludin.fun %>" />
     <meta property="og:image" content="https://i.imgur.com/8m93RKB.png" />
     <title>LUD-IN - la plateforme des ludophiles</title>
     <link rel="icon" href="https://i.imgur.com/T0D5OfU.png"/>
     <link rel="stylesheet" href="node_modules/select2/dist/css/select2.css">
     <%= csrf_meta_tags %>
+    <%= favicon_link_tag %>
+
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
