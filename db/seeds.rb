@@ -305,7 +305,7 @@ puts 'Creating some participations...'
 
 participation_1 = Participation.new({
   gamenight_id: gamenight_9.id,
-  user_id: user2.id
+  user_id: user3.id
 })
 participation_1.save!
 
