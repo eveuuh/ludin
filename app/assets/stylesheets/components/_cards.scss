@@ -76,6 +76,7 @@
       flex-direction: column;
       color: white;
       padding:10px;
+      border-right: solid 1px white;
     }
 
 
@@ -86,8 +87,6 @@
       flex-direction: column;
       color: white;
       padding:10px;
-      border-right: solid 1px white;
-      border-left: solid 1px white;
     }
 
     .card:hover {
