@@ -37,21 +37,7 @@
               </div>
             </div>
           </div>
-<!--         <div class="card-gamenight">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <p class="category-tag"><%= gamenight.boardgame.category %></p>
-            <div class="card-gamenight-infos">
-              <div class="game-infos-left">
-                <h2><%= gamenight.boardgame.name %></h2>
-                <p><%= gamenight.description %></p>
-              </div>
-              <div class="game-infos-right">
-                <p><%= gamenight.boardgame.players_max %> joueurs <i class="fas fa-user-friends"></i></p>
-                <p><%= gamenight.date.strftime("Le %d-%m-%Y") %> - <%= gamenight.start_time.strftime("à %H:%M") %> <i class="far fa-calendar-alt"></i> </p>
-              </div>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
-            </div>
-          </div> -->
+
         <% end %>
       <% elsif (gamenight.date == Time.now.to_date) && (gamenight.start_time.hour - 2 >= Time.now.hour) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
         <%= link_to gamenight_path(gamenight) do %>
@@ -76,21 +62,6 @@
               </div>
             </div>
           </div>
-<!--         <div class="card-gamenight">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-          <p class="category-tag"><%= gamenight.boardgame.category %></p>
-            <div class="card-gamenight-infos">
-              <div class="game-infos-left">
-                <h2><%= gamenight.boardgame.name %></h2>
-                <p><%= gamenight.description %></p>
-              </div>
-              <div class="game-infos-right">
-                <p><%= gamenight.boardgame.players_max %> joueurs <i class="fas fa-user-friends"></i></p>
-                <p><%= gamenight.date.strftime("Le %d-%m-%Y") %> - <%= gamenight.start_time.strftime("à %H:%M") %> <i class="far fa-calendar-alt"></i> </p>
-              </div>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-gamenight-user avatar1" />
-            </div>
-          </div> -->
         <% end %>
       <% else %>
         <p></p>

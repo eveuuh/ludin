@@ -83,3 +83,20 @@ br.body.faq{
   padding: 10px 10px;
 }
 
+.button-contact {
+  color: $main-white;
+  padding: 10px 15px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: $main-red;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.button-contact:hover {
+  text-decoration: none;
+  color: $main-white;
+  opacity: 1;
+}
+
