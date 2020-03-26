@@ -13,8 +13,8 @@ puts 'Find some photos...'
 # photos
 file_1 = URI.open('https://avatars3.githubusercontent.com/u/58520849?v=4')
 file_2 = URI.open('https://avatars3.githubusercontent.com/u/59261819?v=4')
-file_3 = URI.open('https://avatars1.githubusercontent.com/u/59608059?v=4')
-file_4 = URI.open('https://avatars0.githubusercontent.com/u/50374101?v=4')
+file_3 = URI.open('https://avatars0.githubusercontent.com/u/50374101?v=4')
+file_4 = URI.open('https://avatars1.githubusercontent.com/u/59608059?v=4')
 
 puts 'Creating some users...'
 
@@ -26,12 +26,12 @@ user2 = User.new({username: "David", email: "david@gmail.com", password: "passwo
 user2.photo.attach(io: file_2, filename: 'david.png', content_type: 'image/png')
 user2.save!
 
-user3 = User.new({username: "Estelle", email: "estelle@gmail.com", password: "password" })
-user3.photo.attach(io: file_3, filename: 'estelle.png', content_type: 'image/png')
+user3 = User.new({username: "Matti", email: "matti@gmail.com", password: "password" })
+user3.photo.attach(io: file_3, filename: 'matti.png', content_type: 'image/png')
 user3.save!
 
-user4 = User.new({username: "Matti", email: "matti@gmail.com", password: "password" })
-user4.photo.attach(io: file_4, filename: 'matti.png', content_type: 'image/png')
+user4 = User.new({username: "Estelle", email: "estelle@gmail.com", password: "password" })
+user4.photo.attach(io: file_4, filename: 'estelle.png', content_type: 'image/png')
 user4.save!
 
 puts "#{User.count} users have been created !"
@@ -229,31 +229,11 @@ puts "#{Location.count} locations have been created !"
 puts 'Creating some gamenights...'
 
 
-gamenight_1 = Gamenight.new({
-  date: "2020-04-02",
-  start_time:"20:00:00",
-  end_time: "22:00:00",
-  description: "Qui veut jouer à Dixit ? On se retrouve au bar à jeux Le Nexus.",
-  location_id: location_1.id,
-  boardgame_id: boardgame_1.id
-})
-gamenight_1.save!
-
-gamenight_2 = Gamenight.new({
-  date: "2020-04-10",
-  start_time:"19:00:00",
-  end_time: "23:00:00",
-  description: "Je souhaite faire découvrir le jeu Takenoko autour de moi. RdV au bar à jeux L'Unic.",
-  location_id: location_2.id,
-  boardgame_id: boardgame_2.id
-})
-gamenight_2.save!
-
 gamenight_3 = Gamenight.new({
   date: "2020-04-07",
   start_time:"18:00:00",
   end_time: "23:59:00",
-  description: "Grosse soirée Risk chez moi. Pour joueurs avertis. Chacun apporte à manger, on se fera un grand apéro.",
+  description: "Grosse soirée Risk chez moi. Pour joueurs avertis.",
   location_id: location_3.id,
   boardgame_id: boardgame_3.id
 })
@@ -324,19 +304,19 @@ puts "#{Gamenight.count} gamenights have been created !"
 puts 'Creating some participations...'
 
 participation_1 = Participation.new({
-  gamenight_id: gamenight_1.id,
+  gamenight_id: gamenight_9.id,
   user_id: user2.id
 })
 participation_1.save!
 
 participation_2 = Participation.new({
-  gamenight_id: gamenight_1.id,
+  gamenight_id: gamenight_3.id,
   user_id: user3.id
 })
 participation_2.save!
 
 participation_3 = Participation.new({
-  gamenight_id: gamenight_1.id,
+  gamenight_id: gamenight_3.id,
   user_id: user4.id
 })
 participation_3.save!
@@ -344,8 +324,6 @@ participation_3.save!
 participation_4 = Participation.new({
   gamenight_id: gamenight_5.id,
   user_id: user1.id,
-  description: "Bonne soirée",
-  rating: 4
 })
 participation_4.save!
 
