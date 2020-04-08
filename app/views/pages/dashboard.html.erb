@@ -57,7 +57,6 @@
                     </div>
                 <% end %>
               </div>
-<!--               <h3><%= @user.calculation_global_rating %>/5</h3> -->
             <% else %>
               <h3>(nouveau membre)</h3>
             <% end %>
@@ -204,16 +203,18 @@
                         <i class="fas fa-eye"></i>
                         <% end %>
                       </li>
-                      <li>
-                        <%= link_to edit_gamenight_path(gamenight) do %>
-                        <i class="fas fa-pencil-alt"></i>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to gamenight_path(gamenight), method: :delete, data: { confirm: "Vous êtes sûr ?"} do %>
-                        <i class="fas fa-trash-alt"></i>
-                        <% end %>
-                      </li>
+                      <% if gamenight.date >= Time.now.to_date  %>
+                        <li>
+                          <%= link_to edit_gamenight_path(gamenight) do %>
+                          <i class="fas fa-pencil-alt"></i>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to gamenight_path(gamenight), method: :delete, data: { confirm: "Vous êtes sûr ?"} do %>
+                          <i class="fas fa-trash-alt"></i>
+                          <% end %>
+                        </li>
+                      <% end %>
                     </ul>
                   </div>
                 </li>
@@ -249,7 +250,7 @@
                     <% else %>
                     <%= image_tag "avatar.jpg", crop: :fill, class: "avatar1" %>
                     <% end %>
-                    <h3><%= participation.gamenight.boardgame.user.username %> </h3>
+                    <h3><%= link_to participation.gamenight.boardgame.user.username, profil_path(participation.gamenight.boardgame.user) %></h3>
                       <div class="specs">
                         <% if participation.gamenight.boardgame.user.calculation_global_rating.nan? %>
                           <h5><em>(nouveau membre)</em></h5>
@@ -314,7 +315,7 @@
                 <div>
                   <ul class="list-inline participation-controls">
                     <li>
-                      <% if participation.gamenight.date < Time.now.to_date %>
+                      <% if (participation.gamenight.date < Time.now.to_date) && (participation.user != participation.gamenight.boardgame.user) %>
                         <%= link_to 'Noter', edit_participation_path(participation) %> <i class="fas fa-star"></i>
                       <% elsif participation.gamenight.date > Time.now.to_date %>
                         <%= link_to 'Sortir', participation_path(participation), method: :delete, data: { confirm: "Vous êtes sûr ?"} %> <i class="far fa-trash-alt"></i>
