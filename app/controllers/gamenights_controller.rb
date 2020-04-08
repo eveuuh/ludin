@@ -1,7 +1,7 @@
 class GamenightsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_gamenight, only: [:show, :edit, :update, :destroy]
-  after_destroy :send_cancelation_notice
+  after_action :send_cancelation_notice, only: [:destroy]
 
 
   def index
