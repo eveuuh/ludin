@@ -57,7 +57,6 @@
                     </div>
                 <% end %>
               </div>
-<!--               <h3><%= @user.calculation_global_rating %>/5</h3> -->
             <% else %>
               <h3>(nouveau membre)</h3>
             <% end %>
@@ -204,16 +203,18 @@
                         <i class="fas fa-eye"></i>
                         <% end %>
                       </li>
-                      <li>
-                        <%= link_to edit_gamenight_path(gamenight) do %>
-                        <i class="fas fa-pencil-alt"></i>
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to gamenight_path(gamenight), method: :delete, data: { confirm: "Vous êtes sûr ?"} do %>
-                        <i class="fas fa-trash-alt"></i>
-                        <% end %>
-                      </li>
+                      <% if gamenight.date >= Time.now.to_date  %>
+                        <li>
+                          <%= link_to edit_gamenight_path(gamenight) do %>
+                          <i class="fas fa-pencil-alt"></i>
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to gamenight_path(gamenight), method: :delete, data: { confirm: "Vous êtes sûr ?"} do %>
+                          <i class="fas fa-trash-alt"></i>
+                          <% end %>
+                        </li>
+                      <% end %>
                     </ul>
                   </div>
                 </li>

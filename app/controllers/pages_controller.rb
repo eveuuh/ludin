@@ -19,7 +19,7 @@ class PagesController < ApplicationController
     @user = current_user
     @my_boardgames = current_user.boardgames
     @my_locations = current_user.locations
-    @my_participations = current_user.participations
+    @my_participations = current_user.participations.sort_by { |participation| participation.gamenight.date }.reverse
     @gamenights_owner = owner_gamenights_dahsboard
   end
 
@@ -32,7 +32,7 @@ class PagesController < ApplicationController
         gamenights << gamenight
       end
     end
-    return gamenights
+    return gamenights.sort_by { |gamenight| gamenight.date }.reverse
   end
 
   def owner_gamenights_profil
