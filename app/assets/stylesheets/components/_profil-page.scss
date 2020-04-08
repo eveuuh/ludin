@@ -1,3 +1,23 @@
+.profil-gamenight-bb {
+  background-color: $main-white;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  p {
+    color:$main-red;
+  }
+  h3 {
+    color:$main-red;
+  }
+}
+
+.profil-gamenight-bb:hover {
+  background: $main-beige;
+  font-size: 25px;
+}
+
 .profil-gamenight-card {
   background-color: $main-white;
   display: flex;
@@ -85,6 +105,16 @@
 .profil-review-rating {
   padding: 10px;
   font-size: 20px;
+}
+
+.profil-review-gamenight {
+  font-size: 16px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  a {
+    color: $main-red;
+    margin-top: 10px;
+  }
 }
 
 //******************texte par défaut**************************//
