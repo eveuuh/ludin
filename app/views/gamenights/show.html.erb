@@ -7,22 +7,17 @@
         <% else %>
         <%= image_tag "game-card.png", class: "gamenight-show-image" %>
         <% end %>
-
-
-        <% if @user.photo.attached? %>
-        <%= cl_image_tag @user.photo.key, class: "avatar3", id: "show-gamenight" %>
+        <% if @user.photo.attached?  %>
+          <a href="<%= profil_path(@user) %>"><%= cl_image_tag @user.photo.key, class: "avatar3", id: "show-gamenight" %></a>
         <% else %>
-        <%= image_tag "avatar.jpg", class: "avatar3", id: "show-gamenight" %>
+          <a href="<%= profil_path(@user) %>"><%= image_tag "avatar.jpg", class: "avatar3", id: "show-gamenight" %></a>
         <% end %>
-
-
-
-      </div>
+     </div>
     </div>
     <div class="col-8">
       <div class="games-specs row justify-content-between align-items-center">
         <h2 class="gamename"><%= @boardgame.name %></h2>
-        <h6 class="username"><%= link_to @user.username.capitalize, profil_path(@user) %>'s GameNight</h6>
+        <h6 class="username"><%= @user.username.capitalize%>'s GameNight</h6>
         <h6 class="joueurs"><%= @boardgame.players_min %> - <%= @boardgame.players_max %> joueurs</h6>
       </div>
       <div class="row gamenight-elements">
