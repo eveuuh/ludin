@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   validates :username, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A.*@.*\..*\z/ }
+  after_create :send_welcome_email
 
   def has_a_global_rating?
     self.calculation_global_rating != nil
@@ -48,4 +49,11 @@ class User < ApplicationRecord
 
     return global_rating.round(1)
   end
+
+  private
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome.deliver_now
+  end
+
 end
