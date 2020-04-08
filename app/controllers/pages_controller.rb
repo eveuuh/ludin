@@ -11,7 +11,7 @@ class PagesController < ApplicationController
     @user = User.find(params[:user_id])
     # @global_rating = @user.global_rating
     @user_boardgames = @user.boardgames
-    @user_full_gamenights = @user_boardgames.map { |boardgame| boardgame.gamenights }
+    @user_full_gamenights = full_gamenights_profil
     @user_futur_gamenights = owner_gamenights_profil
   end
 
@@ -42,6 +42,16 @@ class PagesController < ApplicationController
         gamenights << gamenight if gamenight.date >= Time.now.to_date
       end
     end
-    return gamenights
+    return gamenights.sort_by { |gamenight| gamenight.date }.reverse
+  end
+
+  def full_gamenights_profil
+    gamenights = []
+    @user_boardgames.each do |boardgame|
+      boardgame.gamenights.each do |gamenight|
+        gamenights << gamenight
+      end
+    end
+    return gamenights.sort_by { |gamenight| gamenight.date }.reverse
   end
 end
