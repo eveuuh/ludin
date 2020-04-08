@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :send_welcome_email
   has_many :boardgames, dependent: :destroy
   has_many :locations, dependent: :destroy
   has_many :participations, dependent: :destroy
@@ -48,4 +49,11 @@ class User < ApplicationRecord
 
     return global_rating.round(1)
   end
+
+  private
+
+  def send_welcome_email
+    UserMailer.with(user: self).welcome.deliver_now
+  end
+
 end
