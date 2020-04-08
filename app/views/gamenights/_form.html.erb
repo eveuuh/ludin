@@ -8,7 +8,7 @@
         <%= f.input :end_time, :label => "Heure de fin", input_html: { class: "select2" } %>
         <%= f.input :description, as: :text %>
         <%= f.input :location_id, :collection => @locations_user, :label => "Adresse", input_html: { class: "select2" } %>
-        <%= f.input :boardgame_id, :collection => @boardgames_user, :label => "Jeux", input_html: { class: "select2" } %>
+        <%= f.input :boardgame_id, :collection => @boardgames_user, :label => "Jeux", input_html: { class: "select2" }%>
         <% if gamenight.location_id.blank? %>
           <%= f.submit "Créer ma soirée", class: "button-form"%>
         <% else %>
