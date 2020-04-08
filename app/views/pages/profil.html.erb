@@ -64,7 +64,6 @@
                     </div>
                 <% end %>
               </div>
-<!--               <h3><%= @user.calculation_global_rating %>/5</h3> -->
             <% else %>
               <h3>(nouveau membre)</h3>
             <% end %>
@@ -140,6 +139,14 @@
                         <%= image_tag "avatar.jpg", crop: :fill, class: "avatar1" %>
                         <% end %>
                         <%= link_to participation.user.username, profil_path(participation.user) %>
+                      </div>
+                      <div class="profil-review-gamenight text-left border-right">
+                        <div>
+                          <p><%= participation.gamenight.date.strftime("Le %d-%m-%Y") %></p>
+                        </div>
+                        <div>
+                          <p>jeux : <%= participation.gamenight.boardgame.name %></p>
+                        </div>
                       </div>
                       <div class="profil-review-description text-left">
                         <p><%= participation.description %></p>

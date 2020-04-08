@@ -87,6 +87,20 @@
   font-size: 20px;
 }
 
+.profil-review-gamenight {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  font-size: 16px;
+  padding: 10px;
+  transition: all 0.3s ease;
+  a {
+    color: $main-red;
+    margin-top: 10px;
+  }
+}
+
 //******************texte par défaut**************************//
 
 .nill-tile-bb {
