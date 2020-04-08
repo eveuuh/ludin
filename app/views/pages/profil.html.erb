@@ -64,7 +64,6 @@
                     </div>
                 <% end %>
               </div>
-<!--               <h3><%= @user.calculation_global_rating %>/5</h3> -->
             <% else %>
               <h3>(nouveau membre)</h3>
             <% end %>
@@ -132,7 +131,7 @@
             <% @user_full_gamenights.each do |gamenights| %>
                 <% gamenights.each do |gamenight| %>
                   <% gamenight.participations.each do |participation| %>
-                    <li class="gamenight mb-1">
+                    <li class="profil-gamenight-bb mb-1">
                       <div class="profil-review-upvote text-center border-right">
                         <% if participation.user.photo.attached? %>
                         <%= cl_image_tag participation.user.photo.key, crop: :fill, class: "avatar1" %>
@@ -141,7 +140,15 @@
                         <% end %>
                         <%= link_to participation.user.username, profil_path(participation.user) %>
                       </div>
-                      <div class="profil-review-description text-left">
+                      <div class="profil-review-gamenight text-center border-right">
+                        <div>
+                          <p><%= participation.gamenight.date.strftime("%d-%m-%Y") %></p>
+                        </div>
+                        <div>
+                          <p><%= participation.gamenight.boardgame.name %></p>
+                        </div>
+                      </div>
+                      <div class="profil-review-description text-center w-100">
                         <p><%= participation.description %></p>
                       </div>
                       <div class="profil-review-rating text-center">
