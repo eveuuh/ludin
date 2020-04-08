@@ -5,17 +5,9 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.welcome.subject
   #
-  def welcome(user)
-    @user = user
+  def welcome
+    @user = params[:user]
 
-    mail to: user.email, subject: "Bienvenue sur Lud-In"
-  end
-
-  def cancelation(gamenight)
-    @users = gamenight.participation.user
-
-    @users.each do |user|
-      mail to: user.email, subject: ""
-    end
+    mail to: @user.email, subject: "Bienvenue sur Lud-In"
   end
 end
