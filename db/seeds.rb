@@ -11,7 +11,7 @@ User.destroy_all
 puts 'Find some photos...'
 
 # photos
-file_1 = URI.open('https://avatars3.githubusercontent.com/u/58520849?v=4')
+file_1 = Rails.root.join("app/assets/images/eve.jpeg").open
 file_2 = URI.open('https://avatars3.githubusercontent.com/u/59261819?v=4')
 file_3 = URI.open('https://avatars0.githubusercontent.com/u/50374101?v=4')
 file_4 = URI.open('https://avatars1.githubusercontent.com/u/59608059?v=4')
@@ -19,7 +19,7 @@ file_4 = URI.open('https://avatars1.githubusercontent.com/u/59608059?v=4')
 puts 'Creating some users...'
 
 user1 = User.new({username: "Eve", email: "eve@gmail.com", password: "password" })
-user1.photo.attach(io: file_1, filename: 'eve.png', content_type: 'image/png')
+user1.photo.attach(io: file_1, filename: 'eve.jpeg', content_type: 'image/jpeg')
 user1.save!
 
 user2 = User.new({username: "David", email: "david@gmail.com", password: "password" })
