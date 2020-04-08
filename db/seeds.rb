@@ -12,9 +12,9 @@ puts 'Find some photos...'
 
 # photos
 file_1 = Rails.root.join("app/assets/images/eve.jpeg").open
-file_2 = URI.open('https://avatars3.githubusercontent.com/u/59261819?v=4')
-file_3 = URI.open('https://avatars0.githubusercontent.com/u/50374101?v=4')
-file_4 = URI.open('https://avatars1.githubusercontent.com/u/59608059?v=4')
+file_2 = Rails.root.join("app/assets/images/kevin.jpeg").open
+file_3 = Rails.root.join("app/assets/images/bertrand.jpeg").open
+file_4 = Rails.root.join("app/assets/images/sebastien.jpeg").open
 
 puts 'Creating some users...'
 
@@ -22,16 +22,16 @@ user1 = User.new({username: "Eve", email: "eve@gmail.com", password: "password" 
 user1.photo.attach(io: file_1, filename: 'eve.jpeg', content_type: 'image/jpeg')
 user1.save!
 
-user2 = User.new({username: "David", email: "david@gmail.com", password: "password" })
-user2.photo.attach(io: file_2, filename: 'david.png', content_type: 'image/png')
+user2 = User.new({username: "Kevin", email: "kevin@gmail.com", password: "password" })
+user2.photo.attach(io: file_2, filename: 'kevin.jpeg', content_type: 'image/jpeg')
 user2.save!
 
-user3 = User.new({username: "Matti", email: "matti@gmail.com", password: "password" })
-user3.photo.attach(io: file_3, filename: 'matti.png', content_type: 'image/png')
+user3 = User.new({username: "Bertrand", email: "bertrand@gmail.com", password: "password" })
+user3.photo.attach(io: file_3, filename: 'bertrand.jpeg', content_type: 'image/jpeg')
 user3.save!
 
-user4 = User.new({username: "Estelle", email: "estelle@gmail.com", password: "password" })
-user4.photo.attach(io: file_4, filename: 'estelle.png', content_type: 'image/png')
+user4 = User.new({username: "Sébastien", email: "sebastien@gmail.com", password: "password" })
+user4.photo.attach(io: file_4, filename: 'sebastien.jpeg', content_type: 'image/jpeg')
 user4.save!
 
 puts "#{User.count} users have been created !"
