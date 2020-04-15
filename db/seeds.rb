@@ -230,7 +230,7 @@ puts 'Creating some gamenights...'
 
 
 gamenight_3 = Gamenight.new({
-  date: "2020-04-07",
+  date: "2020-06-07",
   start_time:"18:00:00",
   end_time: "23:59:00",
   description: "Grosse soirée Risk chez moi. Pour joueurs avertis.",
@@ -240,7 +240,7 @@ gamenight_3 = Gamenight.new({
 gamenight_3.save!
 
 gamenight_4 = Gamenight.new({
-  date: "2020-04-15",
+  date: "2020-03-15",
   start_time:"18:30:00",
   end_time: "23:00:00",
   description: "Initiation aux jeux de rôle.",
@@ -260,7 +260,7 @@ gamenight_5 = Gamenight.new({
 gamenight_5.save!
 
 gamenight_6 = Gamenight.new({
-  date: "2020-03-28",
+  date: "2020-06-28",
   start_time:"19:00:00",
   end_time: "22:00:00",
   description: "Soirée détente bières-pizzas",
@@ -270,7 +270,7 @@ gamenight_6 = Gamenight.new({
 gamenight_6.save!
 
 gamenight_7 = Gamenight.new({
-  date: "2020-04-26",
+  date: "2020-05-26",
   start_time:"12:00:00",
   end_time: "14:00:00",
   description: "Pause déj. avec un jeu de bluff.",
@@ -280,7 +280,7 @@ gamenight_7 = Gamenight.new({
 gamenight_7.save!
 
 gamenight_8 = Gamenight.new({
-  date: "2020-04-05",
+  date: "2020-07-05",
   start_time:"08:00:00",
   end_time: "20:00:00",
   description: "Tournoi de Trivial Pursuit",
@@ -290,7 +290,7 @@ gamenight_8 = Gamenight.new({
 gamenight_8.save!
 
 gamenight_9 = Gamenight.new({
-  date: "2020-03-28",
+  date: "2020-06-28",
   start_time:"20:00:00",
   end_time: "22:00:00",
   description: "Soirée Jungle Speed pour décompresser après la semaine de taf",
