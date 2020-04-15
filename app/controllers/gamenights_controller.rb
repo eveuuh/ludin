@@ -7,6 +7,8 @@ class GamenightsController < ApplicationController
 
 
   def index
+    @gamenights_index = futur_gamenights.paginate(page: params[:page], per_page: 2)
+
     @gamenight_geocoded = Location.geocoded.map do |location|
       location.gamenights
     end.flatten
@@ -16,8 +18,6 @@ class GamenightsController < ApplicationController
         boardgames.include?(gamenight.boardgame)
       end
     end
-
-    @gamenights_index = futur_gamenights.paginate(page: params[:page], per_page: 2)
 
     @markers = @gamenight_geocoded.map do |gamenight|
       {
