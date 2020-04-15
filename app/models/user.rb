@@ -10,7 +10,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: /\A.*@.*\..*\z/ }
   # after_create :send_welcome_email
 
