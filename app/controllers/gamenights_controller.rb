@@ -1,7 +1,6 @@
 class GamenightsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_gamenight, only: [:show, :edit, :update, :destroy]
-  # after_action :send_cancelation_notice, only: [:destroy]
 
 
   def index
@@ -66,16 +65,12 @@ class GamenightsController < ApplicationController
   end
 
   def destroy
-    @gamenight.delete
+    @gamenight.destroy
 
     redirect_to dashboard_path
   end
 
   private
-
-  # def send_cancelation_notice
-  #   GamenightMailer.with(gamenight: self).cancelation_notice.deliver_now
-  # end
 
   def find_gamenight
     @gamenight = Gamenight.find(params[:id])
