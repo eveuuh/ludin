@@ -9,38 +9,8 @@
 <div class="row">
   <div class="col-md-6 pr-0">
     <div class="cards">
-    <% @gamenight_geocoded.each do |gamenight| %>
-      <% if (gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
-        <%= link_to gamenight_path(gamenight) do %>
-          <div class="card">
-            <% gamenight_image = gamenight.boardgame.photo.attached? ? cl_image_path(gamenight.boardgame.photo.key) : image_path("game-card.png") %>
-            <div class="card-image" style="background-image: url(<%= gamenight_image %>)">
-              <p class="category-tag"><%= gamenight.boardgame.category %></p>
-              <% if gamenight.boardgame.user.photo.attached? %>
-              <%= cl_image_tag gamenight.boardgame.user.photo.key, crop: :fill, class: "avatar-card" %>
-              <% else %>
-              <%= image_tag "avatar.jpg", crop: :fill, class: "avatar-card" %>
-              <% end %>
-            </div>
-            <div class="card-text">
-              <h2><%= gamenight.boardgame.name %></h2>
-              <span class="date"><%= gamenight.date.strftime("Le %d-%m-%Y") %></span>
-              <p><%= gamenight.description %></p>
-            </div>
-            <div class="card-stats">
-              <div class="stat">
-                <div class="value"><i class="fas fa-user-friends"></i></div>
-                <div class="type"><%= gamenight.boardgame.players_max %></div>
-              </div>
-              <div class="stat2">
-                <div class="value"><i class="fas fa-clock"></i></div>
-                <div class="type"><%= gamenight.start_time.strftime("%H:%M") %></div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      <% elsif (gamenight.date == Time.now.to_date) && (gamenight.start_time.hour - 2 >= Time.now.hour) && (gamenight.boardgame.players_max > gamenight.participations.size) %>
-        <%= link_to gamenight_path(gamenight) do %>
+    <% @gamenights_index.each do |gamenight| %>
+      <%= link_to gamenight_path(gamenight) do %>
         <div class="card">
           <% gamenight_image = gamenight.boardgame.photo.attached? ? cl_image_path(gamenight.boardgame.photo.key) : image_path("game-card.png") %>
           <div class="card-image" style="background-image: url(<%= gamenight_image %>)">
@@ -67,10 +37,10 @@
             </div>
           </div>
         </div>
-        <% end %>
       <% end %>
     <% end %>
     </div>
+  <%= will_paginate @gamenights_index %>
   </div>
 
   <div class="col-md-6 pl-0">
