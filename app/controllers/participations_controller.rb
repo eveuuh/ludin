@@ -36,7 +36,7 @@ class ParticipationsController < ApplicationController
   private
 
   def send_cancelation_notice
-    ParticipationMailer.with(participation: self).cancelation_notice.deliver_now
+    ParticipationMailer.with(participation: self).cancelation_notice(@participation).deliver_now
   end
 
   def find_participation

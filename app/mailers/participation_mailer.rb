@@ -1,6 +1,6 @@
 class ParticipationMailer < ApplicationMailer
 
-  def cancelation_notice
+  def cancelation_notice(participation)
     @participation = participation
     @gamenight = @participation.gamenight
     @owner = @gamenight.boardgame.user
