@@ -1,16 +1,11 @@
 class ParticipationMailer < ApplicationMailer
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.participation_mailer.cancelation_notice.subject
-  #
   def cancelation_notice
-    @participation = params[:participation]
+    @participation = participation
     @gamenight = @participation.gamenight
-    @owner = @gamenight.boardgame.user.username
+    @owner = @gamenight.boardgame.user
     @user = @participation.user
 
-    mail to: @user.email, subject: "La gamenight de #{@owner} a été annulée... "
+    mail to: @owner.email, subject: "La participation de #{@user.username} a été annulée... "
   end
 end
