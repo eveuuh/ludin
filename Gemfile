@@ -21,7 +21,7 @@ gem 'pg_search', '~> 2.3.0'
 gem 'cloudinary', '~> 1.12.0'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
-
+gem 'will_paginate-bootstrap4'
 
 group :development do
   gem 'web-console', '>= 3.3.0'

@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class GamenightsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_gamenight, only: [:show, :edit, :update, :destroy]
@@ -5,6 +7,8 @@ class GamenightsController < ApplicationController
 
 
   def index
+    @gamenights_index = futur_gamenights.paginate(page: params[:page], per_page: 2)
+
     @gamenight_geocoded = Location.geocoded.map do |location|
       location.gamenights
     end.flatten
@@ -76,6 +80,14 @@ class GamenightsController < ApplicationController
   # def send_cancelation_notice
   #   GamenightMailer.with(gamenight: self).cancelation_notice.deliver_now
   # end
+
+  def futur_gamenights
+    @gamenights = Gamenight.all
+    gamenights_display = @gamenights.select do |gamenight|
+      gamenight if ((gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size)) || ((gamenight.date == Time.now.to_date) && (gamenight.start_time.hour - 2 >= Time.now.hour) && (gamenight.boardgame.players_max > gamenight.participations.size))
+    end
+    return gamenights_display.sort_by { |gamenight| gamenight.date }
+  end
 
   def find_gamenight
     @gamenight = Gamenight.find(params[:id])
