@@ -6,8 +6,11 @@ class ParticipationMailer < ApplicationMailer
   #   en.participation_mailer.cancelation_notice.subject
   #
   def cancelation_notice
-    @greeting = "Hi"
+    @participation = params[:participation]
+    @gamenight = @participation.gamenight
+    @owner = @gamenight.boardgame.user.username
+    @user = @participation.user
 
-    mail to: @user.email, subject: "La gamenight a été annulée..."
+    mail to: @user.email, subject: "La gamenight de #{@owner} a été annulée... "
   end
 end
