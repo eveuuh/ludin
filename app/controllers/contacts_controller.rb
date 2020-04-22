@@ -10,7 +10,6 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
-      # ContactMailer.general_message(@contact).deliver_now
       # render :thanks
       redirect_to root_path
     else
@@ -28,7 +27,7 @@ class ContactsController < ApplicationController
     ContactMailer.with(contact: self).general_message(@contact).deliver_now
   end
 
-  def thanks
-  end
+  # def thanks
+  # end
 
 end
