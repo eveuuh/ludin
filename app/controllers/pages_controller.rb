@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :uikit]
+  skip_before_action :authenticate_user!, only: [:home, :uikit, :contact]
 
   def home
   end
@@ -7,9 +7,11 @@ class PagesController < ApplicationController
   def uikit
   end
 
+  def contact
+  end
+
   def profil
     @user = User.find(params[:user_id])
-    # @global_rating = @user.global_rating
     @user_boardgames = @user.boardgames
     @user_full_gamenights = full_gamenights_profil
     @user_futur_gamenights = owner_gamenights_profil
