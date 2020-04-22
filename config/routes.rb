@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', to: 'pages#dashboard'
   get 'uikit', to: 'pages#uikit'
+  resources :contacts, only: [ :new, :create ]
 
   resources :locations, only: [ :new, :create, :edit, :update, :destroy ]
   resources :boardgames, only: [ :new, :create, :edit, :update, :destroy ]

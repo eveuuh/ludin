@@ -9,7 +9,6 @@ class PagesController < ApplicationController
 
   def profil
     @user = User.find(params[:user_id])
-    # @global_rating = @user.global_rating
     @user_boardgames = @user.boardgames
     @user_full_gamenights = full_gamenights_profil
     @user_futur_gamenights = owner_gamenights_profil
