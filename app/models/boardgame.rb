@@ -7,7 +7,7 @@ class Boardgame < ApplicationRecord
 
 
   belongs_to :user
-  has_many :gamenights
+  has_many :gamenights, dependent: :destroy
   has_one_attached :photo
 
   validates :name, presence: true
