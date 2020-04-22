@@ -25,7 +25,7 @@ class ContactsController < ApplicationController
   end
 
   def send_mail
-    ContactMailer.with(contact: self).general_message.deliver_now
+    ContactMailer.with(contact: self).general_message(@contact).deliver_now
   end
 
   def thanks
