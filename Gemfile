@@ -23,6 +23,9 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'mail_form'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end

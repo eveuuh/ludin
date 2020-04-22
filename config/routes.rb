@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get 'users/:user_id/profil', to: 'pages#profil', as: :profil
 
   get 'dashboard', to: 'pages#dashboard'
-  get 'contact', to: 'pages#contact'
   get 'uikit', to: 'pages#uikit'
+  resources :contacts, only: [ :new, :create ]
 
   resources :locations, only: [ :new, :create, :edit, :update, :destroy ]
   resources :boardgames, only: [ :new, :create, :edit, :update, :destroy ]

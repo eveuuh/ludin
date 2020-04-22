@@ -1,13 +1,10 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :uikit, :contact]
+  skip_before_action :authenticate_user!, only: [:home, :uikit]
 
   def home
   end
 
   def uikit
-  end
-
-  def contact
   end
 
   def profil
