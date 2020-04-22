@@ -23,6 +23,9 @@ gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 group :development do
   gem 'web-console', '>= 3.3.0'
 end
