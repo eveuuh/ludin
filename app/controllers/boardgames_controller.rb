@@ -25,7 +25,7 @@ class BoardgamesController < ApplicationController
   end
 
   def destroy
-    @boardgame.delete
+    @boardgame.destroy
 
     redirect_to dashboard_path
   end
