@@ -52,9 +52,6 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.2.4)
     byebug (11.1.1)
     cloudinary (1.12.0)
@@ -106,9 +103,6 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
-    mail_form (1.8.0)
-      actionmailer (>= 5.0)
-      activemodel (>= 5.0)
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (1.0.0)
@@ -240,7 +234,6 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootsnap
-  bootstrap-sass (~> 3.3, >= 3.3.6)
   cloudinary (~> 1.12.0)
   devise
   dotenv-rails
@@ -250,7 +243,6 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   listen (~> 3.0.5)
-  mail_form
   pg (~> 0.21)
   pg_search (~> 2.3.0)
   pry-byebug
