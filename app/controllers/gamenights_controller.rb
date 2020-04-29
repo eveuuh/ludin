@@ -7,11 +7,11 @@ class GamenightsController < ApplicationController
 
 
   def index
-    @gamenights_index = futur_gamenights.paginate(page: params[:page], per_page: 4)
-
     @gamenight_geocoded = Location.geocoded.map do |location|
-      location.gamenights
-    end.flatten
+      location.gamenights.filter do |gamenight|
+        futur_gamenights.include?(gamenight)
+      end
+    end.flatten.sort_by { |gamenight| gamenight.date }
 
     if params[:query].present?
       boardgames = Boardgame.search_by_name_and_category(params[:query])
@@ -19,6 +19,9 @@ class GamenightsController < ApplicationController
         boardgames.include?(gamenight.boardgame)
       end
     end
+
+    @gamenights_index = @gamenight_geocoded.paginate(page: params[:page], per_page: 4)
+
 
     @markers = @gamenight_geocoded.map do |gamenight|
       {
@@ -83,11 +86,18 @@ class GamenightsController < ApplicationController
   end
 
   def futur_gamenights
-    @gamenights = Gamenight.all
-    gamenights_display = @gamenights.select do |gamenight|
-      gamenight if ((gamenight.date > Time.now.to_date) && (gamenight.boardgame.players_max > gamenight.participations.size)) || ((gamenight.date == Time.now.to_date) && (gamenight.start_time.hour - 2 >= Time.now.hour) && (gamenight.boardgame.players_max > gamenight.participations.size))
+    gamenights = Gamenight.all
+    gamenights_display = gamenights.select do |gamenight|
+
+      number_of_players = gamenight.boardgame.players_max > gamenight.participations.size
+      futur_date = gamenight.date > Time.now.to_date
+      today_date = gamenight.date == Time.now.to_date
+      futur_time = gamenight.start_time.hour - 2 >= Time.now.hour
+
+      gamenight if (futur_date || (today_date && futur_time)) && number_of_players
     end
-    return gamenights_display.sort_by { |gamenight| gamenight.date }
+    # trie des gamenights futures de la plus proche à la plus loingtaine
+    return gamenights_display
   end
 
   def find_gamenight
