@@ -1,4 +1,7 @@
-<h1>Bonjour <%= @user.username %>,</h1>
+<h1>Bonjour <%= @owner.username %>,</h1>
 
-<p>Nous sommes dans le regret de vous annoncer que <%= @owner %> a malheureusement annulé la gamenight prévu le <%= @gamenight.date %> à <%= @gamenight.location %>. Ne vous laissez pas découragé par cette nouvelle et recherchez dès mantenant de nouvelles gamenights !</p>
-
+<p>Nous sommes dans le regret de vous annoncer que <%= @user.username %> a malheureusement annulé ca participation à votre gamenight prévu le <%= @gamenight.date %> à <%= @gamenight.location.name %>. Ne vous laissez pas découragé par cette nouvelle, des joueurs de votre secteur n'attendent que de trouver une nouvelle gamenight </p>
+<div class="mb-3 mt-3 text-center">
+  <%= link_to 'Trouver une gamenight', gamenights_url, class: "button-contact" %>
+</div>
+<p>La team de Ludin</p>
