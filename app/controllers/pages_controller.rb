@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :uikit]
 
@@ -62,9 +64,10 @@ class PagesController < ApplicationController
     participations = []
     @user_full_gamenights.each do |gamenight|
       gamenight.participations.each do |participation|
-        participations << participation if participation.user != participation.gamenight.boardgame.user
+        participations << participation if (participation.user != participation.gamenight.boardgame.user) && (!participation.rating.nil?)
       end
     end
-    return participations # @user_full_gamenights est deja trier par date
+    # @user_full_gamenights est deja trier par date
+    return participations
   end
 end
