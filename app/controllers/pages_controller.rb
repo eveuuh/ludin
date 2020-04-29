@@ -1,3 +1,5 @@
+require 'will_paginate/array'
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :uikit]
 
@@ -12,6 +14,10 @@ class PagesController < ApplicationController
     @user_boardgames = @user.boardgames
     @user_full_gamenights = full_gamenights_profil
     @user_futur_gamenights = owner_gamenights_profil
+    @full_participations_to_user_gamenights = owner_gamenights_participations_profil
+
+    @reviews_profil = @full_participations_to_user_gamenights.paginate(page: params[:reviews_page], per_page: 2)
+    @gamenights_profil = @user_futur_gamenights.paginate(page: params[:gamenights_page], per_page: 2)
   end
 
   def dashboard
@@ -19,7 +25,10 @@ class PagesController < ApplicationController
     @my_boardgames = current_user.boardgames
     @my_locations = current_user.locations
     @my_participations = current_user.participations.sort_by { |participation| participation.gamenight.date }.reverse
-    @gamenights_owner = owner_gamenights_dahsboard
+    @my_gamenights = owner_gamenights_dahsboard
+
+    @gamenights_dashboard = @my_gamenights.paginate(page: params[:gamenights_page], per_page: 2)
+    @participations_dashboard = @my_participations.paginate(page: params[:participations_page], per_page: 2)
   end
 
   private
@@ -41,7 +50,7 @@ class PagesController < ApplicationController
         gamenights << gamenight if gamenight.date >= Time.now.to_date
       end
     end
-    return gamenights.sort_by { |gamenight| gamenight.date }.reverse
+    return gamenights.sort_by { |gamenight| gamenight.date } # trie par date de la + proche à la + eloignee
   end
 
   def full_gamenights_profil
@@ -51,6 +60,17 @@ class PagesController < ApplicationController
         gamenights << gamenight
       end
     end
-    return gamenights.sort_by { |gamenight| gamenight.date }.reverse
+    return gamenights.sort_by { |gamenight| gamenight.date }.reverse # trie par date de la + eloignee à la + proche
+  end
+
+  def owner_gamenights_participations_profil
+    participations = []
+    @user_full_gamenights.each do |gamenight|
+      gamenight.participations.each do |participation|
+        participations << participation if (participation.user != participation.gamenight.boardgame.user) && (!participation.rating.nil?)
+      end
+    end
+    # @user_full_gamenights est deja trier par date
+    return participations
   end
 end

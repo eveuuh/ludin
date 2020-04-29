@@ -7,13 +7,14 @@ class GamenightsController < ApplicationController
 
 
   def index
-    @gamenights_index = futur_gamenights.paginate(page: params[:page], per_page: 2)
+    @gamenights_index = futur_gamenights.paginate(page: params[:page], per_page: 4)
 
     @gamenight_geocoded = Location.geocoded.map do |location|
       location.gamenights
     end.flatten
-      if params[:query].present?
-     boardgames= Boardgame.search_by_name_and_category(params[:query])
+
+    if params[:query].present?
+      boardgames = Boardgame.search_by_name_and_category(params[:query])
       @gamenight_geocoded = @gamenight_geocoded.filter do |gamenight|
         boardgames.include?(gamenight.boardgame)
       end
