@@ -6,7 +6,7 @@ class GamenightsController < ApplicationController
 
 
   def index
-    @gamenights_index = futur_gamenights.paginate(page: params[:page], per_page: 2)
+    @gamenights_index = futur_gamenights.paginate(page: params[:page], per_page: 4)
 
     @gamenight_geocoded = Location.geocoded.map do |location|
       location.gamenights

@@ -1,11 +1,23 @@
 require "open-uri"
 
-puts 'Destroy all database...'
+puts 'Destroy participation database...'
 
 Participation.destroy_all
+
+puts 'Destroy gamenight database...'
+
 Gamenight.destroy_all
+
+puts 'Destroy boardgame database...'
+
 Boardgame.destroy_all
+
+puts 'Destroy location database...'
+
 Location.destroy_all
+
+puts 'Destroy user database...'
+
 User.destroy_all
 
 puts 'Find some photos...'
@@ -342,5 +354,11 @@ participation_6 = Participation.new({
   rating: 3
 })
 participation_6.save!
+
+participation_7 = Participation.new({
+  gamenight_id: gamenight_5.id,
+  user_id: user3.id,
+})
+participation_7.save!
 
 puts "#{Participation.count} participations have been created !"
