@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     @user_futur_gamenights = owner_gamenights_profil
     @full_participations_to_user_gamenights = owner_gamenights_participations_profil
 
-    @reviews_profil = @full_participations_to_user_gamenights.paginate(page: params[:reviews_page], per_page: 3)
+    @reviews_profil = @full_participations_to_user_gamenights.paginate(page: params[:reviews_page], per_page: 2)
     @gamenights_profil = @user_futur_gamenights.paginate(page: params[:gamenights_page], per_page: 2)
   end
 
@@ -25,7 +25,10 @@ class PagesController < ApplicationController
     @my_boardgames = current_user.boardgames
     @my_locations = current_user.locations
     @my_participations = current_user.participations.sort_by { |participation| participation.gamenight.date }.reverse
-    @gamenights_owner = owner_gamenights_dahsboard
+    @my_gamenights = owner_gamenights_dahsboard
+
+    @gamenights_dashboard = @my_gamenights.paginate(page: params[:gamenights_page], per_page: 2)
+    @participations_dashboard = @my_participations.paginate(page: params[:participations_page], per_page: 2)
   end
 
   private
