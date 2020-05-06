@@ -1,6 +1,9 @@
 class ParticipationsController < ApplicationController
   before_action :find_participation, only: [:edit, :update, :destroy]
   before_action :send_cancelation_notice, only: :destroy
+  after_action :send_review_notification, only: :update
+  after_action :send_write_review, only: :create
+
 
   def create
     @participation = Participation.new
@@ -8,6 +11,7 @@ class ParticipationsController < ApplicationController
     @gamenight = Gamenight.find(params[:gamenight_id])
     @participation.gamenight = @gamenight
     @participation.user = current_user
+    @time = (@gamenight.date.to_time - Date.today.to_time) + 48
 
     if @participation.save
       redirect_to dashboard_path
@@ -34,6 +38,14 @@ class ParticipationsController < ApplicationController
   end
 
   private
+
+  def send_review_notification
+    ReviewMailer.with(participation: self).review_notification(@participation).deliver_now
+  end
+
+  def send_write_review
+    ReviewMailer.with(participation: self).write_review(@participation).deliver_later(wait_until: @time.hours.from_now)
+  end
 
   def send_cancelation_notice
     ParticipationMailer.with(participation: self).cancelation_notice(@participation).deliver_now
