@@ -29,6 +29,9 @@ class PagesController < ApplicationController
 
     @gamenights_dashboard = @my_gamenights.paginate(page: params[:gamenights_page], per_page: 2)
     @participations_dashboard = @my_participations.paginate(page: params[:participations_page], per_page: 2)
+
+    @futur_gamenights_counter = owner_futur_gamenights_counter_dahsboard
+    @futur_participations_counter = current_user.participations.select { |participation| participation if participation.gamenight.date >= Time.now.to_date }.size
   end
 
   private
@@ -41,6 +44,16 @@ class PagesController < ApplicationController
       end
     end
     return gamenights.sort_by { |gamenight| gamenight.date }.reverse
+  end
+
+  def owner_futur_gamenights_counter_dahsboard
+    gamenights = []
+    @my_boardgames.each do |boardgame|
+      boardgame.gamenights.each do |gamenight|
+        gamenights << gamenight if gamenight.date >= Time.now.to_date
+      end
+    end
+    return gamenights.size
   end
 
   def owner_gamenights_profil
