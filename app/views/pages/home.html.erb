@@ -1,15 +1,22 @@
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.radio-canada.ca/q_auto,w_1250/v1/ici-info/16x9/jeu-de-societe-famille-amis-noel.jpg');">
   <div class="container">
-    <h1> Rejoins une gamenight, augmente tes stats, <br>et soit le meilleur joueur de plateau!</h1>
-      <%= simple_form_for :search, url: gamenights_path, method: :get do |f| %>
-        <div class="search-form-control search-for-banner form-group">
-          <input class="form-control longform string required" type="text" name="query" id="search_query" placeholder="Cherche par nom ou catégorie de jeu" />
-          <button name="button" type="submit" class="btn btn-flat">
-            <i class="fas fa-search" ></i>
-          </button>
-          <% end %>
-        </div>
+    <div class="d-flex flex-column">
+      <div>
+        <h1> Rejoins une gamenight, augmente tes stats, <br>et soit le meilleur joueur de plateau!</h1>
+        <%= simple_form_for :search, url: gamenights_path, method: :get do |f| %>
+          <div class="search-form-control search-for-banner form-group">
+            <input class="form-control longform string required" type="text" name="query" id="search_query" placeholder="Cherche par nom ou catégorie de jeu" />
+            <button name="button" type="submit" class="btn btn-flat">
+              <i class="fas fa-search" ></i>
+            </button>
+          </div>
+        <% end %>
+      </div>
+<!--       <div class="border d-flex flex-column align-items-center">
+        <div><p class="text-center text-white">X gamers sont actifs sur LUD-IN</p></div>
+        <div><p class="text-center text-white">Il y a actuellement X gamenights à venir</p></div>
+      </div> -->
+    </div>
   </div>
 </div>
 

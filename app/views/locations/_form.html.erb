@@ -4,9 +4,19 @@
     <h1 class="title">Ajoute un lieu </h1>
     <%= simple_form_for(location) do |f| %>
       <%= f.input :name, :label => "Nom" %>
-      <%= f.input :address, :label => "Adresse" %>
+      <%= f.input :address, :label => "Adresse", input_html: { id: 'address-input' } %>
       <%= f.submit "Enregistrer", class: "button-form"%>
     <% end %>
   </div>
 </div>
 </div>
+
+<!-- Algolia address autocomplete -->
+<script src="https://cdn.jsdelivr.net/npm/places.js@1.18.2"></script>
+<script>
+  var placesAutocomplete = places({
+    appId: "<%= ENV['ALGOLIA_PLACES_ID'] %>",
+    apiKey: "<%= ENV['ALGOLIA_PLACES_KEY'] %>",
+    container: document.querySelector('#address-input')
+  });
+</script>
