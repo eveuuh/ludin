@@ -4,6 +4,7 @@ class ReviewMailer < ApplicationMailer
     @gamenight = participation.gamenight
     @owner = @gamenight.boardgame.user
     @user = participation.user
+
     if !participation.rating
       mail to: @user.email, subject: "N'oubliez pas de laisser un commentaire à #{@owner.username}"
     end

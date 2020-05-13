@@ -11,7 +11,7 @@ class ParticipationsController < ApplicationController
     @gamenight = Gamenight.find(params[:gamenight_id])
     @participation.gamenight = @gamenight
     @participation.user = current_user
-    @time = (@gamenight.date.to_time - Date.today.to_time) + 48
+    @time = ((@gamenight.date.to_time - Date.today.to_time)/3600) + 48
 
     if @participation.save
       redirect_to dashboard_path
@@ -44,7 +44,7 @@ class ParticipationsController < ApplicationController
   end
 
   def send_write_review
-    ReviewMailer.with(participation: self).write_review(@participation).deliver_later(wait_until: @time.hours.from_now)
+    ReviewMailer.write_review(@participation).deliver_later(wait_until: @time.hours.from_now)
   end
 
   def send_cancelation_notice
