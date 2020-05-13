@@ -1,10 +1,10 @@
-<h1>Bonjour <%= @owner %>,</h1>
+<h1>Bonjour <%= @owner.username %>,</h1>
 <p>
-  <%= @user %> vous a laissé une note de <strong><%= @participation.rating %></strong>
+  <%= @user.username %> vous a laissé une note de <strong><%= @participation.rating %></strong>
 </p>
   <% if @participation.description != nil %>
-    <p>Ainsi que le commentaire suivant : "<%= @participation.decsription %>"</p>
+    <p>Ainsi que le commentaire suivant : "<%= @participation.description %>"</p>
   <% else %>
-    <p>Vous n'avez pas de commentaire de se part</p>
+    <p>Vous n'avez pas de commentaire de sa part</p>
   <% end %>
 <p>La team de Ludin</p>

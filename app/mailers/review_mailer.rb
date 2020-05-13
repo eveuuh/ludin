@@ -1,11 +1,12 @@
 class ReviewMailer < ApplicationMailer
 
   def write_review(participation)
-    @gamenight = participation.gamenight
+    @participation = participation
+    @gamenight = @participation.gamenight
     @owner = @gamenight.boardgame.user
-    @user = participation.user
+    @user = @participation.user
 
-    if !participation.rating
+    if !@participation.rating
       mail to: @user.email, subject: "N'oubliez pas de laisser un commentaire à #{@owner.username}"
     end
   end
@@ -16,11 +17,12 @@ class ReviewMailer < ApplicationMailer
   #   en.review_mailer.send_review.subject
   #
   def review_notification(participation)
-    @gamenight = participation.gamenight
+    @participation = participation
+    @gamenight = @participation.gamenight
     @owner = @gamenight.boardgame.user
-    @user = participation.user
+    @user = @participation.user
     @hours = @gamenight.date
-    if participation.rating?
+    if @participation.rating?
       mail to: @owner.email, subject: "#{@user.username} vous a laissé un commentaire"
     end
   end
