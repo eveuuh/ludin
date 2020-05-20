@@ -1,7 +1,20 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
-
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  include Pundit
+
+  # Pundit: white-list approach.
+  after_action :verify_authorized, except: :index, unless: :skip_pundit?
+  after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
+
+  # Raise an alert if not authorized
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  def user_not_authorized
+    flash[:alert] = "Vous n'êtes pas autorisé à effectuer cette action."
+    redirect_to(root_path)
+  end
 
   private
 
@@ -12,5 +25,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
       user_params.permit(:username, :email, :password, :password_confirmation, :current_password, :photo)
     end
+  end
+
+  def skip_pundit?
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 end

@@ -3,11 +3,14 @@ class LocationsController < ApplicationController
 
   def new
     @location = Location.new
+    authorize @location
   end
 
   def create
     @location = Location.new(location_params)
     @location.user = current_user
+    authorize @location
+
     if @location.save
       redirect_to dashboard_path
     else
@@ -15,8 +18,7 @@ class LocationsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @location.update(location_params)
@@ -33,7 +35,8 @@ class LocationsController < ApplicationController
   private
 
   def find_location
-    @location = Location.find(params[:id])
+    @location = policy_scope(Location).find(params[:id])
+    authorize @location
   end
 
   def location_params

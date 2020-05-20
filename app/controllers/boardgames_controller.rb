@@ -3,11 +3,14 @@ class BoardgamesController < ApplicationController
 
   def new
     @boardgame = Boardgame.new
+    authorize @boardgame
   end
 
   def create
     @boardgame = Boardgame.new(boardgame_params)
     @boardgame.user = current_user
+    authorize @boardgame
+
     if @boardgame.save
       redirect_to dashboard_path
     else
@@ -15,8 +18,7 @@ class BoardgamesController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @boardgame.update(boardgame_params)
@@ -33,7 +35,8 @@ class BoardgamesController < ApplicationController
   private
 
   def find_boardgame
-    @boardgame = Boardgame.find(params[:id])
+    @boardgame = policy_scope(Boardgame).find(params[:id])
+    authorize @boardgame
   end
 
   def boardgame_params
