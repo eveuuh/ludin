@@ -7,8 +7,9 @@ class ParticipationsController < ApplicationController
 
   def create
     @participation = Participation.new
+    authorize @participation
 
-    @gamenight = Gamenight.find(params[:gamenight_id])
+    @gamenight = policy_scope(Gamenight).find(params[:gamenight_id])
     @participation.gamenight = @gamenight
     @participation.user = current_user
     @time = ((@gamenight.date.to_time - Date.today.to_time)/3600) + 48
@@ -20,8 +21,7 @@ class ParticipationsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @participation.update(participation_params)
@@ -52,7 +52,8 @@ class ParticipationsController < ApplicationController
   end
 
   def find_participation
-    @participation = Participation.find(params[:id])
+    @participation = policy_scope(Participation).find(params[:id])
+    authorize @participation
   end
 
   def participation_params

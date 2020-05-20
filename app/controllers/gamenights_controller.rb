@@ -7,14 +7,14 @@ class GamenightsController < ApplicationController
 
 
   def index
-    @gamenight_geocoded = Location.geocoded.map do |location|
+    @gamenight_geocoded = policy_scope(Location).geocoded.map do |location|
       location.gamenights.filter do |gamenight|
         futur_gamenights.include?(gamenight)
       end
     end.flatten.sort_by { |gamenight| gamenight.date }
 
     if params[:query].present?
-      boardgames = Boardgame.search_by_name_and_category(params[:query])
+      boardgames = policy_scope(Boardgame).search_by_name_and_category(params[:query])
       @gamenight_geocoded = @gamenight_geocoded.filter do |gamenight|
         boardgames.include?(gamenight.boardgame)
       end
@@ -39,20 +39,20 @@ class GamenightsController < ApplicationController
     @location = @gamenight.location
     @user = @boardgame.user
     @participations = @gamenight.participations
-
-
   end
 
   def new
     @gamenight = Gamenight.new
+    authorize @gamenight
+
     @locations_user = current_user.locations
     @boardgames_user = current_user.boardgames
   end
 
-
-
   def create
     @gamenight = Gamenight.new(gamenight_params)
+    authorize @gamenight
+
     if @gamenight.save
       redirect_to dashboard_path
     else
@@ -86,7 +86,7 @@ class GamenightsController < ApplicationController
   end
 
   def futur_gamenights
-    gamenights = Gamenight.all
+    gamenights = policy_scope(Gamenight)
     gamenights_display = gamenights.select do |gamenight|
 
       number_of_players = gamenight.boardgame.players_max > gamenight.participations.size
@@ -101,7 +101,8 @@ class GamenightsController < ApplicationController
   end
 
   def find_gamenight
-    @gamenight = Gamenight.find(params[:id])
+    @gamenight = policy_scope(Gamenight).find(params[:id])
+    authorize @gamenight
   end
 
   def gamenight_params
